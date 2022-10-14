@@ -1,11 +1,11 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
-import './App.css'
-import { Three } from './components/three'
+import './App.scss'
+import Three from './components/Three/Three'
 
 function App() {
   return (
-    <Canvas id="three_canvas_container">
+    <Canvas id="three_canvas_container" shadows>
       <Suspense fallback={null}>
         <Three />
       </Suspense>
