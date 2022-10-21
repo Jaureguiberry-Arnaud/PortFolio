@@ -1,25 +1,40 @@
-import { PerspectiveCamera, OrbitControls, Environment, Stars, ScrollControls } from '@react-three/drei';
+import { PerspectiveCamera, OrbitControls, Environment, Stars, ScrollControls, GradientTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber'
 import { angleToRadians } from '../../utils/angle'
 import * as THREE from "three"
-import React, { useRef } from "react";
+import React, { useRef, useState, Suspense } from "react";
+import PropTypes, { InferProps } from "prop-types";
 // import { ExplodingPlanetType1 } from "./ExplodingPlanetType1"
 import { Sun } from "./Star_of_sun"
 import { PlanetAtom } from "./PlanetAtom"
+import { PlanetHighTech } from "./PlanetHighTech"
 import { Material } from 'three';
 
+function Three({ setActivePlanetAtom, activePlanetAtom, setActivePlanetHighTech, activePlanetHighTech}: InferProps<typeof Three.propTypes>) {
+    // exemple of pointer event:
+    // onPointerOver={(e) => console.log("over")}
+    // onClick={() => setActive(!active)}
 
-function Three() {
+    // State
+  const [active, setActive] = useState({
+    planetAtom: false,
+    planetHighTech: false,
+    })
 
     // Make the mesh rotate
     const sunRef: any = useRef();
     const planetAtomRef: any = useRef();
+    const planetHighTechRef: any = useRef();
 
     useFrame(() => {
       sunRef.current.rotation.y += 0.005;
       planetAtomRef.current.rotation.y += 0.01
+      planetHighTechRef.current.rotation.y += 0.02
     });
 
+    // function onClick(e): ThreeEvent<MouseEvent> {
+    //     console.log()
+    //   }
   return (
     <>
       {/* Camera */}
@@ -42,17 +57,29 @@ function Three() {
           <meshStandardMaterial color={"yellow"} metalness={0.7} roughness={0.3} />
         </mesh>
         
-          <mesh ref={planetAtomRef} rotation-y={Math.PI * 0.25} position={[-80, 0, 0]} receiveShadow castShadow >
+          <mesh ref={planetAtomRef} rotation-y={Math.PI * 0.25} position={[-80, 0, 0]} receiveShadow castShadow onClick={(e) => console.log('click')}>
             <PlanetAtom />
-            <meshStandardMaterial color={"#ffffff"} metalness={0.7} roughness={0.3}/>
+            <meshStandardMaterial color={"#ffffff"} />
           </mesh>
 
+          <mesh ref={planetHighTechRef} rotation-y={Math.PI * 0.25} position={[80, 0, 0]} receiveShadow castShadow  onClick={() => setActivePlanetHighTech(!activePlanetHighTech)}>
+            <PlanetHighTech />
+            <meshStandardMaterial color={"#ffffff"} />
+          {activePlanetHighTech && 
+            <Suspense fallback={null}>
+              <mesh>
+                <sphereGeometry args={[12, 32, 16]} />
+                <meshStandardMaterial color={'#00d1ff'} side={THREE.FrontSide} blending={THREE.AdditiveBlending} opacity={0.7} transparent />
+              </ mesh>
+            </Suspense>
+          }
+          </mesh>
         
       </mesh>
       
 
       {/* Ambient Light */}
-      <ambientLight args={["#ffffff", 0.5]} />
+      <ambientLight args={["#ffffff", 0.3]} />
 
       {/* Directional light */}
       <pointLight args={["#ffffff", 5, 300]} position={[0, 0, 0]} castShadow />
@@ -72,4 +99,10 @@ function Three() {
   );
 }
 
+Three.propTypes = {
+  setActivePlanetAtom: PropTypes.func.isRequired,
+  activePlanetAtom: PropTypes.bool.isRequired,
+  setActivePlanetHighTech: PropTypes.func.isRequired,
+  activePlanetHighTech: PropTypes.bool.isRequired,
+}
 export default Three;
