@@ -32,13 +32,9 @@ function Main({ setActivePlanetAtom, activePlanetAtom, setActivePlanetHighTech, 
   }, [])
   return (
     <main className="main">
-      {/* <Suspense fallback={null}> */}
-        {/* <Konami  timeout={60000} resetDelay={2000}> */}
       {disabledLoginModal &&
       <ModalLogin disabledLoginModal={disabledLoginModal} setDisabledLoginModal={setDisabledLoginModal} />
-      }    
-        {/* </Konami> */}
-      {/* </Suspense> */}
+      }
       
       {activePlanetAtom || activePlanetHighTech &&
         <ModalPlanetById  />      

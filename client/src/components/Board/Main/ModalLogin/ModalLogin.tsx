@@ -17,9 +17,10 @@ function ModalLogin({disabledLoginModal, setDisabledLoginModal, }: InferProps<ty
     <section className="login">
       <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClick} ></img>
       <form className="login_form">
-        <h1 className="login_form-title">Login</h1>
-        <input className="login_form-pseudo"></input>
-        <input className="login_form-password"></input>
+        <h1 className="login_form-title">Admin Dashboard</h1>
+        <input type="text" className="login_form-input"></input>
+        <input type="password" className="login_form-input"></input>
+        <button className="login_form-btn">Login</button>
       </form>
     </section>
   )
