@@ -4,7 +4,7 @@ import Main from './Main/Main'
 import Footer from './Footer/Footer'
 import PropTypes, { InferProps } from "prop-types";
 
-function Board({ setActivePlanetAtom, activePlanetAtom, setActivePlanetHighTech, activePlanetHighTech}: InferProps<typeof Board.propTypes>) {
+function Board({ setActivePlanetAtom, activePlanetAtom, setActivePlanetHighTech, activePlanetHighTech, }: InferProps<typeof Board.propTypes>) {
   return (
     <section className="board-container">
       <section className="board">

@@ -1,9 +1,9 @@
 import { Canvas } from '@react-three/fiber'
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.scss'
 import Three from './components/Three/Three'
 import Board from './components/Board/Board'
-
 function App() {
   // State
   // const [active, setActive] = useState({
@@ -12,9 +12,15 @@ function App() {
   // })
   const [activePlanetAtom, setActivePlanetAtom] = useState(false);
   const [activePlanetHighTech, setActivePlanetHighTech] = useState(false);
+  const [konamiCode, setKonamiCode] = useState(false);
+ 
   
+useEffect(() => {
+  
+}, [  ])
   return (
     <>
+      
       <Board
         setActivePlanetAtom={setActivePlanetAtom}
         activePlanetAtom={activePlanetAtom}
