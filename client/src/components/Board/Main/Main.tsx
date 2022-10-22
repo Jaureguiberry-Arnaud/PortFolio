@@ -5,9 +5,9 @@ import {Suspense, useState, useEffect} from 'react'
 import './Main.scss';
 import ModalPlanetById from './ModalPlanetById/ModalPlanetById'
 import ModalLogin from './ModalLogin/ModalLogin'
-function Main({ setActivePlanetAtom, activePlanetAtom, setActivePlanetHighTech, activePlanetHighTech }: InferProps<typeof Main.propTypes>) {
+function Main({ setActivePlanetAtom, activePlanetAtom, setActivePlanetHighTech, activePlanetHighTech, setDisabledLoginModal, disabledLoginModal }: InferProps<typeof Main.propTypes>) {
   
-  const [disabledLoginModal, setDisabledLoginModal] = useState(false)
+  
 
   function konami(callback: () => void): void {
     let codes: number[] = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
@@ -48,5 +48,7 @@ Main.propTypes = {
   activePlanetAtom: PropTypes.bool.isRequired,
   setActivePlanetHighTech: PropTypes.func.isRequired,
   activePlanetHighTech: PropTypes.bool.isRequired,
+  disabledLoginModal: PropTypes.bool.isRequired,
+  setDisabledLoginModal: PropTypes.func.isRequired,
 }
 export default Main;
