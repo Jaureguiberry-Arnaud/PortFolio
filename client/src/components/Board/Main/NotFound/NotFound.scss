@@ -1,16 +1,4 @@
-.board-container {
-  height: 100vh;
-  width: 100vw;
-  padding: 1rem;
-
-  z-index: 1 !important;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.board {
+.NotFound {
   margin: 0 auto;
   border: 0.1rem solid #00d1ff;
   border-radius: 0.7rem;
@@ -25,14 +13,4 @@
   bottom: 0.5rem;
   right: 0.5rem;
   pointer-events: none;
-}
-
-// Responsive Tablet
-@media screen and (min-width: 768px){
-
-}
-
-// Responsive Window
-@media screen and (min-width: 1024px){
-
 }

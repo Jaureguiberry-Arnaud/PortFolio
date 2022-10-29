@@ -1,7 +1,12 @@
 import './Header.scss';
 import PropTypes, { InferProps } from "prop-types"
 
-function Header({disabledLoginModal, connected}: InferProps<typeof Header.propTypes>) {
+
+
+function Header({disabledLoginModal, setDisabledLoginModal, isLogged}: InferProps<typeof Header.propTypes>) {
+  function onClickLogin() {
+    setDisabledLoginModal(!disabledLoginModal)
+  }
   return (
     <header className="header">
 
@@ -23,10 +28,10 @@ function Header({disabledLoginModal, connected}: InferProps<typeof Header.propTy
         }
       </div>
 
-      <div className="header_toggleAdminLogin">
+      <div className="header_toggleAdminLogin" onClick={onClickLogin}>
           <h2 className="header_toggleAdminLogin-title">Admin:</h2>
         
-        {connected ?
+        {isLogged ?
           <div className="header_toggleAdminLogin_warning">
             <div className="header_toggleAdminLogin_warning-greenCircle"></div>
             <p className="header_toggleAdminLogin_warning-greenText">connected</p>
@@ -44,6 +49,7 @@ function Header({disabledLoginModal, connected}: InferProps<typeof Header.propTy
 }
 Header.propTypes = {
   disabledLoginModal: PropTypes.bool.isRequired,
-  connected: PropTypes.bool.isRequired,
+  setDisabledLoginModal: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 }
 export default Header

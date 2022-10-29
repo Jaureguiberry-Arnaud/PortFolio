@@ -1,33 +1,124 @@
 import PropTypes, { InferProps } from "prop-types"
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import axios from "axios";
+import jwt_decode from 'jwt-decode';
 
 import './ModalLogin.scss';
 import iconCloseModal from '../../../../assets/closeModal.png'
 
-function ModalLogin({disabledLoginModal, setDisabledLoginModal, }: InferProps<typeof ModalLogin.propTypes>) {
+function ModalLogin({
+  disabledLoginModal,
+  setDisabledLoginModal,
+  values,
+  setValues,
+  isLogged,
+  setIsLogged,
+  token,
+  setToken,
+}: InferProps<typeof ModalLogin.propTypes>) {
   
+  // API URL for axios request
+  const baseUrl = 'http://localhost:3001'
+  // token typage
+  interface MyToken {
+    userId: number;
+    pseudo: string;
+    role: string;
+    exp: number;
+  }
+  // Function to login
+  function login() {
+    axios.post(`${baseUrl}/login`, {
+      pseudo: values.pseudo,
+      password: values.password
+    })
+    .then(function (response: any) {
+    // token decoded
+    let tokenDecoded = jwt_decode<MyToken>(response.data);
+    setToken(tokenDecoded);
+    setIsLogged(true); 
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  }
   function onClick() {
     setDisabledLoginModal(!disabledLoginModal)
   }
-
+  // catch user keyboard on input value
+  const onChange = (e: { target: { name: string; value: string; }; }) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
+  };
+  // when we submit form
+  const handleSubmit = (e: any) => {
+        e.preventDefault();
+        login();
+        
+  };
+  
   useEffect(() => {
     
   }, [])
   return (
-    <section className="login">
-      <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClick} ></img>
-      <form className="login_form">
-        <h1 className="login_form-title">Admin Dashboard</h1>
-        <input type="text" className="login_form-input"></input>
-        <input type="password" className="login_form-input"></input>
-        <button className="login_form-btn">Login</button>
-      </form>
-    </section>
+  
+    <>
+    {isLogged 
+        ? <section className="logout">
+            <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClick} ></img>
+            <h1> Do you want logout?</h1>
+            <button className="logout-btn"> Logout </button>
+          </section>
+        
+      
+    : <section className="login">
+          <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClick} ></img>
+          <form
+            className="login_form"
+            onSubmit={handleSubmit}>
+            
+            <h1 className="login_form-title">Admin Dashboard</h1>
+            <input
+              type="text"
+              className="login_form-input"
+              placeholder="Pseudo"
+              name="pseudo"
+              value={values.pseudo}
+              onChange={onChange}
+            ></input>
+            <input
+              type="password"
+              className="login_form-input"
+              placeholder="Password"
+              name="password"
+              value={values.password}
+              onChange={onChange}
+            ></input>
+            <button type="submit" className="login_form-btn" >Login</button>
+          </form>
+        </section>
+    } 
+    </>
+   
   )
 }
 
 ModalLogin.propTypes = {
   disabledLoginModal: PropTypes.bool.isRequired,
   setDisabledLoginModal: PropTypes.func.isRequired,
+  values: PropTypes.shape({
+    pseudo: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  }).isRequired,
+  setValues: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  setIsLogged: PropTypes.func.isRequired,
+  token: PropTypes.shape({
+    userId: PropTypes.number.isRequired,
+    pseudo: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    iat: PropTypes.number.isRequired,
+    exp: PropTypes.number.isRequired
+  }),
+  setToken: PropTypes.func.isRequired
 }
 export default ModalLogin;
