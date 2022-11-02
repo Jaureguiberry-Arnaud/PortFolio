@@ -28,14 +28,14 @@ function ModalLogin({
   }
   // Function to login
   function login() {
-    axios.post(`${baseUrl}/login`, {
+    axios.post(`http://localhost:3001/login`, {
       pseudo: values.pseudo,
       password: values.password
     })
     .then(function (response: any) {
     // token decoded
-    let tokenDecoded = jwt_decode<MyToken>(response.data);
-    setToken(tokenDecoded);
+    // let tokenDecoded = jwt_decode<MyToken>(response.data);
+    setToken(response);
     setIsLogged(true); 
   })
   .catch(function (error) {

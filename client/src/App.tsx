@@ -13,32 +13,26 @@ function App() {
 
 	useEffect(() => {}, [])
 	return (
-		<Routes>
-			<Route
-				path='/'
-        element={
-          <>
-						<Board
-							setActivePlanetAtom={setActivePlanetAtom}
-							activePlanetAtom={activePlanetAtom}
-							setActivePlanetHighTech={setActivePlanetHighTech}
-							activePlanetHighTech={activePlanetHighTech}
+    <>
+      <Board
+        setActivePlanetAtom={setActivePlanetAtom}
+        activePlanetAtom={activePlanetAtom}
+        setActivePlanetHighTech={setActivePlanetHighTech}
+        activePlanetHighTech={activePlanetHighTech}
+      />
+      <Canvas
+          id='three_canvas_container'
+          shadows>
+          <Suspense fallback={null}>
+            <Three
+              setActivePlanetAtom={setActivePlanetAtom}
+              activePlanetAtom={activePlanetAtom}
+              setActivePlanetHighTech={setActivePlanetHighTech}
+              activePlanetHighTech={activePlanetHighTech}
             />
-            <Canvas
-                id='three_canvas_container'
-                shadows>
-                <Suspense fallback={null}>
-                  <Three
-                    setActivePlanetAtom={setActivePlanetAtom}
-                    activePlanetAtom={activePlanetAtom}
-                    setActivePlanetHighTech={setActivePlanetHighTech}
-                    activePlanetHighTech={activePlanetHighTech}
-                  />
-                </Suspense>
-              </Canvas>
-          </>
-				} /> 
-		</Routes>
+          </Suspense>
+        </Canvas>
+    </>
 	)
 }
 

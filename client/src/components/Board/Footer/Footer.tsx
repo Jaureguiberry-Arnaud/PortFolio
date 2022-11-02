@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import './Footer.scss';
 
 
@@ -5,12 +6,10 @@ function Footer() {
   return (
     <footer className="footer">
       <nav className="footer_nav">
-        <p className="footer_nav-btn">Projets</p>
-        <p className="footer_nav-btn">Stats</p>
-        <p className="footer_nav-btn">Contacts</p>
-        <p className="footer_nav-btn">Contacts</p>
-        <p className="footer_nav-btn">CV</p>
-        <p className="footer_nav-btn">Contacts</p>
+        <Link to="projects" ><p className="footer_nav-btn">Projects</p></Link>
+        <Link to="/stats"><p className="footer_nav-btn">Stats</p></Link>
+        <Link to="/cv"><p className="footer_nav-btn">CV</p></Link>
+        <Link to="/contact"><p className="footer_nav-btn">Contact</p></Link>
       </nav>
     </footer>
   )

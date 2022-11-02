@@ -1,30 +1,58 @@
-.modalPlanetById {
+.projectById {
   width: 90%;
-  height: 70vh;
+  height: 63%;
   background-color: rgba(255, 255, 255, 0.2);
-  margin: 1rem 0.7rem;
+  padding: 0.5rem;
   border: 0.1rem solid #00d1ff;
   border-radius: 0.7rem;
   box-shadow: 0 0 10px 1px #00D1FF, inset 0 0 10px 1px #00D1FF;
+
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+
+  overflow: auto;
   pointer-events: auto;
 
   -webkit-animation: scale-in-ver-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: scale-in-ver-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+  &-name {
+    font-size: 2rem;
+    color: #00d1ff;
+    text-shadow: 1px 1px 2px #00D1FF;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  &-title {
+    font-size: 1.2rem;
+    color: #00d1ff;
+    text-shadow: 1px 1px 2px #00D1FF;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: start;
+  }
+  &-content {
+    font-size: 1rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px #00D1FF;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 // Responsive Tablet
 @media screen and (min-width: 768px){
-
+  .projectById {
+    width: 35%;
+    height: 100%;
+    margin: 0 0.5rem;
+  }
 }
 
 // Responsive Window
 @media screen and (min-width: 1024px){
-.modalPlanetById {
-  margin: 2rem 0.7rem;
-  width: 33%;
-  position: fixed;
-  right: 2rem;
-}
+  
 }
 
 /* ----------------------------------------------
