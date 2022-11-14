@@ -14,6 +14,9 @@
   top: 0.5rem;
   left: 0.5rem;
   transform: rotate(45deg);
+  &:hover {
+    cursor: pointer;
+  }
 }
 .projects {
   width: 90%;
@@ -34,10 +37,20 @@
   -webkit-animation: scale-in-ver-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: scale-in-ver-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
+  &-closeModal {
+    width: 15px;
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
   &-title {
     font-size: 2rem;
     color: #00d1ff;
     text-shadow: 1px 1px 2px #00D1FF;
+    margin-top: 1rem;;
     margin-bottom: 0.5rem;
   }
 

@@ -103,7 +103,7 @@ function onChange(e: { target: { name: any; value: any; }; }) {
         </section>
 
         : <section className="addProject">
-            <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClickCloseAddProject}></img><h1 className="addProject-title">Add Project:</h1><form className="addProject_form" method="post" onSubmit={handleSubmit}>
+            <img className="addProject-closeModal" src={iconCloseModal} alt="icon Close modal" onClick={onClickCloseAddProject}></img><h1 className="addProject-title">Add Project:</h1><form className="addProject_form" method="post" onSubmit={handleSubmit}>
             <label className="addProject_form-label" htmlFor="name">Project Name:</label>
             <input className="addProject_form-input" type="text"
               name="name"

@@ -17,11 +17,49 @@
   -webkit-animation: scale-in-ver-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: scale-in-ver-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
+  &-deleteSuccess{
+    font-size: 2rem;
+    color: #00d1ff;
+    text-shadow: 1px 1px 2px #00D1FF;
+    margin-top: 3rem;
+    // margin-bottom: 1rem;
+    text-align: center;
+  }
+  &-closeDeleteSuccess {
+      height: 40px;
+      font-size: 1rem;
+      margin: auto 0;
+      color: #fff;
+      background-color: green;
+      text-shadow: 1px 1px 2px green;
+      border: 0.1rem solid green;
+      border-radius: 0.7rem;
+      box-shadow: 0 0 10px 1px green, inset 0 0 10px 1px green;
+  }
+  &-closeModal {
+    width: 15px;
+    position: fixed;
+    top: 0.75rem;
+    right: 0.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-delete {
+    width: 20px;
+    position: fixed;
+    top: 0.5rem;
+    right: 2rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
   &-name {
     font-size: 2rem;
     color: #00d1ff;
     text-shadow: 1px 1px 2px #00D1FF;
-    margin-bottom: 5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
     text-align: center;
   }
   &-title {
@@ -48,12 +86,28 @@
     width: 35%;
     height: 100%;
     margin: 0 0.5rem;
+
+  &-deleteSuccess{
+    margin: auto 0;
+  }
+  &-closeDeleteSuccess {
+      margin-top: -2rem;
+  }
   }
 }
 
 // Responsive Window
 @media screen and (min-width: 1024px){
-  
+  .projectById {
+    
+  &-deleteSuccess{
+  }
+  &-closeDeleteSuccess {
+      width: 80%;
+      align-self: center;
+  }
+  }
+
 }
 
 /* ----------------------------------------------

@@ -24,7 +24,7 @@ function Projects({ allProjects, token, setToken, getAllProject }: InferProps<ty
   return (
     <section className="projectBoard">
       <section className="projects">
-        <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClickCloseProjects} ></img>
+        <img className="projects-closeModal" src={iconCloseModal} alt="icon Close modal" onClick={onClickCloseProjects} ></img>
         {toggleAddProject
           ?<img title="close modal Add Project" className="modal-add-project" src={iconReduceModal} alt="icon Close modal" onClick={onClickToggleAddProject} ></img>
           :<img title="Add Project" className="modal-add-project" src={iconCloseModal} alt="icon Close modal" onClick={onClickToggleAddProject} ></img>
@@ -52,6 +52,9 @@ function Projects({ allProjects, token, setToken, getAllProject }: InferProps<ty
         <ProjectById
           projectId={projectId}
           setProjectId={setProjectId}
+          token={token}
+          setToken={setToken}
+          getAllProject={getAllProject}
         />
       )}
     </section>
