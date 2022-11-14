@@ -36,7 +36,7 @@ function ProjectById({ projectId, setProjectId }: InferProps<typeof ProjectById.
   console.log(projectById)
   useEffect(() => {
     getProjectById();
-  }, []);
+  }, [projectId]);
   return (
     <section className="projectById">
       <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClick} ></img>
@@ -47,12 +47,12 @@ function ProjectById({ projectId, setProjectId }: InferProps<typeof ProjectById.
       <p className="projectById-content">{projectById?.created_at}</p>
       <h2 className="projectById-title">Number of line written:</h2>
       <p className="projectById-content">INSERT DATA HERE</p>
-      <h2 className="projectById-title">Description:</h2>
-      <p className="projectById-content">{projectById?.description}</p>
       <h2 className="projectById-title">Git Url:</h2>
       <a href={projectById?.git_url} target="_blank" className="projectById-content">{projectById?.git_url}</a>
-      <h2 className="projectById-title">Web_Url:</h2>
+      <h2 className="projectById-title">Web Url:</h2>
       <a href={projectById?.web_url} target="_blank" className="projectById-content">{projectById?.web_url}</a>
+      <h2 className="projectById-title">Description:</h2>
+      <p className="projectById-content">{projectById?.description}</p>
     </section>
   )
 }

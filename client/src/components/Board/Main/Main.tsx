@@ -25,7 +25,7 @@ function Main({
 	setToken,
 }: InferProps<typeof Main.propTypes>) {
 	// My state
-	const [allProjects, setAllProjects] = useState()
+	const [allProjects, setAllProjects] = useState([])
 
 	function konami(callback: () => void): void {
 		let codes: number[] = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
@@ -56,11 +56,12 @@ function Main({
 	}
 	useEffect(() => {
 		getAllProject()
-	}, [konami(toggleDisabledLoginModal)])
+	}, [konami(toggleDisabledLoginModal), allProjects?.length])
 	return (
     <main className='main'>
-      <Routes>
-         {disabledLoginModal &&
+			<Routes>
+				<Route path="/" element={
+					disabledLoginModal &&
             <ModalLogin
               disabledLoginModal={disabledLoginModal}
               setDisabledLoginModal={setDisabledLoginModal}
@@ -70,11 +71,12 @@ function Main({
               setIsLogged={setIsLogged}
               token={token}
               setToken={setToken}
-            /> } 
+            />}></Route>
+         
 
         {/* <Route path='/profil' element={<Profil />} /> */}
 
-        <Route path="projects" element={<Projects allProjects={allProjects}/>} />
+				<Route path="projects" element={<Projects allProjects={allProjects} token={token} setToken={setToken} getAllProject={getAllProject}/>} />
         
         {/* {activePlanetAtom || activePlanetHighTech && ()} */}
 				{/* Route 404 */}
@@ -100,13 +102,7 @@ Main.propTypes = {
 	setValues: PropTypes.func.isRequired,
 	isLogged: PropTypes.bool.isRequired,
 	setIsLogged: PropTypes.func.isRequired,
-	token: PropTypes.shape({
-		userId: PropTypes.number.isRequired,
-		pseudo: PropTypes.string.isRequired,
-		role: PropTypes.string.isRequired,
-		iat: PropTypes.number.isRequired,
-		exp: PropTypes.number.isRequired,
-	}),
+	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 }
 export default Main

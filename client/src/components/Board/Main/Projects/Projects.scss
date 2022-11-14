@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+
 }
 .modal-add-project {
   width: 15px;
@@ -27,7 +28,7 @@
   flex-direction: column;
   align-items: center;
 
-  overflow: hidden;
+  overflow: auto;
   pointer-events: auto;
 
   -webkit-animation: scale-in-ver-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -42,9 +43,10 @@
 
   &_project {
     width: 100%;
-    height: 30px;
+    min-height: 30px;
     background-color: rgba(255, 255, 255, 0.2);
     padding: 0.2rem;
+    margin-bottom: 0.5rem;
     border: 0.1rem solid #00d1ff;
     border-radius: 0.7rem;
     box-shadow: 0 0 10px 1px #00D1FF, inset 0 0 10px 1px #00D1FF;
@@ -53,6 +55,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    overflow: auto;
 
     &-title {
       font-size: 1.2rem;
@@ -72,14 +76,15 @@
   .projectBoard {
     flex-direction: row;
     justify-content: space-between;
-    gap: 0;
   }
   .projects {
       width: 35%;
       height: 100%;
       margin: 0 0.5rem;
+      display: flex;
       &_project {
-        height: 15%
+        min-height: 45px;
+        margin-bottom: 1rem;
       }
     }
   
@@ -87,8 +92,15 @@
 
 // Responsive Window
 @media screen and (min-width: 1024px){
+  .projectBoard {
+    height: 80vh;
+  }
   .projects {
       width: 33%;
+
+      &_project {
+        min-height: 60px;
+      }
     }
 }
 /* ----------------------------------------------

@@ -33,9 +33,7 @@ function ModalLogin({
       password: values.password
     })
     .then(function (response: any) {
-    // token decoded
-    // let tokenDecoded = jwt_decode<MyToken>(response.data);
-    setToken(response);
+    setToken(response.data);
     setIsLogged(true); 
   })
   .catch(function (error) {
@@ -112,13 +110,7 @@ ModalLogin.propTypes = {
   setValues: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   setIsLogged: PropTypes.func.isRequired,
-  token: PropTypes.shape({
-    userId: PropTypes.number.isRequired,
-    pseudo: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-    iat: PropTypes.number.isRequired,
-    exp: PropTypes.number.isRequired
-  }),
+  token: PropTypes.string.isRequired,
   setToken: PropTypes.func.isRequired
 }
 export default ModalLogin;

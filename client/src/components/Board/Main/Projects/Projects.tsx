@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './Projects.scss';
 import ProjectById from './ProjectById/ProjectById';
+import AddProject from './AddProject/AddProject';
 import iconCloseModal from '../../../../assets/closeModal.png'
+import iconReduceModal from '../../../../assets/reduceModal.png'
 
-function Projects({ allProjects }: InferProps<typeof Projects.propTypes>) {
+function Projects({ allProjects, token, setToken, getAllProject }: InferProps<typeof Projects.propTypes>) {
   // My state 
-  const [projectId, setProjectId] = useState()
+  const [projectId, setProjectId] = useState(null)
   const [toggleAddProject, setToggleAddProject] = useState(false)
   const navigate = useNavigate();
   function onClickCloseProjects() {
@@ -23,7 +25,11 @@ function Projects({ allProjects }: InferProps<typeof Projects.propTypes>) {
     <section className="projectBoard">
       <section className="projects">
         <img className="login-close-modal" src={iconCloseModal} alt="icon Close modal" onClick={onClickCloseProjects} ></img>
-        <img className="modal-add-project" src={iconCloseModal} alt="icon Close modal" onClick={onClickToggleAddProject} ></img>
+        {toggleAddProject
+          ?<img title="close modal Add Project" className="modal-add-project" src={iconReduceModal} alt="icon Close modal" onClick={onClickToggleAddProject} ></img>
+          :<img title="Add Project" className="modal-add-project" src={iconCloseModal} alt="icon Close modal" onClick={onClickToggleAddProject} ></img>
+          }
+        
         <h1 className="projects-title">Projects:</h1>
         {allProjects?.map((project) => (
             <article key={project.id} className="projects_project" onClick={()=>setProjectId(project.id)} >
@@ -32,16 +38,30 @@ function Projects({ allProjects }: InferProps<typeof Projects.propTypes>) {
         ))}
       </section>
 
-
+      {toggleAddProject && (
+        <AddProject
+          toggleAddProject={toggleAddProject}
+          setToggleAddProject={setToggleAddProject}
+          token={token}
+          setToken={setToken}
+          getAllProject={getAllProject}
+        />
+      )}
 
       {projectId && (
-          <ProjectById  projectId={projectId} setProjectId={setProjectId}/>
+        <ProjectById
+          projectId={projectId}
+          setProjectId={setProjectId}
+        />
       )}
     </section>
   )
 }
 
 Projects.propTypes = {
-  allProjects: PropTypes.array
+  allProjects: PropTypes.array,
+  token: PropTypes.string.isRequired,
+  setToken: PropTypes.func.isRequired,
+  getAllProject: PropTypes.func.isRequired,
 }
 export default Projects
