@@ -86,24 +86,25 @@ function onChange(e: { target: { name: any; value: any; }; }) {
       {errorToggle
 
         ? <section className="addProject_unauthorized">
-          <img className="addProject_unauthorized-warning" src={iconWarning} alt="warning icon"  />
-          <div className="addProject_unauthorized-div">
-            <h2 className="addProject_unauthorized_title">StatusCode:</h2>
-            <p className="addProject_unauthorized_content">{errorToggle.status}</p>
-          </div>
-          <div className="addProject_unauthorized-div">
-            <h2 className="addProject_unauthorized_title">StatusPost:</h2>
-            <p className="addProject_unauthorized_content">{errorToggle.statusText}</p>
-          </div>
-          <div className="addProject_unauthorized-div">
-            <h2 className="addProject_unauthorized_title">Request:</h2>
-            <p className="addProject_unauthorized_content">Failed</p>
-          </div>
-          <button className="addProject_unauthorized_btn" onClick={onClickCloseWarning}>Close</button>
-        </section>
+            <img className="addProject_unauthorized-warning" src={iconWarning} alt="warning icon"  />
+            <div className="addProject_unauthorized-div">
+              <h2 className="addProject_unauthorized_title">StatusCode:</h2>
+              <p className="addProject_unauthorized_content">{errorToggle.status}</p>
+            </div>
+            <div className="addProject_unauthorized-div">
+              <h2 className="addProject_unauthorized_title">StatusPost:</h2>
+              <p className="addProject_unauthorized_content">{errorToggle.statusText}</p>
+            </div>
+            <div className="addProject_unauthorized-div">
+              <h2 className="addProject_unauthorized_title">Request:</h2>
+              <p className="addProject_unauthorized_content">Failed</p>
+            </div>
+            <button className="addProject_unauthorized_btn" onClick={onClickCloseWarning}>Close</button>
+          </section>
 
         : <section className="addProject">
-            <img className="addProject-closeModal" src={iconCloseModal} alt="icon Close modal" onClick={onClickCloseAddProject}></img><h1 className="addProject-title">Add Project:</h1><form className="addProject_form" method="post" onSubmit={handleSubmit}>
+          <img className="addProject-closeModal" src={iconCloseModal} alt="icon Close modal" onClick={onClickCloseAddProject}></img><h1 className="addProject-title">Add Project:</h1>
+          <form className="addProject_form" method="post" onSubmit={handleSubmit}>
             <label className="addProject_form-label" htmlFor="name">Project Name:</label>
             <input className="addProject_form-input" type="text"
               name="name"
@@ -128,8 +129,8 @@ function onChange(e: { target: { name: any; value: any; }; }) {
               pattern="https://.*"
               onChange={onChange}></input>
 
-            {/* <label className="addProject_form-label" htmlFor="nbLine">Enter the number of line written in the project:</label>
-      <input className="addProject_form-input" type="number" name="nbLine" id="nbLine1"></input> */}
+            {/* <label className="addProject_form-label" htmlFor="nbWrittenLines">Enter the number of line written in the project:</label>
+      <input className="addProject_form-input" type="number" name="nbWrittenLines" id="nbLine1"></input> */}
 
             <label className="addProject_form-label" htmlFor="description">Project Description:</label>
             <textarea className="addProject_form-input"
