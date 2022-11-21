@@ -11,14 +11,20 @@ export class Project {
     @Column()
     name: string
 
+    @Column("jsonb")
+    language: string
+
     @Column()
-    description: string
+    nbWrittenLines: number
 
     @Column()
     git_url: string
-
+    
     @Column()
     web_url: string
+    
+    @Column()
+    description: string
 
     @CreateDateColumn({ type: 'timestamptz' })
     created_at: Date
