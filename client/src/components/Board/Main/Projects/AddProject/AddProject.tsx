@@ -148,6 +148,17 @@ function AddProject({
 
 						<label
 							className='addProject_form-label'
+							htmlFor='nbWrittenLines'>
+							Enter the number of line written in the project:
+						</label>
+						<input
+							className='addProject_form-input'
+							type='number'
+							name='nbWrittenLines'
+							id='nbLine1'></input>
+
+						<label
+							className='addProject_form-label'
 							htmlFor='git_url'>
 							Enter an Git URL:
 						</label>
@@ -175,9 +186,6 @@ function AddProject({
 							placeholder='https://example.com'
 							pattern='https://.*'
 							onChange={onChange}></input>
-
-						{/* <label className="addProject_form-label" htmlFor="nbWrittenLines">Enter the number of line written in the project:</label>
-      <input className="addProject_form-input" type="number" name="nbWrittenLines" id="nbLine1"></input> */}
 
 						<label
 							className='addProject_form-label'

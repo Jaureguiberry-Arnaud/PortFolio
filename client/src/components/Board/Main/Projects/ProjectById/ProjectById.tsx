@@ -249,14 +249,17 @@ function ProjectById({
 								<h2 className='projectById-title'>Created here:</h2>
 								<p className='projectById-content'>{projectById?.created_at}</p>
 
-								{/* <label className="projectById_form-label" htmlFor="nbWrittenLines">Number of line written:</label>  
-                <input type="number"
-                name="nbWrittenLines"
-                className="projectById_form-input"
-                value={values.nbWrittenLines}
-                onChange={onChange}
-                dangerouslySetInnerHTML={createMarkup()}
-                ></input> */}
+								<label
+									className='projectById_form-label'
+									htmlFor='nbWrittenLines'>
+									Number of line written:
+								</label>
+								<input
+									type='number'
+									name='nbWrittenLines'
+									className='projectById_form-input'
+									value={values.nbWrittenLines}
+									onChange={onChange}></input>
 
 								<label
 									className='projectById_form-label'
@@ -324,7 +327,9 @@ function ProjectById({
 							<h2 className='projectById-title'>Created here:</h2>
 							<p className='projectById-content'>{projectById?.created_at}</p>
 							<h2 className='projectById-title'>Number of line written:</h2>
-							<p className='projectById-content'>INSERT DATA HERE</p>
+							<p className='projectById-content'>
+								{projectById?.nbWrittenLines}
+							</p>
 							<h2 className='projectById-title'>Git Url:</h2>
 							<a
 								href={projectById?.git_url}
