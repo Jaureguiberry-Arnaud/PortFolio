@@ -11,7 +11,10 @@ export class Project {
     @Column()
     name: string
 
-    @Column("jsonb")
+    @Column({
+        type: 'jsonb',
+        nullable: true,
+    })
     language: string
 
     @Column()

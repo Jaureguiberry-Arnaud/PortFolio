@@ -28,9 +28,9 @@ function ProjectById({
 	const [values, setValues] = useState<any>({
 		name: projectById?.name,
 		description: projectById?.description,
+		nbWrittenLines: projectById?.nbWrittenLines,
 		git_url: projectById?.git_url,
 		web_url: projectById?.web_url,
-		// nbWrittenLines: projectById?.nbWrittenLines,
 	})
 
 	const navigate = useNavigate()
@@ -115,6 +115,7 @@ function ProjectById({
 			data: {
 				name: values.name,
 				description: values.description,
+				nbWrittenLines: values.nbWrittenLines,
 				git_url: values.git_url,
 				web_url: values.web_url,
 				userId: tokenDecoded?.userId,
@@ -259,7 +260,8 @@ function ProjectById({
 									name='nbWrittenLines'
 									className='projectById_form-input'
 									value={values.nbWrittenLines}
-									onChange={onChange}></input>
+									onChange={onChange}
+									required></input>
 
 								<label
 									className='projectById_form-label'

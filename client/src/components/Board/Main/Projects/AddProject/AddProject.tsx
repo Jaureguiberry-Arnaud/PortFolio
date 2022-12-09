@@ -20,6 +20,7 @@ function AddProject({
 	const [values, setValues] = useState({
 		name: '',
 		description: '',
+		nbWrittenLines: 0,
 		git_url: '',
 		web_url: '',
 	})
@@ -45,6 +46,7 @@ function AddProject({
 			data: {
 				name: values.name,
 				description: values.description,
+				nbWrittenLines: values.nbWrittenLines,
 				git_url: values.git_url,
 				web_url: values.web_url,
 				userId: tokenDecoded?.userId,
@@ -84,6 +86,7 @@ function AddProject({
 			...values,
 			name: '',
 			description: '',
+			nbWrittenLines: 0,
 			git_url: '',
 			web_url: '',
 		})
@@ -155,7 +158,10 @@ function AddProject({
 							className='addProject_form-input'
 							type='number'
 							name='nbWrittenLines'
-							id='nbLine1'></input>
+							id='nbLine1'
+							value={values.nbWrittenLines}
+							onChange={onChange}
+							required></input>
 
 						<label
 							className='addProject_form-label'
