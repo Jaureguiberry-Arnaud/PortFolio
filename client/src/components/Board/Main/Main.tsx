@@ -1,11 +1,12 @@
 import PropTypes, { InferProps } from 'prop-types'
 import { Suspense, useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import axios from "axios";
+import axios from 'axios'
 
 import './Main.scss'
 import ModalPlanetById from './Projects/ProjectById/ProjectById'
 import ModalLogin from './ModalLogin/ModalLogin'
+import Cv from './Cv/Cv'
 import Profil from './Profil/Profil'
 import Projects from './Projects/Projects'
 import NotFound from './NotFound/NotFound'
@@ -46,44 +47,61 @@ function Main({
 		setDisabledLoginModal(!disabledLoginModal)
 	}
 	function getAllProject() {
-		axios.get(`http://localhost:3001/projects`)
-    .then(function (response: any) {
-    setAllProjects(response.data)
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+		axios
+			.get(`http://localhost:3001/projects`)
+			.then(function (response: any) {
+				setAllProjects(response.data)
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
 	}
 	useEffect(() => {
 		getAllProject()
 	}, [konami(toggleDisabledLoginModal), allProjects?.length])
 	return (
-    <main className='main'>
+		<main className='main'>
 			<Routes>
-				<Route path="/" element={
-					disabledLoginModal &&
-            <ModalLogin
-              disabledLoginModal={disabledLoginModal}
-              setDisabledLoginModal={setDisabledLoginModal}
-              values={values}
-              setValues={setValues}
-              isLogged={isLogged}
-              setIsLogged={setIsLogged}
-              token={token}
-              setToken={setToken}
-            />}></Route>
-         
+				<Route
+					path='/'
+					element={
+						disabledLoginModal && (
+							<ModalLogin
+								disabledLoginModal={disabledLoginModal}
+								setDisabledLoginModal={setDisabledLoginModal}
+								values={values}
+								setValues={setValues}
+								isLogged={isLogged}
+								setIsLogged={setIsLogged}
+								token={token}
+								setToken={setToken}
+							/>
+						)
+					}></Route>
 
-        {/* <Route path='/profil' element={<Profil />} /> */}
+				{/* <Route path='/profil' element={<Profil />} /> */}
 
-				<Route path="projects" element={<Projects allProjects={allProjects} token={token} setToken={setToken} getAllProject={getAllProject}/>} />
-        
-        {/* {activePlanetAtom || activePlanetHighTech && ()} */}
+				<Route
+					path='projects'
+					element={
+						<Projects
+							allProjects={allProjects}
+							token={token}
+							setToken={setToken}
+							getAllProject={getAllProject}
+						/>
+					}
+				/>
+
+				<Route
+					path='cv'
+					element={<Cv />}
+				/>
+
+				{/* {activePlanetAtom || activePlanetHighTech && ()} */}
 				{/* Route 404 */}
 				{/* <Route path="*" element={<NotFound />} /> */}
-      </Routes>  
-
-     
+			</Routes>
 		</main>
 	)
 }
