@@ -170,23 +170,23 @@ function ProjectById({
 						alt='warning icon'
 					/>
 					<div className='projectById_unauthorized-div'>
-						<h2 className='projectById_unauthorized_title'>StatusCode:</h2>
-						<p className='projectById_unauthorized_content'>
+						<h2 className='projectById_unauthorized-title'>StatusCode:</h2>
+						<p className='projectById_unauthorized-content'>
 							{errorToggle.status}
 						</p>
 					</div>
 					<div className='projectById_unauthorized-div'>
-						<h2 className='projectById_unauthorized_title'>StatusPost:</h2>
-						<p className='projectById_unauthorized_content'>
+						<h2 className='projectById_unauthorized-title'>StatusPost:</h2>
+						<p className='projectById_unauthorized-content'>
 							{errorToggle.statusText}
 						</p>
 					</div>
 					<div className='projectById_unauthorized-div'>
-						<h2 className='projectById_unauthorized_title'>Request:</h2>
-						<p className='projectById_unauthorized_content'>Failed</p>
+						<h2 className='projectById_unauthorized-title'>Request:</h2>
+						<p className='projectById_unauthorized-content'>Failed</p>
 					</div>
 					<button
-						className='projectById_unauthorized_btn'
+						className='projectById_unauthorized-btn'
 						onClick={onClickCloseWarning}>
 						Close
 					</button>
