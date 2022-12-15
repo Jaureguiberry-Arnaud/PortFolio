@@ -1,7 +1,6 @@
 import './ProjectById.scss'
 import PropTypes, { InferProps } from 'prop-types'
 import { useState, useEffect, Suspense } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios, { AxiosResponse } from 'axios'
 import jwt_decode from 'jwt-decode'
 
@@ -32,8 +31,6 @@ function ProjectById({
 		git_url: projectById?.git_url,
 		web_url: projectById?.web_url,
 	})
-
-	const navigate = useNavigate()
 
 	function onChange(e: { target: { name: any; value: any } }) {
 		setValues({ ...values, [e.target.name]: e.target.value })

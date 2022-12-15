@@ -1,27 +1,36 @@
 .cv {
-	// background-color: rgba(255, 0, 255, 0.253);
 	height: 100%;
 	width: 100%;
-	padding: 0.5rem 0;
+	padding: 0.5rem;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: 1rem;
 
 	overflow: auto;
 	pointer-events: auto;
 
-	&-profilePicture {
-		height: 200px;
-		width: 200px;
-		border: 0.1rem solid #00d1ff;
-		border-radius: 50%;
-		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+	&_profile {
+		display: flex;
+		flex-direction: column;
+		&-picture {
+			height: 200px;
+			width: 200px;
+			margin-bottom: 0.5rem;
+			border: 0.1rem solid #00d1ff;
+			border-radius: 50%;
+			box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
 
-		-webkit-animation: scale-in-ver-center 1s
-			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-		animation: scale-in-ver-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-			both;
+			-webkit-animation: scale-in-ver-center 1s
+				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+			animation: scale-in-ver-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+				both;
+		}
+		&-cv {
+			text-align: center;
+			text-shadow: 1px 1px 2px #00d1ff;
+		}
 	}
 
 	&-title {
@@ -265,6 +274,94 @@
 				text-shadow: 1px 1px 2px #00d1ff;
 				margin-bottom: 0.25rem;
 			}
+		}
+	}
+}
+
+// Responsive Tablet
+@media screen and (min-width: 768px) {
+	.cv {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		align-items: center;
+		// padding: 0 1rem 0 0.7rem;
+
+		&-profilePicture {
+			order: 1;
+			align-self: none;
+			margin-top: 0.5rem;
+			margin-bottom: 2rem;
+		}
+		&-title {
+			order: 2;
+			width: 60%;
+			margin: 3rem 0;
+		}
+		&_contact {
+			order: 3;
+			width: 30%;
+			margin: 0.5rem 0;
+			overflow: hidden;
+			white-space: normal;
+			text-overflow: ellipsis;
+		}
+		&_skills {
+			order: 5;
+			width: 30%;
+			margin: 0.5rem 0;
+		}
+		&_experiences {
+			order: 4;
+			width: 60%;
+			margin: 0.5rem 0;
+		}
+		&_education {
+			order: 6;
+			width: 60%;
+			margin: 0.5rem 0;
+		}
+		&_graduation {
+			order: 7;
+			width: 60%;
+			margin: 0.5rem auto;
+		}
+	}
+}
+
+// Responsive Window
+@media screen and (min-width: 1024px) {
+	.cv {
+		&-profilePicture {
+			margin-left: 4%;
+		}
+		&_contact {
+			width: 25%;
+		}
+		&_skills {
+			width: 25%;
+		}
+	}
+}
+
+// Responsive Window xlarge
+@media screen and (min-width: 1500px) {
+	.cv {
+		&-profilePicture {
+			margin-left: 15%;
+		}
+		&-title {
+			width: 70%;
+			height: 100px;
+			font-size: 3rem;
+			text-align: center;
+			padding: 20px;
+		}
+		&_contact {
+			width: 25%;
+		}
+		&_skills {
+			width: 25%;
 		}
 	}
 }

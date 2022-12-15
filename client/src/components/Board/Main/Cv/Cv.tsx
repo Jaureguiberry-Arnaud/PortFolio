@@ -1,15 +1,24 @@
 import './Cv.scss'
 
 import cvProfilePicture from '../../../../assets/cvProfilePicture.png'
+import cv from '../../../../assets/cv/CV_Arnaud_Jaureguiberry.pdf'
 
 function Cv() {
 	return (
 		<section className='cv'>
-			<img
-				className='cv-profilePicture'
-				src={cvProfilePicture}
-				alt='cv profile picture'
-			/>
+			<div className='cv_profile'>
+				<img
+					className='cv_profile-picture'
+					src={cvProfilePicture}
+					alt='cv profile picture'
+				/>
+				<a
+					className='cv_profile-cv'
+					href={cv}
+					download>
+					Download my CV in PDF
+				</a>
+			</div>
 			<h1 className='cv-title'>Dev Fullstack JS Web & WebMobile</h1>
 			<section className='cv_contact'>
 				<h2 className='cv_contact-title'>Contact</h2>
@@ -165,17 +174,19 @@ function Cv() {
 						Full Remote / French Label "GEN" / January 2022 - July 2022
 					</h4>
 					<p className='cv_education_training-text'>
-						-Intensive training of 6 months <strong>(798 hours)</strong> to
-						become a FullStack JS Developer.
+						-{'>'} Intensive training of 6 months <strong>(798 hours)</strong>{' '}
+						to become a FullStack JS Developer.
 					</p>
 					<p className='cv_education_training-text'>
-						-{'>'}3 months of base: : HTML5 / CSS3 /JavaScript / PostgreSQL /
+						-{'>'} 3 months of base: : HTML5 / CSS3 /JavaScript / PostgreSQL /
 						NodeJS
 					</p>
 					<p className='cv_education_training-text'>
-						-{'>'}3 months of specialization: React
+						-{'>'} 3 months of specialization: React
 					</p>
-					<p className='cv_education_training-text'>-{'>'}1 month of project</p>
+					<p className='cv_education_training-text'>
+						-{'>'} 1 month of project
+					</p>
 					<p className='cv_education_training-text'>
 						-{'>'} Weekly pair-programming
 					</p>
