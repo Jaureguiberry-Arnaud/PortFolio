@@ -1,12 +1,16 @@
 import PropTypes, { InferProps } from 'prop-types'
 import { Suspense, useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import NotFound from './NotFound/NotFound'
+import axios from 'axios'
 
 import './Main.scss'
-import ModalPlanetById from './ModalPlanetById/ModalPlanetById'
+import ModalPlanetById from './Projects/ProjectById/ProjectById'
 import ModalLogin from './ModalLogin/ModalLogin'
+import Cv from './Cv/Cv'
 import Profil from './Profil/Profil'
+import Projects from './Projects/Projects'
+import NotFound from './NotFound/NotFound'
+
 function Main({
 	activePlanetAtom,
 	setActivePlanetAtom,
@@ -21,6 +25,9 @@ function Main({
 	token,
 	setToken,
 }: InferProps<typeof Main.propTypes>) {
+	// My state
+	const [allProjects, setAllProjects] = useState([])
+
 	function konami(callback: () => void): void {
 		let codes: number[] = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
 			position: number = 0
@@ -39,36 +46,62 @@ function Main({
 	function toggleDisabledLoginModal() {
 		setDisabledLoginModal(!disabledLoginModal)
 	}
+	function getAllProject() {
+		axios
+			.get(`http://localhost:3001/projects`)
+			.then(function (response: any) {
+				setAllProjects(response.data)
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
+	}
 	useEffect(() => {
-		
-	}, [konami(toggleDisabledLoginModal)])
+		getAllProject()
+	}, [konami(toggleDisabledLoginModal), allProjects?.length])
 	return (
-    <main className='main'>
-      <Routes>
-        <Route path='/' element={ disabledLoginModal &&
-            <ModalLogin
-              disabledLoginModal={disabledLoginModal}
-              setDisabledLoginModal={setDisabledLoginModal}
-              values={values}
-              setValues={setValues}
-              isLogged={isLogged}
-              setIsLogged={setIsLogged}
-              token={token}
-              setToken={setToken}
-            /> } />
+		<main className='main'>
+			<Routes>
+				<Route
+					path='/'
+					element={
+						disabledLoginModal && (
+							<ModalLogin
+								disabledLoginModal={disabledLoginModal}
+								setDisabledLoginModal={setDisabledLoginModal}
+								values={values}
+								setValues={setValues}
+								isLogged={isLogged}
+								setIsLogged={setIsLogged}
+								token={token}
+								setToken={setToken}
+							/>
+						)
+					}></Route>
 
-        {/* <Route path='/profil' element={<Profil />} /> */}
+				{/* <Route path='/profil' element={<Profil />} /> */}
 
-        <Route path="projects" element={<h1>Route Projects</h1>}>
-          <Route path=":projectId" element={<ModalPlanetById />} />
-          <Route path="new" element={ <h1>Route new project</h1> } />          
-        </Route>
-        {/* {activePlanetAtom || activePlanetHighTech && ()} */}
-        {/* Route 404 */}
-        <Route path="*" element={<NotFound />} />     
-      </Routes>  
+				<Route
+					path='projects'
+					element={
+						<Projects
+							allProjects={allProjects}
+							token={token}
+							setToken={setToken}
+							getAllProject={getAllProject}
+						/>
+					}
+				/>
 
-     
+				<Route
+					path='cv'
+					element={<Cv />}
+				/>
+
+				{/* {activePlanetAtom || activePlanetHighTech && ()} */}
+				{/* Route 404 */}
+				{/* <Route path="*" element={<NotFound />} /> */}
+			</Routes>
 		</main>
 	)
 }
@@ -87,13 +120,7 @@ Main.propTypes = {
 	setValues: PropTypes.func.isRequired,
 	isLogged: PropTypes.bool.isRequired,
 	setIsLogged: PropTypes.func.isRequired,
-	token: PropTypes.shape({
-		userId: PropTypes.number.isRequired,
-		pseudo: PropTypes.string.isRequired,
-		role: PropTypes.string.isRequired,
-		iat: PropTypes.number.isRequired,
-		exp: PropTypes.number.isRequired,
-	}),
+	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 }
 export default Main

@@ -15,7 +15,7 @@ function Board({
 	// state
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
   const [isLogged, setIsLogged] = useState(false)
-	const [token, setToken] = useState(null)
+	const [token, setToken] = useState('')
 	const [values, setValues] = useState({
 		pseudo: '',
 		password: '',

@@ -1,12 +1,13 @@
 .header {
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   &-title{
-    margin-top: 0.3rem;
+    // margin-top: 0.3rem;
     font-size: 1.5rem;
     color: #fff;
     // text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #00d1ff, 0 0 30px #00d1ff, 0 0 40px #00d1ff, 0 0 55px #00d1ff, 0 0 75px #00d1ff;
@@ -58,6 +59,7 @@
     width: 100%;
     align-self: left;
     display: flex;
+    margin-bottom: 0.5rem;
     padding-top: 0.5rem;
     padding-left: 1rem;
     font-size: 0.8rem;

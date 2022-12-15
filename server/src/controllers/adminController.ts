@@ -27,7 +27,7 @@ const adminController = {
 
 		//Sing JWT, valid for 1 hour
 		const token = jwt.sign(
-			{ userId: user.id, pseudo: user.pseudo },
+			{ userId: user.id, pseudo: user.pseudo , role: user.role},
 			ENV.jwtSecret,
 			{ expiresIn: '1h' }
 		)

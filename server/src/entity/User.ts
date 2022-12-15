@@ -30,7 +30,7 @@ export class User {
     }
     // Function to compare unhashedPassword and hashed password
     checkIfUnhashedPasswordIsValid(unhashedPassword: string) {
-        return bcrypt.compareSync(unhashedPassword, this.password)
+        return bcrypt.compare(unhashedPassword, this.password)
     }
 }
 
