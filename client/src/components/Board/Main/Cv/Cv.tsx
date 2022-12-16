@@ -182,7 +182,7 @@ function Cv() {
 						NodeJS
 					</p>
 					<p className='cv_education_training-text'>
-						-{'>'} 3 months of specialization: React
+						-{'>'} 1 months of specialization: React
 					</p>
 					<p className='cv_education_training-text'>
 						-{'>'} 1 month of project
