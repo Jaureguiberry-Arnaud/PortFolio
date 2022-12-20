@@ -10,6 +10,7 @@ import Cv from './Cv/Cv'
 import Profil from './Profil/Profil'
 import Projects from './Projects/Projects'
 import NotFound from './NotFound/NotFound'
+import Contact from './Contact/Contact'
 
 function Main({
 	activePlanetAtom,
@@ -28,24 +29,6 @@ function Main({
 	// My state
 	const [allProjects, setAllProjects] = useState([])
 
-	function konami(callback: () => void): void {
-		let codes: number[] = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
-			position: number = 0
-		document.addEventListener('keydown', function (event: KeyboardEvent): void {
-			if (event.keyCode === codes[position]) {
-				position++
-				if (position === codes.length) {
-					position = 0
-					callback()
-				}
-			} else {
-				position = 0
-			}
-		})
-	}
-	function toggleDisabledLoginModal() {
-		setDisabledLoginModal(!disabledLoginModal)
-	}
 	function getAllProject() {
 		axios
 			.get(`http://localhost:3001/projects`)
@@ -58,31 +41,14 @@ function Main({
 	}
 	useEffect(() => {
 		getAllProject()
-	}, [konami(toggleDisabledLoginModal), allProjects?.length])
+	}, [allProjects?.length])
 	return (
 		<main className='main'>
 			<Routes>
-				<Route
-					path='/'
-					element={
-						disabledLoginModal && (
-							<ModalLogin
-								disabledLoginModal={disabledLoginModal}
-								setDisabledLoginModal={setDisabledLoginModal}
-								values={values}
-								setValues={setValues}
-								isLogged={isLogged}
-								setIsLogged={setIsLogged}
-								token={token}
-								setToken={setToken}
-							/>
-						)
-					}></Route>
-
 				{/* <Route path='/profil' element={<Profil />} /> */}
 
 				<Route
-					path='projects'
+					path='/projects'
 					element={
 						<Projects
 							allProjects={allProjects}
@@ -92,15 +58,16 @@ function Main({
 						/>
 					}
 				/>
-
 				<Route
 					path='cv'
 					element={<Cv />}
 				/>
+				<Route
+					path='contact'
+					element={<Contact />}
+				/>
 
 				{/* {activePlanetAtom || activePlanetHighTech && ()} */}
-				{/* Route 404 */}
-				{/* <Route path="*" element={<NotFound />} /> */}
 			</Routes>
 		</main>
 	)

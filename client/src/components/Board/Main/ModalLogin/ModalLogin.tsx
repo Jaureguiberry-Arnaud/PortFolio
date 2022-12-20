@@ -16,8 +16,6 @@ function ModalLogin({
 	token,
 	setToken,
 }: InferProps<typeof ModalLogin.propTypes>) {
-	// API URL for axios request
-	const baseUrl = 'http://localhost:3001'
 	// token typage
 	interface MyToken {
 		userId: number
@@ -67,36 +65,38 @@ function ModalLogin({
 					<button className='logout-btn'> Logout </button>
 				</section>
 			) : (
-				<section className='login'>
-					<img
-						className='login-close-modal'
-						src={iconCloseModal}
-						alt='icon Close modal'
-						onClick={onClick}></img>
-					<form
-						className='login_form'
-						onSubmit={handleSubmit}>
-						<h1 className='login_form-title'>Admin Dashboard</h1>
-						<input
-							type='text'
-							className='login_form-input'
-							placeholder='Pseudo'
-							name='pseudo'
-							value={values.pseudo}
-							onChange={onChange}></input>
-						<input
-							type='password'
-							className='login_form-input'
-							placeholder='Password'
-							name='password'
-							value={values.password}
-							onChange={onChange}></input>
-						<button
-							type='submit'
-							className='login_form-btn'>
-							Login
-						</button>
-					</form>
+				<section className='login-container'>
+					<div className='login'>
+						<img
+							className='login-close-modal'
+							src={iconCloseModal}
+							alt='icon Close modal'
+							onClick={onClick}></img>
+						<form
+							className='login_form'
+							onSubmit={handleSubmit}>
+							<h1 className='login_form-title'>Admin Dashboard</h1>
+							<input
+								type='text'
+								className='login_form-input'
+								placeholder='Pseudo'
+								name='pseudo'
+								value={values.pseudo}
+								onChange={onChange}></input>
+							<input
+								type='password'
+								className='login_form-input'
+								placeholder='Password'
+								name='password'
+								value={values.password}
+								onChange={onChange}></input>
+							<button
+								type='submit'
+								className='login_form-btn'>
+								Login
+							</button>
+						</form>
+					</div>
 				</section>
 			)}
 		</>
