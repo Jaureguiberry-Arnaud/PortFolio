@@ -89,7 +89,8 @@ function Cv() {
 						<p className='cv_skills_div_list-item'>SASS</p>
 						<p className='cv_skills_div_list-item'>JavaScript</p>
 						<p className='cv_skills_div_list-item'>TypeScript</p>
-						<p className='cv_skills_div_list-item'>React</p>
+						<p className='cv_skills_div_list-item'>ReactJS</p>
+						<p className='cv_skills_div_list-item'>ThreeJS</p>
 					</div>
 				</div>
 				<div className='cv_skills_div'>
@@ -182,7 +183,7 @@ function Cv() {
 						NodeJS
 					</p>
 					<p className='cv_education_training-text'>
-						-{'>'} 3 months of specialization: React
+						-{'>'} 1 months of specialization: React
 					</p>
 					<p className='cv_education_training-text'>
 						-{'>'} 1 month of project
