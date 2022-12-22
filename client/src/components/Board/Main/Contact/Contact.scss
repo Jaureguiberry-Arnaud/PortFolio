@@ -1,3 +1,85 @@
+.emailSentError {
+	width: 100%;
+	padding: 0.5rem 0.5rem 1rem;
+	margin: 0 auto 1rem 0;
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 0.1rem solid red;
+	border-radius: 0.7rem;
+	box-shadow: 0 0 10px 1px red, inset 0 0 10px 1px red;
+	pointer-events: auto;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&-title {
+		font-size: 1.5rem;
+		color: red;
+		text-shadow: 1px 1px 2px red;
+		margin-bottom: 0.25rem;
+		text-align: center;
+	}
+	&-text {
+		font-size: 1rem;
+		color: white;
+		text-shadow: 1px 1px 2px red;
+		margin-bottom: 0.25rem;
+		text-align: center;
+	}
+	&-button {
+		width: 100%;
+		padding: 0.5rem;
+		margin-top: 1rem;
+		border: 0.1rem solid red;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px red, inset 0 0 10px 1px red;
+		background-color: rgba(255, 255, 255, 0.2);
+		color: red;
+		text-shadow: 1px 1px 2px red;
+	}
+}
+.emailSent {
+	width: 100%;
+	padding: 0.5rem 0.5rem 1rem;
+	margin: 0 auto 1rem 0;
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 0.1rem solid #00d1ff;
+	border-radius: 0.7rem;
+	box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+	pointer-events: auto;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&-title {
+		font-size: 1.5rem;
+		color: green;
+		text-shadow: 1px 1px 2px green;
+		margin-bottom: 0.25rem;
+		text-align: center;
+	}
+	&-text {
+		font-size: 1rem;
+		color: white;
+		text-shadow: 1px 1px 2px green;
+		margin-bottom: 0.25rem;
+		text-align: center;
+	}
+	&-button {
+		width: 100%;
+		padding: 0.5rem;
+		margin-top: 1rem;
+		border: 0.1rem solid green;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px green, inset 0 0 10px 1px green;
+		background-color: rgba(255, 255, 255, 0.2);
+		color: green;
+		text-shadow: 1px 1px 2px green;
+	}
+}
 .contact {
 	height: 100%;
 	width: 100%;
@@ -32,6 +114,7 @@
 			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 	}
 	&_container {
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -124,6 +207,14 @@
 
 // Responsive Tablet
 @media screen and (min-width: 768px) {
+	.emailSentError {
+		margin: 0 auto;
+		width: 40%;
+	}
+	.emailSent {
+		margin: 0 auto;
+		width: 40%;
+	}
 	.contact {
 		&_container {
 			// flex-direction: row;
@@ -137,7 +228,7 @@
 				overflow: scroll;
 			}
 			&_right {
-				width: 90%;
+				width: 80%;
 
 				&_form {
 					width: 50%;
@@ -149,6 +240,22 @@
 
 // Responsive Window
 @media screen and (min-width: 1024px) {
+	.emailSentError {
+		margin: 0 auto;
+		padding-top: 3rem;
+		width: 30%;
+		&-button {
+			margin-top: 3rem;
+		}
+	}
+	.emailSent {
+		margin: 0 auto;
+		padding-top: 3rem;
+		width: 30%;
+		&-button {
+			margin-top: 3rem;
+		}
+	}
 	.contact {
 		&_container {
 			margin-top: 2rem;
@@ -163,10 +270,11 @@
 				overflow: scroll;
 			}
 			&_right {
-				width: 70%;
+				width: 60%;
+				padding: 2rem 0;
 
 				&_form {
-					width: 50%;
+					width: 60%;
 				}
 			}
 		}
