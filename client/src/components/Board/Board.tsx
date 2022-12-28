@@ -11,6 +11,7 @@ import Projects from './Main/Projects/Projects'
 import Cv from './Main/Cv/Cv'
 import ModalLogin from './Main/ModalLogin/ModalLogin'
 import Contact from './Main/Contact/Contact'
+import AboutMe from './Main/AboutMe/AboutMe'
 
 function Board({
 	setActivePlanetAtom,
@@ -121,6 +122,10 @@ function Board({
 				<Route
 					path='contact'
 					element={<Contact />}
+				/>
+				<Route
+					path='about-me'
+					element={<AboutMe />}
 				/>
 			</Route>
 			<Route

@@ -90,6 +90,15 @@ function Contact() {
 								</p>
 								<p className='emailSentError-text'> {emailSentError} </p>
 								<p className='emailSentError-text'> Please try again later</p>
+								<p className='emailSentError-text'>
+									{' '}
+									Or send me directly an e-mail
+								</p>
+								<p className='emailSentError-text'>
+									{' '}
+									Thank you for your interest
+								</p>
+								<p className='emailSentError-text'> Best regards</p>
 								<button
 									className='emailSentError-button'
 									onClick={() => setEmailSentError(null)}>

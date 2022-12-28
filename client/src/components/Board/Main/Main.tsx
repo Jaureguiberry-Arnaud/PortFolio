@@ -11,6 +11,7 @@ import Profil from './Profil/Profil'
 import Projects from './Projects/Projects'
 import NotFound from './NotFound/NotFound'
 import Contact from './Contact/Contact'
+import AboutMe from './AboutMe/AboutMe'
 
 function Main({
 	activePlanetAtom,
@@ -65,6 +66,10 @@ function Main({
 				<Route
 					path='contact'
 					element={<Contact />}
+				/>
+				<Route
+					path='about-me'
+					element={<AboutMe />}
 				/>
 
 				{/* {activePlanetAtom || activePlanetHighTech && ()} */}
