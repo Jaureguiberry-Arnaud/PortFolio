@@ -69,8 +69,6 @@ function Main({
 					path='about-me'
 					element={<AboutMe />}
 				/>
-
-				{/* {activePlanetAtom || activePlanetHighTech && ()} */}
 			</Routes>
 		</main>
 	)

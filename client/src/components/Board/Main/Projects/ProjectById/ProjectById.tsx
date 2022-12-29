@@ -138,7 +138,24 @@ function ProjectById({
 				console.error('There was an error!', error)
 			})
 	}
-
+	function postLogByProject() {
+		axios({
+			method: 'POST',
+			url: 'http://localhost:3001/logs',
+			data: {
+				projectId: projectId,
+			},
+			headers: {},
+		})
+			.then(function (response) {
+				console.log(response)
+				console.log('log sent')
+			})
+			.catch(function (error) {
+				console.log(error)
+				console.log('log not sent')
+			})
+	}
 	interface TokenDecoded {
 		userId: number
 		pseudo: string
@@ -156,7 +173,7 @@ function ProjectById({
 	}
 	useEffect(() => {
 		getProjectById()
-	}, [projectId])
+	}, [projectId, postLogByProject()])
 	return (
 		<>
 			{errorToggle ? (
