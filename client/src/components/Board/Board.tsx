@@ -12,6 +12,7 @@ import Cv from './Main/Cv/Cv'
 import ModalLogin from './Main/ModalLogin/ModalLogin'
 import Contact from './Main/Contact/Contact'
 import AboutMe from './Main/AboutMe/AboutMe'
+import News from './Main/News/News'
 
 function Board({
 	setActivePlanetAtom,
@@ -21,6 +22,7 @@ function Board({
 }: InferProps<typeof Board.propTypes>) {
 	// state
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
+	const [disabledNewsModal, setDisabledNewsModal] = useState(true)
 	const [isLogged, setIsLogged] = useState(false)
 	const [token, setToken] = useState('')
 	const [values, setValues] = useState({
@@ -83,6 +85,13 @@ function Board({
 								setIsLogged={setIsLogged}
 								token={token}
 								setToken={setToken}
+							/>
+						)}
+
+						{disabledNewsModal && (
+							<News
+								disabledNewsModal={disabledNewsModal}
+								setDisabledNewsModal={setDisabledNewsModal}
 							/>
 						)}
 

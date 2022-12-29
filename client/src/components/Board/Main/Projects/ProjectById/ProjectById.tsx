@@ -244,7 +244,7 @@ function ProjectById({
 								<h2 className='projectById-title'>Owner:</h2>
 								<p className='projectById-content'>Jrgb</p>
 
-								<h2 className='projectById-title'>Created here:</h2>
+								<h2 className='projectById-title'>Created at:</h2>
 								<p className='projectById-content'>{projectById?.created_at}</p>
 
 								<label
@@ -323,9 +323,9 @@ function ProjectById({
 							<h1 className='projectById-name'>{projectById?.name}</h1>
 							<h2 className='projectById-title'>Owner:</h2>
 							<p className='projectById-content'>Jrgb</p>
-							<h2 className='projectById-title'>Created here:</h2>
+							<h2 className='projectById-title'>Created at:</h2>
 							<p className='projectById-content'>{projectById?.created_at}</p>
-							<h2 className='projectById-title'>Number of line written:</h2>
+							<h2 className='projectById-title'>Numbers of line written:</h2>
 							<p className='projectById-content'>
 								{projectById?.nbWrittenLines}
 							</p>

@@ -70,26 +70,28 @@ function AboutMe() {
 					<span className='aboutMe_bio-text-name'>Jaureguiberry Arnaud</span>!
 				</p>
 				<p className='aboutMe_bio-text'>
-					I have 26 years old and I am a full stack web developer. I have study
-					to O'clock School from January 17 to July 1, 2022.
+					I am a FullStack Web Developer. I studied in O’Clock School from 17
+					January to 2 July 2022.
 				</p>
 				<p className='aboutMe_bio-text'>
-					This training is broken down into 3 months of basics to learn the
-					basics of JavaScript, 1 month of specialization on React and 4 weeks
-					of end-of-training project in teams of 4, during this project I was
-					the lead Dev Front of the team.
+					The formation was composed by 3 months of learning JavaScripts basics,
+					1 month of specialization in React and 4 weeks to create a project
+					from scratch.
+					<br />
+					The project was made by a team of 4, during this time I was the front
+					lead developer.
 				</p>
 				<p className='aboutMe_bio-text'>
 					I obtained my Professional Title "Web and Mobile Web Developer" level
 					V (Bac+2) on August 17, 2022.
 				</p>
 				<p className='aboutMe_bio-text'>
-					Since September I've been working on my Portfolio and decided to learn
-					TypeScript, TypeORM and ThreeJS and continue with React, Node and
-					PostgreSQL.
+					Since September I’m working on my portfolio and decided to learn
+					TypeScript, TypeORM and ThreeJs. I also continue to work with React,
+					Node and PostgresSQL.
 				</p>
 				<p className='aboutMe_bio-text'>
-					I attach the Github of my Portfolio Folio:{' '}
+					Here is my Github:{' '}
 					<a href='https://github.com/Jaureguiberry-Arnaud'>
 						https://github.com/Jaureguiberry-Arnaud
 					</a>
