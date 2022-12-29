@@ -46,8 +46,6 @@ function Main({
 	return (
 		<main className='main'>
 			<Routes>
-				{/* <Route path='/profil' element={<Profil />} /> */}
-
 				<Route
 					path='/projects'
 					element={
