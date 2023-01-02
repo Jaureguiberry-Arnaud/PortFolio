@@ -9,7 +9,6 @@
 
 	display: flex;
 	flex-direction: column;
-	// align-items: center;
 
 	overflow: auto;
 	pointer-events: auto;
@@ -42,17 +41,17 @@
 			-webkit-animation: flicker-2 2s linear infinite both;
 			animation: flicker-2 2s linear infinite both;
 		}
-		&_title {
+		&-title {
 			font-size: 1.2rem;
 			color: #ff6700;
 			text-shadow: 1px 1px 2px #ff6700;
 			margin-bottom: 0.5rem;
 		}
-		&_content {
+		&-content {
 			color: #fff;
 			text-shadow: 1px 1px 2px #ff6700;
 		}
-		&_btn {
+		&-btn {
 			height: 40px;
 			font-size: 1rem;
 			color: #fff;
