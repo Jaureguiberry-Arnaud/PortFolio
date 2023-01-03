@@ -1,56 +1,96 @@
-import PropTypes, { InferProps } from "prop-types"
-import {Suspense, useState, useEffect} from 'react'
-// import Konami from 'react-konami-code'
+import PropTypes, { InferProps } from 'prop-types'
+import { Suspense, useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import axios from 'axios'
 
-import './Main.scss';
-import ModalPlanetById from './ModalPlanetById/ModalPlanetById'
+import './Main.scss'
+import ModalPlanetById from './Projects/ProjectById/ProjectById'
 import ModalLogin from './ModalLogin/ModalLogin'
-function Main({ setActivePlanetAtom, activePlanetAtom, setActivePlanetHighTech, activePlanetHighTech }: InferProps<typeof Main.propTypes>) {
-  
-  const [disabledLoginModal, setDisabledLoginModal] = useState(false)
+import Cv from './Cv/Cv'
+import Profil from './Profil/Profil'
+import Projects from './Projects/Projects'
+import NotFound from './NotFound/NotFound'
+import Contact from './Contact/Contact'
+import AboutMe from './AboutMe/AboutMe'
 
-  function konami(callback: () => void): void {
-    let codes: number[] = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
-        position: number = 0;
-    document.addEventListener('keydown', function (event: KeyboardEvent): void {
-        if (event.keyCode === codes[position]) {
-            position++;
-            if (position === codes.length) {
-                position = 0;
-                callback();
-            }
-        } else {
-            position = 0;
-        }
-    });
-  }
-  function toggleDisabledLoginModal() {
-    setDisabledLoginModal(!disabledLoginModal)
-  }
-  useEffect(() => {
-    konami(toggleDisabledLoginModal)
-  }, [])
-  return (
-    <main className="main">
-      {/* <Suspense fallback={null}> */}
-        {/* <Konami  timeout={60000} resetDelay={2000}> */}
-      {disabledLoginModal &&
-      <ModalLogin disabledLoginModal={disabledLoginModal} setDisabledLoginModal={setDisabledLoginModal} />
-      }    
-        {/* </Konami> */}
-      {/* </Suspense> */}
-      
-      {activePlanetAtom || activePlanetHighTech &&
-        <ModalPlanetById  />      
-      }
-    </main>
-  )
+function Main({
+	activePlanetAtom,
+	setActivePlanetAtom,
+	activePlanetHighTech,
+	setActivePlanetHighTech,
+	disabledLoginModal,
+	setDisabledLoginModal,
+	values,
+	setValues,
+	isLogged,
+	setIsLogged,
+	token,
+	setToken,
+}: InferProps<typeof Main.propTypes>) {
+	// My state
+	const [allProjects, setAllProjects] = useState([])
+
+	function getAllProject() {
+		axios
+			.get(`http://localhost:3001/projects`)
+			.then(function (response: any) {
+				setAllProjects(response.data)
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
+	}
+	useEffect(() => {
+		getAllProject()
+	}, [allProjects?.length])
+	return (
+		<main className='main'>
+			<Routes>
+				<Route
+					path='/projects'
+					element={
+						<Projects
+							allProjects={allProjects}
+							token={token}
+							setToken={setToken}
+							getAllProject={getAllProject}
+						/>
+					}
+				/>
+				<Route
+					path='cv'
+					element={<Cv />}
+				/>
+				<Route
+					path='contact'
+					element={<Contact />}
+				/>
+				<Route
+					path='about-me'
+					element={<AboutMe />}
+				/>
+
+				{/* {activePlanetAtom || activePlanetHighTech && ()} */}
+			</Routes>
+		</main>
+	)
 }
 
 Main.propTypes = {
-  setActivePlanetAtom: PropTypes.func.isRequired,
-  activePlanetAtom: PropTypes.bool.isRequired,
-  setActivePlanetHighTech: PropTypes.func.isRequired,
-  activePlanetHighTech: PropTypes.bool.isRequired,
+	setActivePlanetAtom: PropTypes.func.isRequired,
+	activePlanetAtom: PropTypes.bool.isRequired,
+	setActivePlanetHighTech: PropTypes.func.isRequired,
+	activePlanetHighTech: PropTypes.bool.isRequired,
+	disabledLoginModal: PropTypes.bool.isRequired,
+	setDisabledLoginModal: PropTypes.func.isRequired,
+	values: PropTypes.shape({
+		pseudo: PropTypes.string.isRequired,
+		password: PropTypes.string.isRequired,
+	}).isRequired,
+	setValues: PropTypes.func.isRequired,
+	isLogged: PropTypes.bool.isRequired,
+	setIsLogged: PropTypes.func.isRequired,
+	token: PropTypes.string.isRequired,
+	setToken: PropTypes.func.isRequired,
 }
-export default Main;
+export default Main

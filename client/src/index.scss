@@ -14,8 +14,13 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  pointer-events: auto;
+  pointer-events: auto; 
+  
 }
+
+// body {
+//   cursor: url(./assets/cursorFingerGlow.png), auto;
+// }
 
 a {
   font-weight: 500;

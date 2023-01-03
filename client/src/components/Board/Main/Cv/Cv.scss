@@ -1,0 +1,403 @@
+.cv {
+	height: 100%;
+	width: 100%;
+	padding: 0.5rem;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+
+	overflow: auto;
+	pointer-events: auto;
+
+	&_profile {
+		display: flex;
+		flex-direction: column;
+		&-picture {
+			height: 200px;
+			width: 200px;
+			margin-bottom: 0.5rem;
+			border: 0.1rem solid #00d1ff;
+			border-radius: 50%;
+			box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+			-webkit-animation: scale-in-ver-center 1s
+				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+			animation: scale-in-ver-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+				both;
+		}
+		&-cv {
+			text-align: center;
+			text-shadow: 1px 1px 2px #00d1ff;
+		}
+	}
+
+	&-title {
+		width: 90%;
+		font-size: 2rem;
+		color: #00d1ff;
+		text-shadow: 1px 1px 2px #00d1ff;
+		margin-top: 1rem;
+		margin-bottom: 0.5rem;
+		text-align: center;
+		padding: 0.5rem;
+
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		-webkit-animation: scale-in-ver-center 2s
+			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	}
+	&_contact {
+		width: 90%;
+		padding: 0.5rem 0.5rem 1rem;
+		margin: 0.5rem 0;
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		-webkit-animation: scale-in-ver-center 3s
+			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+		&-title {
+			font-size: 1.5rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			text-align: center;
+
+			border-bottom: #00d1ff 0.2rem solid;
+		}
+		&_div {
+			margin-top: 0.5rem;
+
+			&-title {
+				font-size: 1.2rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+			}
+			&-text {
+				font-size: 1rem;
+				text-shadow: 1px 1px 2px #00d1ff;
+			}
+		}
+	}
+	&_skills {
+		width: 90%;
+		padding: 0.5rem 0.5rem 1rem;
+		margin: 0.5rem 0;
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		-webkit-animation: scale-in-ver-center 4s
+			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+		&-title {
+			font-size: 1.5rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			text-align: center;
+
+			border-bottom: #00d1ff 0.2rem solid;
+		}
+		&_div {
+			margin-top: 0.5rem;
+
+			&-title {
+				font-size: 1.2rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+
+				border-bottom: #00d1ff 0.1rem solid;
+			}
+			&_list {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+
+				&-item {
+					background-color: #00d0ff79;
+					font-size: 1rem;
+					text-shadow: 1px 1px 2px #00d1ff;
+
+					margin: 0.2rem;
+					padding: 0.2rem;
+					border: 0.1rem solid #00d1ff;
+					border-radius: 0.2rem;
+					box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+				}
+			}
+		}
+	}
+	&_experiences {
+		width: 90%;
+		padding: 0.5rem 0.5rem 1rem;
+		margin: 0.5rem 0;
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		-webkit-animation: scale-in-ver-center 4s
+			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+		&-title {
+			font-size: 1.5rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			text-align: center;
+
+			border-bottom: #00d1ff 0.2rem solid;
+		}
+		&_expe {
+			margin-top: 1rem;
+			&-title {
+				font-size: 1.2rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+				border-bottom: #00d1ff 0.1rem dotted;
+			}
+			&-subtitle {
+				font-size: 0.9rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+				border-bottom: #00d1ff 0.1rem solid;
+			}
+			&-text {
+				font-size: 0.8rem;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+			}
+		}
+	}
+	&_education {
+		width: 90%;
+		padding: 0.5rem 0.5rem 1rem;
+		margin: 0.5rem 0;
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		-webkit-animation: scale-in-ver-center 4s
+			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+		&-title {
+			font-size: 1.5rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			text-align: center;
+
+			border-bottom: #00d1ff 0.2rem solid;
+		}
+		&_training {
+			margin-top: 1rem;
+			&-title {
+				font-size: 1.2rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+				border-bottom: #00d1ff 0.1rem dotted;
+			}
+			&-subtitle {
+				font-size: 0.9rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+				border-bottom: #00d1ff 0.1rem solid;
+			}
+			&-text {
+				font-size: 0.8rem;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+			}
+		}
+	}
+	&_graduation {
+		width: 90%;
+		padding: 0.5rem 0.5rem 1rem;
+		margin: 0.5rem 0;
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		-webkit-animation: scale-in-ver-center 4s
+			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+		&-title {
+			font-size: 1.5rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			margin: 1rem 0;
+			padding-bottom: 1rem;
+			text-align: center;
+
+			border-bottom: #00d1ff 0.2rem solid;
+		}
+		&_grad {
+			margin-top: 1rem;
+			&-title {
+				font-size: 1.2rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+				border-bottom: #00d1ff 0.1rem dotted;
+			}
+			&-subtitle {
+				font-size: 0.9rem;
+				color: #00d1ff;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+				border-bottom: #00d1ff 0.1rem solid;
+			}
+			&-text {
+				font-size: 0.8rem;
+				text-shadow: 1px 1px 2px #00d1ff;
+				margin-bottom: 0.25rem;
+			}
+		}
+	}
+}
+
+// Responsive Tablet
+@media screen and (min-width: 768px) {
+	.cv {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		align-items: center;
+		// padding: 0 1rem 0 0.7rem;
+
+		&-profilePicture {
+			order: 1;
+			align-self: none;
+			margin-top: 0.5rem;
+			margin-bottom: 2rem;
+		}
+		&-title {
+			order: 2;
+			width: 60%;
+			margin: 3rem 0;
+		}
+		&_contact {
+			order: 3;
+			width: 30%;
+			margin: 0.5rem 0;
+			overflow: hidden;
+			white-space: normal;
+			text-overflow: ellipsis;
+		}
+		&_skills {
+			order: 5;
+			width: 30%;
+			margin: 0.5rem 0;
+		}
+		&_experiences {
+			order: 4;
+			width: 60%;
+			margin: 0.5rem 0;
+		}
+		&_education {
+			order: 6;
+			width: 60%;
+			margin: 0.5rem 0;
+		}
+		&_graduation {
+			order: 7;
+			width: 60%;
+			margin: 0.5rem auto;
+		}
+	}
+}
+
+// Responsive Window
+@media screen and (min-width: 1024px) {
+	.cv {
+		&-profilePicture {
+			margin-left: 4%;
+		}
+		&_contact {
+			width: 25%;
+		}
+		&_skills {
+			width: 25%;
+		}
+	}
+}
+
+// Responsive Window xlarge
+@media screen and (min-width: 1500px) {
+	.cv {
+		&-profilePicture {
+			margin-left: 15%;
+		}
+		&-title {
+			width: 70%;
+			height: 100px;
+			font-size: 3rem;
+			text-align: center;
+			padding: 20px;
+		}
+		&_contact {
+			width: 25%;
+		}
+		&_skills {
+			width: 25%;
+		}
+	}
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-10-20 19:17:28
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-in-ver-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-in-ver-center {
+	0% {
+		-webkit-transform: scaleY(0);
+		transform: scaleY(0);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
+@keyframes scale-in-ver-center {
+	0% {
+		-webkit-transform: scaleY(0);
+		transform: scaleY(0);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
