@@ -3,6 +3,10 @@ import PropTypes, { InferProps } from 'prop-types'
 import { useState, useEffect, Suspense } from 'react'
 import axios, { AxiosResponse } from 'axios'
 import jwt_decode from 'jwt-decode'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
+dayjs.locale('fr') // use French locale globally
 
 import iconCloseModal from '../../../../../assets/closeModal.png'
 import iconDelete from '../../../../../assets/iconDelete.png'
@@ -262,7 +266,12 @@ function ProjectById({
 								<p className='projectById-content'>Jrgb</p>
 
 								<h2 className='projectById-title'>Created at:</h2>
-								<p className='projectById-content'>{projectById?.created_at}</p>
+								<p className='projectById-content'>
+									{dayjs(projectById?.created_at).format('YYYY-MM-DD')}{' '}
+									<em className='projectById-content-subDate'>
+										({dayjs(projectById?.created_at).toNow(true)} ago)
+									</em>
+								</p>
 
 								<label
 									className='projectById_form-label'
@@ -341,7 +350,12 @@ function ProjectById({
 							<h2 className='projectById-title'>Owner:</h2>
 							<p className='projectById-content'>Jrgb</p>
 							<h2 className='projectById-title'>Created at:</h2>
-							<p className='projectById-content'>{projectById?.created_at}</p>
+							<p className='projectById-content'>
+								{dayjs(projectById?.created_at).format('YYYY-MM-DD')}{' '}
+								<em className='projectById-content-subDate'>
+									({dayjs(projectById?.created_at).toNow(true)} ago)
+								</em>
+							</p>
 							<h2 className='projectById-title'>Numbers of line written:</h2>
 							<p className='projectById-content'>
 								{projectById?.nbWrittenLines}
