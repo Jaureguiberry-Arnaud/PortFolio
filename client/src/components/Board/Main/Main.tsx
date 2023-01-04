@@ -12,6 +12,7 @@ import Projects from './Projects/Projects'
 import NotFound from './NotFound/NotFound'
 import Contact from './Contact/Contact'
 import AboutMe from './AboutMe/AboutMe'
+import Stats from './Stats/Stats'
 
 function Main({
 	activePlanetAtom,
@@ -41,7 +42,6 @@ function Main({
 			})
 	}
 	useEffect(() => {
-		// console.log(apiURL)
 		getAllProject()
 	}, [allProjects?.length])
 	return (
@@ -57,6 +57,10 @@ function Main({
 							getAllProject={getAllProject}
 						/>
 					}
+				/>
+				<Route
+					path='stats'
+					element={<Stats />}
 				/>
 				<Route
 					path='cv'

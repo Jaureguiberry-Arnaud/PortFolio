@@ -13,6 +13,7 @@ import ModalLogin from './Main/ModalLogin/ModalLogin'
 import Contact from './Main/Contact/Contact'
 import AboutMe from './Main/AboutMe/AboutMe'
 import News from './Main/News/News'
+import Stats from './Main/Stats/Stats'
 
 function Board({
 	setActivePlanetAtom,
@@ -123,6 +124,10 @@ function Board({
 							setToken={setToken}
 						/>
 					}
+				/>
+				<Route
+					path='stats'
+					element={<Stats />}
 				/>
 				<Route
 					path='cv'
