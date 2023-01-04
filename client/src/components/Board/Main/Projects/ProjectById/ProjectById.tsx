@@ -41,7 +41,7 @@ function ProjectById({
 	}
 	function getProjectById() {
 		axios
-			.get(`http://localhost:3001/projects/${projectId}`)
+			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
 			.then(function (response: any) {
 				setProjectById(response.data)
 				setValues({
@@ -71,7 +71,7 @@ function ProjectById({
 		}
 		axios({
 			method: 'DELETE',
-			url: `http://localhost:3001/projects/${projectId}`,
+			url: `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
 
 			headers: {
 				'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ function ProjectById({
 		}
 		axios({
 			method: 'PUT',
-			url: `http://localhost:3001/projects/${projectId}`,
+			url: `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
 			data: {
 				name: values.name,
 				description: values.description,
@@ -145,7 +145,7 @@ function ProjectById({
 	function postLogByProject() {
 		axios({
 			method: 'POST',
-			url: 'http://localhost:3001/logs',
+			url: `${import.meta.env.VITE_API_URL}/logs`,
 			data: {
 				projectId: projectId,
 			},

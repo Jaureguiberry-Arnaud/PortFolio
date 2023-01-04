@@ -26,7 +26,7 @@ function ModalLogin({
 	// Function to login
 	function login() {
 		axios
-			.post(`http://localhost:3001/login`, {
+			.post(`${import.meta.env.VITE_API_URL}/login`, {
 				pseudo: values.pseudo,
 				password: values.password,
 			})

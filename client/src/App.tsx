@@ -16,7 +16,7 @@ function App() {
 	function postLogPortfolio() {
 		axios({
 			method: 'POST',
-			url: 'http://localhost:3001/logs',
+			url: `${import.meta.env.VITE_API_URL}/logs`,
 			data: {
 				projectId: 1,
 			},

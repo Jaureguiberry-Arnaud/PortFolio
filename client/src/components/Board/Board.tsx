@@ -52,7 +52,7 @@ function Board({
 	}
 	function getAllProject() {
 		axios
-			.get(`http://localhost:3001/projects`)
+			.get(`${import.meta.env.VITE_API_URL}/projects`)
 			.then(function (response: any) {
 				setAllProjects(response.data)
 			})

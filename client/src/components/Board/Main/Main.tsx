@@ -30,8 +30,6 @@ function Main({
 	// My state
 	const [allProjects, setAllProjects] = useState([])
 
-	// My variables
-
 	function getAllProject() {
 		axios
 			.get(`${import.meta.env.VITE_API_URL}/projects`)
