@@ -13,17 +13,17 @@ I decide to learn TypeScript and ThreeJS to create this project.
 My stack:
 
 Front:
--TypesSript
--React
--ThreeJS
--Three React Fiber
--Three React Drei
--Axios
--SCSS
+-TypesSript  
+-React  
+-ThreeJS  
+-Three React Fiber  
+-Three React Drei  
+-Axios  
+-SCSS  
 
 Back:
--NodeJS
--ExpressJS
--TypeScript
--TypeORM
--PostgreSQL
+-NodeJS  
+-ExpressJS  
+-TypeScript  
+-TypeORM  
+-PostgreSQL  
