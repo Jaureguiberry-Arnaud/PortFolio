@@ -12,7 +12,7 @@ I decide to learn TypeScript and ThreeJS to create this project.
 
 My stack:
 
-Front:
+Front:  
 -TypesSript  
 -React  
 -ThreeJS  
@@ -21,7 +21,7 @@ Front:
 -Axios  
 -SCSS  
 
-Back:
+Back:  
 -NodeJS  
 -ExpressJS  
 -TypeScript  
