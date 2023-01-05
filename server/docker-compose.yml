@@ -37,6 +37,7 @@ services:
       - traefik.port=80 # port traefik
     networks:
       - web # connection between containers to the "web" network
+    command: npm run prod #commande à lancer au démarrage du container
 
 volumes:
   portfolio_db:
