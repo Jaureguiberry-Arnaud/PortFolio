@@ -61,6 +61,23 @@ function News({
 					<article className='update_article'>
 						<time
 							className='update_article-date'
+							dateTime='2022-12-30'>
+							30/12/2020
+						</time>
+						<p className='update_article-content'>
+							- Adding axios post request to send logs into my database
+							<br />
+							before putting my portfolio online
+						</p>
+						<button
+							className='update_article-close'
+							onClick={() => setDisabledNewsModal(!disabledNewsModal)}>
+							Close
+						</button>
+					</article>
+					<article className='update_article'>
+						<time
+							className='update_article-date'
 							dateTime='2022-12-29'>
 							29/12/2020
 						</time>

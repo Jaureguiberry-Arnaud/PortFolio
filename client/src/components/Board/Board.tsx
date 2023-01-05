@@ -12,7 +12,8 @@ import Cv from './Main/Cv/Cv'
 import ModalLogin from './Main/ModalLogin/ModalLogin'
 import Contact from './Main/Contact/Contact'
 import AboutMe from './Main/AboutMe/AboutMe'
-import News from './Main/News/News'
+// import News from './Main/News/News'
+import Stats from './Main/Stats/Stats'
 
 function Board({
 	setActivePlanetAtom,
@@ -22,7 +23,7 @@ function Board({
 }: InferProps<typeof Board.propTypes>) {
 	// state
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
-	const [disabledNewsModal, setDisabledNewsModal] = useState(true)
+	// const [disabledNewsModal, setDisabledNewsModal] = useState(true)
 	const [isLogged, setIsLogged] = useState(false)
 	const [token, setToken] = useState('')
 	const [values, setValues] = useState({
@@ -52,7 +53,7 @@ function Board({
 	}
 	function getAllProject() {
 		axios
-			.get(`http://localhost:3001/projects`)
+			.get(`${import.meta.env.VITE_API_URL}/projects`)
 			.then(function (response: any) {
 				setAllProjects(response.data)
 			})
@@ -88,12 +89,12 @@ function Board({
 							/>
 						)}
 
-						{disabledNewsModal && (
+						{/* {disabledNewsModal && (
 							<News
 								disabledNewsModal={disabledNewsModal}
 								setDisabledNewsModal={setDisabledNewsModal}
 							/>
-						)}
+						)} */}
 
 						<Main
 							activePlanetAtom={activePlanetAtom}
@@ -123,6 +124,10 @@ function Board({
 							setToken={setToken}
 						/>
 					}
+				/>
+				<Route
+					path='stats'
+					element={<Stats />}
 				/>
 				<Route
 					path='cv'

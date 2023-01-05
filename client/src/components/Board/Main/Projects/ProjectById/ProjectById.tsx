@@ -41,7 +41,7 @@ function ProjectById({
 	}
 	function getProjectById() {
 		axios
-			.get(`http://localhost:3001/projects/${projectId}`)
+			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
 			.then(function (response: any) {
 				setProjectById(response.data)
 				setValues({
@@ -71,7 +71,7 @@ function ProjectById({
 		}
 		axios({
 			method: 'DELETE',
-			url: `http://localhost:3001/projects/${projectId}`,
+			url: `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
 
 			headers: {
 				'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ function ProjectById({
 		}
 		axios({
 			method: 'PUT',
-			url: `http://localhost:3001/projects/${projectId}`,
+			url: `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
 			data: {
 				name: values.name,
 				description: values.description,
@@ -142,7 +142,24 @@ function ProjectById({
 				console.error('There was an error!', error)
 			})
 	}
-
+	function postLogByProject() {
+		axios({
+			method: 'POST',
+			url: `${import.meta.env.VITE_API_URL}/logs`,
+			data: {
+				projectId: projectId,
+			},
+			headers: {},
+		})
+			.then(function (response) {
+				console.log(response)
+				console.log('log sent')
+			})
+			.catch(function (error) {
+				console.log(error)
+				console.log('log not sent')
+			})
+	}
 	interface TokenDecoded {
 		userId: number
 		pseudo: string
@@ -160,7 +177,7 @@ function ProjectById({
 	}
 	useEffect(() => {
 		getProjectById()
-	}, [projectId])
+	}, [projectId, postLogByProject()])
 	return (
 		<>
 			{errorToggle ? (
