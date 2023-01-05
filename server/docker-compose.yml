@@ -1,0 +1,49 @@
+services:
+  portfolio_db:
+    image: postgres:latest
+    container_name: portfolio_db
+    volumes:
+      - ./db:/var/lib/postgresql/data # mount the db volume
+    restart: always # restart the container if it crashes
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: db
+      ports:
+        - 3010
+    labels:
+      - traefik.enable=false # disable traefik for this container
+    networks:
+      - web # connection between containers to the "web" network
+
+  portfolio_server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: portfolio_server # name of the image
+    container_name: portfolio_server # name of the container
+    depends_on:
+      - portfolio_db # wait for db to be ready before starting the app
+    stdin_open: true
+    tty: true
+    expose:
+      - 3011
+    links:
+      - portfolio_db # connect to the db container
+    labels:
+      - traefik.http.routers.jrgb-development.fr1.rule=Host(`jrgb-development.fr.fr`, `www.jrgb-development.fr.fr`) # rule to access the container
+      - traefik.http.routers.jrgb-development.fr2.tls=true # enable https
+      - traefik.http.routers.jrgb-development.fr2.tls.certresolver=lets-encrypt # use the lets-encrypt resolver
+      - traefik.port=80 # port traefik
+    networks:
+      - web # connection between containers to the "web" network
+
+volumes:
+  portfolio_db:
+    # name of the volume
+    external: false
+
+networks:
+  web:
+    # name of the network
+    external: true # use an existing network
