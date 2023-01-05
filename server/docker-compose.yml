@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: user
       POSTGRES_DB: db
       ports:
-        - 3010
+        - 5432
     labels:
       - traefik.enable=false # disable traefik for this container
     networks:
@@ -27,7 +27,7 @@ services:
     stdin_open: true
     tty: true
     expose:
-      - 3011
+      - 3001
     links:
       - portfolio_db # connect to the db container
     labels:
