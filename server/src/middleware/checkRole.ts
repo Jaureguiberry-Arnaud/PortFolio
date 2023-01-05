@@ -7,13 +7,18 @@ export const checkRole = (roles: Array<string>) => {
 	return async (req: Request, res: Response, next: NextFunction) => {
 		//Get the user ID from previous middleware
 		const id = res.locals.jwtPayload.userId
-
 		//Get user role from the database
-		const userRepository = AppDataSource.getRepository(User)
 		let user: User
 		try {
-			user = await userRepository.findOneOrFail(id)
+			user = await AppDataSource.createQueryBuilder()
+        .select('user')
+        .from(User, 'user')
+        .where('user.id = :id', { id: id })
+        .getOneOrFail()
+			console.log(user)
 		} catch (id) {
+			
+    console.log("erreur checkRole")
 			res.status(401).send()
 		}
 

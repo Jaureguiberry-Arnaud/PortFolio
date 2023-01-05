@@ -31,7 +31,7 @@
    "scripts": {
       "tsc": "tsc",
       "start": "ts-node-dev --respawn --transpile-only ./src/index.ts",
-      "prod": "tsc && node ./build/app.js",
+      "prod": "tsc && node ./build/index.js",
       "typeorm": "typeorm-ts-node-commonjs",
       "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
    }

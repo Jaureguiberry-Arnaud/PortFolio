@@ -1,0 +1,30 @@
+.board {
+  margin: 0 auto;
+  padding: 0.5rem 0.1rem;
+  border: 0.1rem solid #00d1ff;
+  border-radius: 0.7rem;
+  box-shadow: 0 0 10px 1px #00D1FF, inset 0 0 10px 1px #00D1FF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  z-index: 1 !important;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  pointer-events: none;
+}
+
+// Responsive Tablet
+@media screen and (min-width: 768px){
+
+}
+
+// Responsive Window
+@media screen and (min-width: 1024px){
+
+}
