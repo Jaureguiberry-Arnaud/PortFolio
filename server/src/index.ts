@@ -3,7 +3,6 @@ dotenv.config({
   path: __dirname + '/../.env'
 });
 import { AppDataSource } from './data-source'
-import { ENV } from './my_env'
 import { addAdmin } from './utils/addAdmin'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
@@ -14,11 +13,11 @@ AppDataSource.initialize()
     const app = express()
     const cors = require('cors')
     const router = require('./routers')
-    const port = ENV.PORT || 4000
+    const port = process.env.PORT || 4000
 
-    addAdmin(ENV.ADMIN_PASSWORD)
+    addAdmin(process.env.ADMIN_PASSWORD)
 
-    app.use(cors(ENV.CORS_DOMAINS ?? '*'))
+    app.use(cors(process.env.CORS_DOMAINS ?? '*'))
     app.use(helmet())
     app.use(bodyParser.json())
     app.use(express.urlencoded({ extended: true }))
