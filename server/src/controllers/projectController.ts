@@ -30,16 +30,18 @@ const projectController = {
 
   addProject: async (req: Request, res: Response) => {
     try {
-      const { name, description, git_url, web_url, userId } = req.body
+      const { name, language, nbWrittenLines, git_url, web_url, description, userId } = req.body
       const results = await AppDataSource.createQueryBuilder()
         .insert()
         .into(Project)
         .values([
           {
             name: name,
-            description: description,
+            language: language,
+            nbWrittenLines: nbWrittenLines,
             git_url: git_url,
             web_url: web_url,
+            description: description,
             userId: userId
           }
         ])
@@ -53,15 +55,17 @@ const projectController = {
   updateProjectById: async (req: Request, res: Response) => {
     try {
       const projectId: number = parseInt(req.params.id)
-      const { name, description, git_url, web_url, userId } = req.body
+      const { name,language, nbWrittenLines, git_url, web_url, description, userId } = req.body
       const results = await AppDataSource.createQueryBuilder()
         .update(Project)
         .set({
           id: projectId,
           name: name,
-          description: description,
+          language: language,
+          nbWrittenLines: nbWrittenLines,
           git_url: git_url,
           web_url: web_url,
+          description: description,
           userId: userId
         })
         .where('id = :id', { id: projectId })

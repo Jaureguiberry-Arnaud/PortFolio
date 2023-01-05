@@ -1,0 +1,288 @@
+.projectById {
+	width: 90%;
+	height: 63%;
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 0.5rem;
+	border: 0.1rem solid #00d1ff;
+	border-radius: 0.7rem;
+	box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+	display: flex;
+	flex-direction: column;
+
+	overflow: auto;
+	pointer-events: auto;
+
+	-webkit-animation: scale-in-ver-center 1.5s
+		cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	animation: scale-in-ver-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+	&_unauthorized {
+		width: 90%;
+		height: 63%;
+		background-color: rgba(255, 255, 255, 0.2);
+		padding: 0.5rem 1rem;
+		border: 0.1rem solid #ff6700;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #ff6700, inset 0 0 10px 1px #ff6700;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1rem;
+
+		pointer-events: auto;
+		overflow: auto;
+
+		&-warning {
+			margin-top: 5rem;
+			width: 75px;
+			align-self: center;
+			-webkit-animation: flicker-2 2s linear infinite both;
+			animation: flicker-2 2s linear infinite both;
+		}
+		&-title {
+			font-size: 1.2rem;
+			color: #ff6700;
+			text-shadow: 1px 1px 2px #ff6700;
+			margin-bottom: 0.5rem;
+		}
+		&-content {
+			color: #fff;
+			text-shadow: 1px 1px 2px #ff6700;
+		}
+		&-btn {
+			height: 40px;
+			font-size: 1rem;
+			color: #fff;
+			background-color: #ff6700b0;
+			text-shadow: 1px 1px 2px #ff6700;
+			border: 0.1rem solid #ff6700;
+			border-radius: 0.7rem;
+			box-shadow: 0 0 10px 1px #ff6700, inset 0 0 10px 1px #ff6700;
+		}
+	}
+
+	&_deleteSuccess {
+		width: 90%;
+		height: 200px;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 0.5rem;
+		border: 0.1rem solid green($color: #000000);
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px green, inset 0 0 10px 1px green;
+
+		z-index: 5;
+		position: absolute;
+		align-self: center;
+		top: 10%;
+
+		display: flex;
+		flex-direction: column;
+
+		&-title {
+			font-size: 2rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			text-align: center;
+		}
+		&-btn {
+			height: 40px;
+			font-size: 1rem;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			color: #fff;
+			background-color: green;
+			text-shadow: 1px 1px 2px green;
+			border: 0.1rem solid green;
+			border-radius: 0.7rem;
+			box-shadow: 0 0 10px 1px green, inset 0 0 10px 1px green;
+		}
+	}
+
+	&-closeModal {
+		width: 15px;
+		position: fixed;
+		top: 0.75rem;
+		right: 0.5rem;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&-delete {
+		width: 20px;
+		position: fixed;
+		top: 0.5rem;
+		right: 3.75rem;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&-update {
+		width: 20px;
+		position: fixed;
+		top: 0.5rem;
+		right: 2rem;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&-name {
+		font-size: 2rem;
+		color: #00d1ff;
+		text-shadow: 1px 1px 2px #00d1ff;
+		margin-top: 1.5rem;
+		margin-bottom: 1rem;
+		text-align: center;
+	}
+	&-title {
+		font-size: 1.2rem;
+		color: #00d1ff;
+		text-shadow: 1px 1px 2px #00d1ff;
+		margin-left: 1rem;
+		margin-bottom: 0.5rem;
+		text-align: start;
+	}
+	&-content {
+		font-size: 1rem;
+		color: #fff;
+		text-shadow: 1px 1px 2px #00d1ff;
+		margin-left: 1rem;
+		margin-bottom: 2rem;
+		margin-right: 1rem;
+
+		&-subDate {
+			font-size: 0.8rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			margin-left: 1rem;
+			margin-bottom: 0.5rem;
+			text-align: start;
+		}
+	}
+
+	&_form {
+		display: flex;
+		flex-direction: column;
+
+		&-title {
+			font-size: 2rem;
+			color: #ff6700;
+			text-shadow: 1px 1px 2px #ff6700;
+			margin: 1rem 0;
+			text-align: center;
+		}
+		&-label {
+			font-size: 1.2rem;
+			color: #00d1ff;
+			text-shadow: 1px 1px 2px #00d1ff;
+			margin-left: 1rem;
+			margin-bottom: 0.5rem;
+			text-align: start;
+		}
+		&-input {
+			width: 92%;
+			background-color: rgba(255, 255, 255, 0.2);
+			color: #00d1ff;
+			padding: 0.5rem;
+			margin-bottom: 2rem;
+			border: 0.1rem solid #00d1ff;
+			border-radius: 0.7rem;
+			box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+			align-self: center;
+		}
+		&-btn {
+			width: 92%;
+			height: 40px;
+			color: #fff;
+			background-color: rgba(0, 128, 0, 0.6);
+			padding: 0.5rem;
+			margin-bottom: 1rem;
+			border: 0.1rem solid green;
+			border-radius: 0.7rem;
+			box-shadow: 0 0 10px 1px green, inset 0 0 10px 1px green;
+			align-self: center;
+		}
+	}
+}
+
+// Responsive Tablet
+@media screen and (min-width: 768px) {
+	.projectById {
+		width: 35%;
+		height: 100%;
+		margin: 0 0.5rem;
+
+		&_unauthorized {
+			width: 35%;
+			height: 100%;
+			margin: 0 0.5rem;
+
+			&-warning {
+				margin-top: 1rem;
+			}
+		}
+
+		&_deleteSuccess {
+			&-title {
+				margin: auto 0;
+			}
+			&-btn {
+				margin-top: -2rem;
+			}
+		}
+	}
+}
+
+// Responsive Window
+@media screen and (min-width: 1024px) {
+	.projectById {
+		&_unauthorized {
+			justify-content: space-evenly;
+		}
+
+		&_deleteSuccess {
+			&-btn {
+				width: 80%;
+				align-self: center;
+			}
+		}
+	}
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-10-20 19:17:28
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-in-ver-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-in-ver-center {
+	0% {
+		-webkit-transform: scaleY(0);
+		transform: scaleY(0);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
+@keyframes scale-in-ver-center {
+	0% {
+		-webkit-transform: scaleY(0);
+		transform: scaleY(0);
+		opacity: 1;
+	}
+	100% {
+		-webkit-transform: scaleY(1);
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
