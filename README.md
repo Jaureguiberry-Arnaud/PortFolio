@@ -10,9 +10,9 @@ then it may be that the redirection to my server jumps from time to time until I
 
 I decide to learn TypeScript and ThreeJS to create this project.
 
-My stack:
+# My stack:
 
-Front:  
+## Front:  
 -TypesSript  
 -React  
 -ThreeJS  
@@ -21,7 +21,7 @@ Front:
 -Axios  
 -SCSS  
 
-Back:  
+## Back:  
 -NodeJS  
 -ExpressJS  
 -TypeScript  
