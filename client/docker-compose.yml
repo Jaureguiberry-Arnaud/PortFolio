@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  front_portfolio:
+    build:
+      context: .
+      dockerfile: /Dockerfile
+    container_name: front_portfolio
+    image: front_portfolio
+    stdin_open: true
+    tty: true
+    expose:
+      - 3000 # port de mon application
+    labels:
+      - traefik.http.routers.nomDeMaRegle1.rule=Host(`jrgb-development.fr`, `www.jrgb-development.fr`) #nom de ma règle (généralement le nom du container) configuration du domaine
+      - traefik.http.routers.nomDeMaRegle2.tls=true #nom de ma règle (généralement le nom du container) configuration du https
+      - traefik.http.routers.nomDeMaRegle3.tls.certresolver=lets-encrypt #nom de ma règle (généralement le nom du container) configuration du certificat
+      - traefik.port=80 #port de liaison traefik
+    networks:
+      - web
+    command: npm run dev #commande à lancer au démarrage du container
+
+networks:
+  web:
+    external: true #liason avec le réseau traefik
