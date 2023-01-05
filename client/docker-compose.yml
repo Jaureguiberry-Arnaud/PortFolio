@@ -1,20 +1,20 @@
 version: '3.8'
 
 services:
-  front_portfolio:
+  portfolio_front:
     build:
       context: .
       dockerfile: /Dockerfile
-    container_name: front_portfolio
-    image: front_portfolio
+    container_name: portfolio_front
+    image: portfolio_front
     stdin_open: true
     tty: true
     expose:
-      - 3000 # port de mon application
+      - 4173 # port de mon application
     labels:
-      - traefik.http.routers.nomDeMaRegle1.rule=Host(`jrgb-development.fr`, `www.jrgb-development.fr`) #nom de ma règle (généralement le nom du container) configuration du domaine
-      - traefik.http.routers.nomDeMaRegle2.tls=true #nom de ma règle (généralement le nom du container) configuration du https
-      - traefik.http.routers.nomDeMaRegle3.tls.certresolver=lets-encrypt #nom de ma règle (généralement le nom du container) configuration du certificat
+      - traefik.http.routers.jrgb-development.fr1.rule=Host(`jrgb-development.fr`, `www.jrgb-development.fr`) #nom de ma règle (généralement le nom du container) configuration du domaine
+      - traefik.http.routers.jrgb-development.fr2.tls=true #nom de ma règle (généralement le nom du container) configuration du https
+      - traefik.http.routers.jrgb-development.fr3.tls.certresolver=lets-encrypt #nom de ma règle (généralement le nom du container) configuration du certificat
       - traefik.port=80 #port de liaison traefik
     networks:
       - web
