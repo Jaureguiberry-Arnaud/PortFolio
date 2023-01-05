@@ -13,7 +13,7 @@ I decide to learn TypeScript and ThreeJS to create this project.
 # My stack:
 
 ## Front:  
--TypesSript  
+-TypesScript  
 -React  
 -ThreeJS  
 -Three React Fiber  
