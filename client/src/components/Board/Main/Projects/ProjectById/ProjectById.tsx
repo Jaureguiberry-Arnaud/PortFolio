@@ -3,6 +3,10 @@ import PropTypes, { InferProps } from 'prop-types'
 import { useState, useEffect, Suspense } from 'react'
 import axios, { AxiosResponse } from 'axios'
 import jwt_decode from 'jwt-decode'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
+dayjs.locale('fr') // use French locale globally
 
 import iconCloseModal from '../../../../../assets/closeModal.png'
 import iconDelete from '../../../../../assets/iconDelete.png'
@@ -37,7 +41,7 @@ function ProjectById({
 	}
 	function getProjectById() {
 		axios
-			.get(`http://localhost:3001/projects/${projectId}`)
+			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
 			.then(function (response: any) {
 				setProjectById(response.data)
 				setValues({
@@ -67,7 +71,7 @@ function ProjectById({
 		}
 		axios({
 			method: 'DELETE',
-			url: `http://localhost:3001/projects/${projectId}`,
+			url: `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
 
 			headers: {
 				'Content-Type': 'application/json',
@@ -108,7 +112,7 @@ function ProjectById({
 		}
 		axios({
 			method: 'PUT',
-			url: `http://localhost:3001/projects/${projectId}`,
+			url: `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
 			data: {
 				name: values.name,
 				description: values.description,
@@ -138,7 +142,24 @@ function ProjectById({
 				console.error('There was an error!', error)
 			})
 	}
-
+	function postLogByProject() {
+		axios({
+			method: 'POST',
+			url: `${import.meta.env.VITE_API_URL}/logs`,
+			data: {
+				projectId: projectId,
+			},
+			headers: {},
+		})
+			.then(function (response) {
+				console.log(response)
+				console.log('log sent')
+			})
+			.catch(function (error) {
+				console.log(error)
+				console.log('log not sent')
+			})
+	}
 	interface TokenDecoded {
 		userId: number
 		pseudo: string
@@ -156,7 +177,7 @@ function ProjectById({
 	}
 	useEffect(() => {
 		getProjectById()
-	}, [projectId])
+	}, [projectId, postLogByProject()])
 	return (
 		<>
 			{errorToggle ? (
@@ -244,8 +265,13 @@ function ProjectById({
 								<h2 className='projectById-title'>Owner:</h2>
 								<p className='projectById-content'>Jrgb</p>
 
-								<h2 className='projectById-title'>Created here:</h2>
-								<p className='projectById-content'>{projectById?.created_at}</p>
+								<h2 className='projectById-title'>Created at:</h2>
+								<p className='projectById-content'>
+									{dayjs(projectById?.created_at).format('YYYY-MM-DD')}{' '}
+									<em className='projectById-content-subDate'>
+										({dayjs(projectById?.created_at).toNow(true)} ago)
+									</em>
+								</p>
 
 								<label
 									className='projectById_form-label'
@@ -323,9 +349,14 @@ function ProjectById({
 							<h1 className='projectById-name'>{projectById?.name}</h1>
 							<h2 className='projectById-title'>Owner:</h2>
 							<p className='projectById-content'>Jrgb</p>
-							<h2 className='projectById-title'>Created here:</h2>
-							<p className='projectById-content'>{projectById?.created_at}</p>
-							<h2 className='projectById-title'>Number of line written:</h2>
+							<h2 className='projectById-title'>Created at:</h2>
+							<p className='projectById-content'>
+								{dayjs(projectById?.created_at).format('YYYY-MM-DD')}{' '}
+								<em className='projectById-content-subDate'>
+									({dayjs(projectById?.created_at).toNow(true)} ago)
+								</em>
+							</p>
+							<h2 className='projectById-title'>Numbers of line written:</h2>
 							<p className='projectById-content'>
 								{projectById?.nbWrittenLines}
 							</p>

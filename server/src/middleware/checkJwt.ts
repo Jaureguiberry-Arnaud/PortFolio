@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 import * as jwt from "jsonwebtoken"
-import {ENV} from "../my_env"
+import * as dotenv from 'dotenv'
 
 export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   //Get the jwt token from the head
@@ -14,7 +14,7 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
       throw new Error
     }
     const [, tokenSplitted] = token.split(' ');
-    jwtPayload = <any>jwt.verify(tokenSplitted, ENV.jwtSecret)
+    jwtPayload = <any>jwt.verify(tokenSplitted, process.env.jwtSecret)
     res.locals.jwtPayload = jwtPayload
       
     

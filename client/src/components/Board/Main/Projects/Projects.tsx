@@ -1,7 +1,6 @@
 import PropTypes, { InferProps } from 'prop-types'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import './Projects.scss'
 import ProjectById from './ProjectById/ProjectById'
 import AddProject from './AddProject/AddProject'

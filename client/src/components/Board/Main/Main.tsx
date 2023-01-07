@@ -12,6 +12,8 @@ import Projects from './Projects/Projects'
 import NotFound from './NotFound/NotFound'
 import Contact from './Contact/Contact'
 import AboutMe from './AboutMe/AboutMe'
+import Stats from './Stats/Stats'
+import News from './News/News'
 
 function Main({
 	activePlanetAtom,
@@ -29,10 +31,12 @@ function Main({
 }: InferProps<typeof Main.propTypes>) {
 	// My state
 	const [allProjects, setAllProjects] = useState([])
+	const [disabledNewsModal, setDisabledNewsModal] = useState(true)
 
+	// My function
 	function getAllProject() {
 		axios
-			.get(`http://localhost:3001/projects`)
+			.get(`${import.meta.env.VITE_API_URL}/projects`)
 			.then(function (response: any) {
 				setAllProjects(response.data)
 			})
@@ -46,10 +50,20 @@ function Main({
 	return (
 		<main className='main'>
 			<Routes>
-				{/* <Route path='/profil' element={<Profil />} /> */}
+				<Route
+					path='/'
+					element={
+						disabledNewsModal && (
+							<News
+								disabledNewsModal={disabledNewsModal}
+								setDisabledNewsModal={setDisabledNewsModal}
+							/>
+						)
+					}
+				/>
 
 				<Route
-					path='/projects'
+					path='projects'
 					element={
 						<Projects
 							allProjects={allProjects}
@@ -58,6 +72,10 @@ function Main({
 							getAllProject={getAllProject}
 						/>
 					}
+				/>
+				<Route
+					path='stats'
+					element={<Stats />}
 				/>
 				<Route
 					path='cv'
@@ -71,8 +89,6 @@ function Main({
 					path='about-me'
 					element={<AboutMe />}
 				/>
-
-				{/* {activePlanetAtom || activePlanetHighTech && ()} */}
 			</Routes>
 		</main>
 	)

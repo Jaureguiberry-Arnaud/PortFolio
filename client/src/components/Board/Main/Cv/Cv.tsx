@@ -119,12 +119,12 @@ function Cv() {
 					</p>
 					<p className='cv_experiences_expe-text'>
 						{' '}
-						-Backend development with NodeJs, Express, TypeScript, TypeORM and
+						-Backend development: NodeJs, Express, TypeScript, TypeORM and
 						PostgreSQL.
 					</p>
 					<p className='cv_experiences_expe-text'>
 						{' '}
-						-Frontend development with React, ThreeJS, Three React Fiber, Three
+						-Frontend development: React, ThreeJS, Three React Fiber, Three
 						React Drei, TypeScript, Axios, SASS, HTML5 and CSS3.
 					</p>
 				</div>
@@ -136,10 +136,9 @@ function Cv() {
 						Graduation Project / June 2022 (1 month)
 					</h4>
 					<p className='cv_experiences_expe-text'>
-						-Production of the Front of an application in a team of 4 on a
-						deadline of 1 month to complete the intensive training of Web &
-						Webmobile Developer Fullstack JS.
+						-Production Frontend of an application with a team of 4.
 					</p>
+					<p className='cv_experiences_expe-text'>-1 month deadline</p>
 
 					<p className='cv_experiences_expe-text'>
 						-This application was available here:{' '}
@@ -175,19 +174,16 @@ function Cv() {
 						Full Remote / French Label "GEN" / January 2022 - July 2022
 					</h4>
 					<p className='cv_education_training-text'>
-						-{'>'} Intensive training of 6 months <strong>(798 hours)</strong>{' '}
+						-{'>'} Intensive training for 6 months <strong>(798 hours)</strong>{' '}
 						to become a FullStack JS Developer.
 					</p>
 					<p className='cv_education_training-text'>
-						-{'>'} 3 months of base: : HTML5 / CSS3 /JavaScript / PostgreSQL /
-						NodeJS
+						-{'>'} 3 months: HTML5 / CSS3 /JavaScript / PostgreSQL / NodeJS
 					</p>
 					<p className='cv_education_training-text'>
-						-{'>'} 1 months of specialization: React
+						-{'>'} 1 month specialization: React
 					</p>
-					<p className='cv_education_training-text'>
-						-{'>'} 1 month of project
-					</p>
+					<p className='cv_education_training-text'>-{'>'} 1 month project</p>
 					<p className='cv_education_training-text'>
 						-{'>'} Weekly pair-programming
 					</p>
