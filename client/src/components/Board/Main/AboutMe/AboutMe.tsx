@@ -30,6 +30,18 @@ function AboutMe() {
 					</div>
 				</article>
 				<article className='aboutMe_skills_article'>
+					<h3 className='aboutMe_skills_article-title'>Server Management:</h3>
+					<div className='aboutMe_skills_article_list'>
+						<p className='aboutMe_skills_article_list-item'>Raspberry</p>
+						<p className='aboutMe_skills_article_list-item'>Linux</p>
+						<p className='aboutMe_skills_article_list-item'>Raspbian</p>
+						<p className='aboutMe_skills_article_list-item'>Docker</p>
+						<p className='aboutMe_skills_article_list-item'>Docker-Compose</p>
+						<p className='aboutMe_skills_article_list-item'>Traefik</p>
+						<p className='aboutMe_skills_article_list-item'>Portainer</p>
+					</div>
+				</article>
+				<article className='aboutMe_skills_article'>
 					<h3 className='aboutMe_skills_article-title'>Front-end:</h3>
 					<div className='aboutMe_skills_article_list'>
 						<p className='aboutMe_skills_article_list-item'>HTML5</p>
@@ -91,8 +103,27 @@ function AboutMe() {
 					Node and PostgresSQL.
 				</p>
 				<p className='aboutMe_bio-text'>
+					To host my portfolio and my futur project I decided to use a
+					RaspberryPi 4 lying around.
+					<br />
+					I installed a Debian distribution, params Traefik, Docker and
+					Docker-compose.
+					<br />
+					Now I can host my portfolio and my futur project on my RaspberryPi.
+				</p>
+				<p className='aboutMe_bio-text'>
+					Here is my LinkedIn:{' '}
+					<a
+						href='https://www.linkedin.com/in/arnaud-jaureguiberry/'
+						target='_blank'>
+						https://www.linkedin.com/in/arnaud-jaureguiberry/
+					</a>
+				</p>
+				<p className='aboutMe_bio-text'>
 					Here is my Github:{' '}
-					<a href='https://github.com/Jaureguiberry-Arnaud'>
+					<a
+						href='https://github.com/Jaureguiberry-Arnaud'
+						target='_blank'>
 						https://github.com/Jaureguiberry-Arnaud
 					</a>
 				</p>
