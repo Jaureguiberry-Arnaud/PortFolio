@@ -18,7 +18,6 @@ services:
       - traefik.port=80 #port de liaison traefik
     networks:
       - web
-    command: npm run dev #commande à lancer au démarrage du container
 
 networks:
   web:

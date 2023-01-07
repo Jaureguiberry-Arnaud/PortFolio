@@ -1,7 +1,7 @@
 FROM node:16-alpine3.15
-WORKDIR /portfolio_front
+WORKDIR /server
 COPY ./package.json .
 RUN npm install
 COPY . .
-EXPOSE 4173
-CMD ["npm", "run", "build"]
+EXPOSE 3001
+CMD [ "npm", "run", "prod" ]
