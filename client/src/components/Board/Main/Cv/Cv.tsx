@@ -82,6 +82,18 @@ function Cv() {
 					</div>
 				</div>
 				<div className='cv_skills_div'>
+					<h3 className='cv_skills_div-title'>Server Management:</h3>
+					<div className='cv_skills_div_list'>
+						<p className='cv_skills_div_list-item'>Raspberry</p>
+						<p className='cv_skills_div_list-item'>Linux</p>
+						<p className='cv_skills_div_list-item'>Raspbian</p>
+						<p className='cv_skills_div_list-item'>Docker</p>
+						<p className='cv_skills_div_list-item'>Docker-compose</p>
+						<p className='cv_skills_div_list-item'>Traefik</p>
+						<p className='cv_skills_div_list-item'>Portainer</p>
+					</div>
+				</div>
+				<div className='cv_skills_div'>
 					<h3 className='cv_skills_div-title'>Frontend:</h3>
 					<div className='cv_skills_div_list'>
 						<p className='cv_skills_div_list-item'>HTML5</p>
