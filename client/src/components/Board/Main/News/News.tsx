@@ -32,28 +32,63 @@ function News({
 
 			{toggleModal ? (
 				<section className='news'>
-					<h1 className='news-title'>Latest News</h1>
-					<time
-						className='news-date'
-						dateTime='2022-12-28'>
-						28/12/2020
-					</time>
-					<p className='news-content'>
-						I'm actually working on this website.
-						<br />
-						<br />
-						The next and most important step to finalize my beta portfolio is to
-						reconcile my data project with my 3d Draft.
-						<br />
-						<br />
-						After that, I will create a Stat component. Each project will have a
-						stat component and there will be a global stat component.
-					</p>
-					<button
-						className='news-close'
-						onClick={() => setDisabledNewsModal(!disabledNewsModal)}>
-						Close
-					</button>
+					<h1 className='news_article-title'>Latest News</h1>
+					<article className='news_article'>
+						<time
+							className='news_article-date'
+							dateTime='2023-01-07'>
+							07/01/2023
+						</time>
+						<p className='news_article-content'>
+							Hello there !
+							<br />
+							<br />
+							Happy new year !
+							<br />
+							<br />
+							Today i turn on my server on a RaspberryPi4 <br />
+							with Traefik, Docker and Docker-compose.
+							<br />
+							<br />
+							Now i can deploy my portfolio on my server.
+							<br />
+							<br />
+							I'm so excited to share my work with you !
+							<br />
+							<br />
+							See you soon !
+						</p>
+						<button
+							className='news_article-close'
+							onClick={() => setDisabledNewsModal(!disabledNewsModal)}>
+							Close
+						</button>
+					</article>
+					<article className='news_article'>
+						<time
+							className='news_article-date'
+							dateTime='2022-12-28'>
+							28/12/2022
+						</time>
+						<p className='news_article-content'>
+							I'm actually working on this website.
+							<br />
+							<br />
+							The next and most important step to finalize my <br />
+							beta portfolio is to reconcile my data project <br />
+							with my 3d Draft.
+							<br />
+							<br />
+							After that, I will create a Stat component. Each project <br />
+							will have a stat component and there will be a global <br />
+							stat component.
+						</p>
+						<button
+							className='news_article-close'
+							onClick={() => setDisabledNewsModal(!disabledNewsModal)}>
+							Close
+						</button>
+					</article>
 				</section>
 			) : (
 				<section className='update'>
@@ -61,8 +96,26 @@ function News({
 					<article className='update_article'>
 						<time
 							className='update_article-date'
+							dateTime='2023-01-07'>
+							07/01/2023
+						</time>
+						<p className='update_article-content'>
+							- Adding favicon
+							<br />
+							- Adding latest news and update
+							<br />- Adding updated cv and skills section
+						</p>
+						<button
+							className='update_article-close'
+							onClick={() => setDisabledNewsModal(!disabledNewsModal)}>
+							Close
+						</button>
+					</article>
+					<article className='update_article'>
+						<time
+							className='update_article-date'
 							dateTime='2022-12-30'>
-							30/12/2020
+							30/12/2022
 						</time>
 						<p className='update_article-content'>
 							- Adding axios post request to send logs into my database
@@ -79,7 +132,7 @@ function News({
 						<time
 							className='update_article-date'
 							dateTime='2022-12-29'>
-							29/12/2020
+							29/12/2022
 						</time>
 						<p className='update_article-content'>
 							- Finished component News
@@ -95,7 +148,7 @@ function News({
 						<time
 							className='update_article-date'
 							dateTime='2022-12-28'>
-							28/12/2020
+							28/12/2022
 						</time>
 						<p className='update_article-content'>
 							- Finished adding component AboutMe
