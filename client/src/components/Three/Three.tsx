@@ -154,8 +154,8 @@ function Three({
 
 			{/* Stars background animated */}
 			<Stars
-				radius={100}
-				depth={50}
+				radius={10}
+				depth={200}
 				count={5000}
 				factor={4}
 				saturation={0}
