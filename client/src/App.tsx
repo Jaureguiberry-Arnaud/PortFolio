@@ -9,6 +9,7 @@ function App() {
 	// My state
 	const [activePlanetAtom, setActivePlanetAtom] = useState(false)
 	const [activePlanetHighTech, setActivePlanetHighTech] = useState(false)
+	const [allProjects, setAllProjects] = useState([])
 
 	// My function
 
@@ -31,8 +32,19 @@ function App() {
 				console.log('log not sent')
 			})
 	}
-
-	useEffect(() => {}, [postLogPortfolio()])
+	function getAllProject() {
+		axios
+			.get(`${import.meta.env.VITE_API_URL}/projects`)
+			.then(function (response: any) {
+				setAllProjects(response.data)
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
+	}
+	useEffect(() => {
+		getAllProject()
+	}, [postLogPortfolio()])
 	return (
 		<>
 			<Board
@@ -40,6 +52,8 @@ function App() {
 				activePlanetAtom={activePlanetAtom}
 				setActivePlanetHighTech={setActivePlanetHighTech}
 				activePlanetHighTech={activePlanetHighTech}
+				allProjects={allProjects}
+				getAllProject={getAllProject}
 			/>
 			<Canvas
 				id='three_canvas_container'
@@ -50,6 +64,7 @@ function App() {
 						activePlanetAtom={activePlanetAtom}
 						setActivePlanetHighTech={setActivePlanetHighTech}
 						activePlanetHighTech={activePlanetHighTech}
+						allProjects={allProjects}
 					/>
 				</Suspense>
 			</Canvas>

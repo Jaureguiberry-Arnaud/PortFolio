@@ -20,17 +20,17 @@ function Board({
 	activePlanetAtom,
 	setActivePlanetHighTech,
 	activePlanetHighTech,
+	allProjects,
+	getAllProject,
 }: InferProps<typeof Board.propTypes>) {
 	// state
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
-	// const [disabledNewsModal, setDisabledNewsModal] = useState(true)
 	const [isLogged, setIsLogged] = useState(false)
 	const [token, setToken] = useState('')
 	const [values, setValues] = useState({
 		pseudo: '',
 		password: '',
 	})
-	const [allProjects, setAllProjects] = useState([])
 
 	// function
 	function konami(callback: () => void): void {
@@ -51,20 +51,8 @@ function Board({
 	function toggleDisabledLoginModal() {
 		setDisabledLoginModal(!disabledLoginModal)
 	}
-	function getAllProject() {
-		axios
-			.get(`${import.meta.env.VITE_API_URL}/projects`)
-			.then(function (response: any) {
-				setAllProjects(response.data)
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
-	}
 
-	useEffect(() => {
-		getAllProject()
-	}, [konami(toggleDisabledLoginModal), allProjects?.length])
+	useEffect(() => {}, [konami(toggleDisabledLoginModal), allProjects?.length])
 	return (
 		<Routes>
 			<Route
@@ -155,6 +143,8 @@ Board.propTypes = {
 	setActivePlanetAtom: PropTypes.func.isRequired,
 	activePlanetHighTech: PropTypes.bool.isRequired,
 	setActivePlanetHighTech: PropTypes.func.isRequired,
+	allProjects: PropTypes.array.isRequired,
+	getAllProject: PropTypes.func.isRequired,
 }
 
 export default Board

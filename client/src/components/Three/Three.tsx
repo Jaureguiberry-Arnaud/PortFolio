@@ -6,6 +6,8 @@ import {
 	ScrollControls,
 	GradientTexture,
 } from '@react-three/drei'
+import { Material } from 'three'
+import { Outlet } from 'react-router-dom'
 import { useFrame } from '@react-three/fiber'
 import { angleToRadians } from '../../utils/angle'
 import * as THREE from 'three'
@@ -15,14 +17,14 @@ import PropTypes, { InferProps } from 'prop-types'
 import { Sun } from './Star_of_sun'
 import { PlanetAtom } from './PlanetAtom'
 import { PlanetHighTech } from './PlanetHighTech'
-import { Material } from 'three'
-import { Outlet } from 'react-router-dom'
+import OrbitalRings from './Rings/Rings'
 
 function Three({
 	setActivePlanetAtom,
 	activePlanetAtom,
 	setActivePlanetHighTech,
 	activePlanetHighTech,
+	allProjects,
 }: InferProps<typeof Three.propTypes>) {
 	// exemple of pointer event:
 	// onPointerOver={(e) => console.log("over")}
@@ -70,15 +72,24 @@ function Three({
 				position={[0, 0, 0]}>
 				<Sun />
 
+				{/* Orbitals Rings */}
+				{allProjects.map((project) => {
+					return (
+						<OrbitalRings
+							key={project.id}
+							project={project}
+						/>
+					)
+				})}
 				{/* 1st ring */}
-				<mesh rotation-x={Math.PI * 0.5}>
+				{/* <mesh rotation-x={Math.PI * 0.5}>
 					<torusGeometry args={[80, 0.2, 2, 200]} />
 					<meshStandardMaterial
 						color={'yellow'}
 						metalness={0.7}
 						roughness={0.3}
 					/>
-				</mesh>
+				</mesh> */}
 
 				<mesh
 					ref={planetAtomRef}
@@ -88,8 +99,8 @@ function Three({
 					castShadow
 					onClick={() => setActivePlanetAtom(!activePlanetAtom)}>
 					<PlanetAtom />
-          <meshStandardMaterial color={'#ffffff'} />
-          {activePlanetAtom && (
+					<meshStandardMaterial color={'#ffffff'} />
+					{activePlanetAtom && (
 						<Suspense fallback={null}>
 							<mesh>
 								<sphereGeometry args={[12, 32, 16]} />
@@ -172,5 +183,6 @@ Three.propTypes = {
 	activePlanetAtom: PropTypes.bool.isRequired,
 	setActivePlanetHighTech: PropTypes.func.isRequired,
 	activePlanetHighTech: PropTypes.bool.isRequired,
+	allProjects: PropTypes.array.isRequired,
 }
 export default Three
