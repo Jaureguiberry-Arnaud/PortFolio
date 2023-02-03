@@ -1,36 +1,32 @@
+import { useFrame } from '@react-three/fiber'
 import PropTypes, { InferProps } from 'prop-types'
-import { useEffect, useState } from 'react'
+import { useRef, useState } from 'react'
 
 function OrbitalRings({ project }: InferProps<typeof OrbitalRings.propTypes>) {
 	// My state
+	const [rotationMultiplierResult, setRotationMultiplierResult] =
+		useState(Number)
 	const projectId = project.id
 
 	// My functions
-	// Check if the project id is odd (i want only 1 ring every 2 projects)
-	function projectIdOdd() {
-		return projectId % 2 === 1
-	}
 	// Multiplier for the radius of the ring
 	function radiusMultiplier() {
 		if (projectId === 1) {
 			return 80
 		} else {
-			return (80 * projectId) / 1.5
+			return 80 * projectId
 		}
 	}
+
 	return (
-		<>
-			{projectIdOdd() && (
-				<mesh rotation-x={Math.PI * 0.5}>
-					<torusGeometry args={[radiusMultiplier(), 0.2, 2, 200]} />
-					<meshStandardMaterial
-						color={'yellow'}
-						metalness={0.7}
-						roughness={0.3}
-					/>
-				</mesh>
-			)}
-		</>
+		<mesh rotation-x={Math.PI * 0.5}>
+			<torusGeometry args={[radiusMultiplier(), 0.2, 2, 200]} />
+			<meshStandardMaterial
+				color={'yellow'}
+				metalness={0.7}
+				roughness={0.3}
+			/>
+		</mesh>
 	)
 }
 

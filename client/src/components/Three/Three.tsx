@@ -15,9 +15,10 @@ import React, { useRef, useState, Suspense } from 'react'
 import PropTypes, { InferProps } from 'prop-types'
 // import { ExplodingPlanetType1 } from "./ExplodingPlanetType1"
 import { Sun } from './Star_of_sun'
-import { PlanetAtom } from './PlanetAtom'
-import { PlanetHighTech } from './PlanetHighTech'
-import OrbitalRings from './Rings/Rings'
+import { Planet } from './Planets/PlanetsAsset/Planet1'
+// import { PlanetHighTech } from './Planets/PlanetsAsset/Planet2'
+import OrbitalRings from './OrbitalRings/OrbitalRings'
+import Planets from './Planets/Planets'
 
 function Three({
 	setActivePlanetAtom,
@@ -38,13 +39,13 @@ function Three({
 
 	// Make the mesh rotate
 	const sunRef: any = useRef()
-	const planetAtomRef: any = useRef()
-	const planetHighTechRef: any = useRef()
+	// const planetRef: any = useRef()
+	// const planetHighTechRef: any = useRef()
 
 	useFrame(() => {
 		sunRef.current.rotation.y += 0.005
-		planetAtomRef.current.rotation.y += 0.01
-		planetHighTechRef.current.rotation.y += 0.02
+		// planetRef.current.rotation.y += 0.001
+		// planetHighTechRef.current.rotation.y += 0.02
 	})
 
 	// function onClick(e): ThreeEvent<MouseEvent> {
@@ -71,77 +72,25 @@ function Three({
 				rotation-y={Math.PI * 0.25}
 				position={[0, 0, 0]}>
 				<Sun />
-
-				{/* Orbitals Rings */}
-				{allProjects.map((project) => {
-					return (
-						<OrbitalRings
-							key={project.id}
-							project={project}
-						/>
-					)
-				})}
-				{/* 1st ring */}
-				{/* <mesh rotation-x={Math.PI * 0.5}>
-					<torusGeometry args={[80, 0.2, 2, 200]} />
-					<meshStandardMaterial
-						color={'yellow'}
-						metalness={0.7}
-						roughness={0.3}
-					/>
-				</mesh> */}
-
-				<mesh
-					ref={planetAtomRef}
-					rotation-y={Math.PI * 0.25}
-					position={[-80, 0, 0]}
-					receiveShadow
-					castShadow
-					onClick={() => setActivePlanetAtom(!activePlanetAtom)}>
-					<PlanetAtom />
-					<meshStandardMaterial color={'#ffffff'} />
-					{activePlanetAtom && (
-						<Suspense fallback={null}>
-							<mesh>
-								<sphereGeometry args={[12, 32, 16]} />
-								<meshStandardMaterial
-									color={'#00d1ff'}
-									side={THREE.FrontSide}
-									blending={THREE.AdditiveBlending}
-									opacity={0.7}
-									transparent
-								/>
-							</mesh>
-						</Suspense>
-					)}
-				</mesh>
-
-				<mesh
-					ref={planetHighTechRef}
-					rotation-y={Math.PI * 0.25}
-					position={[80, 0, 0]}
-					receiveShadow
-					castShadow
-					onClick={() => setActivePlanetHighTech(!activePlanetHighTech)}>
-					<PlanetHighTech />
-					<meshStandardMaterial color={'#ffffff'} />
-					{activePlanetHighTech && (
-						<Suspense fallback={null}>
-							<mesh>
-								<sphereGeometry args={[12, 32, 16]} />
-								<meshStandardMaterial
-									color={'#00d1ff'}
-									side={THREE.FrontSide}
-									blending={THREE.AdditiveBlending}
-									opacity={0.7}
-									transparent
-								/>
-							</mesh>
-						</Suspense>
-					)}
-				</mesh>
 			</mesh>
 
+			{allProjects.map((project) => {
+				return (
+					<Planets
+						key={project.id}
+						project={project}
+					/>
+				)
+			})}
+			{/* Orbitals Rings */}
+			{allProjects.map((project) => {
+				return (
+					<OrbitalRings
+						key={project.id}
+						project={project}
+					/>
+				)
+			})}
 			{/* Ambient Light */}
 			<ambientLight args={['#ffffff', 0.3]} />
 
@@ -162,7 +111,6 @@ function Three({
 				fade
 				speed={1}
 			/>
-			{/* <Stars radius={50} depth={50} count={2500} factor={4} saturation={0} fade speed={1} /> */}
 
 			{/* Environment */}
 			<Environment background>

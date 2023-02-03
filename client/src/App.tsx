@@ -24,7 +24,7 @@ function App() {
 			headers: {},
 		})
 			.then(function (response) {
-				console.log(response)
+				// console.log(response)
 				console.log('log sent')
 			})
 			.catch(function (error) {
