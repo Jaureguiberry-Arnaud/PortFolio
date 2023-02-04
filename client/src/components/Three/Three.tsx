@@ -73,7 +73,7 @@ function Three({
 				position={[0, 0, 0]}>
 				<Sun />
 			</mesh>
-
+			{/* Planets */}
 			{allProjects.map((project) => {
 				return (
 					<Planets
@@ -96,15 +96,15 @@ function Three({
 
 			{/* Directional light */}
 			<pointLight
-				args={['#ffffff', 5, 300]}
+				args={['#ffffff', 5, 1000]}
 				position={[0, 0, 0]}
 				castShadow
 			/>
 
 			{/* Stars background animated */}
 			<Stars
-				radius={10}
-				depth={200}
+				radius={1}
+				depth={400}
 				count={5000}
 				factor={4}
 				saturation={0}

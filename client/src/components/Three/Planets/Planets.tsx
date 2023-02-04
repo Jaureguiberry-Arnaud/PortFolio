@@ -12,28 +12,6 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 	const [radiusMultiplierResult, setRadiusMultiplierResult] = useState(Number)
 	const [projectId, setProjectId] = useState(project.id)
 
-	// const planetPosition = {
-	// 	1: [-radiusMultiplier, 0, 0],
-	// 	2: [radiusMultiplier, 0, 0],
-	// 	3: [0, -radiusMultiplier, 0],
-	// 	4: [0, radiusMultiplier, 0],
-	// 	5: [-radiusMultiplier, 0, 0],
-	// 	6: [radiusMultiplier, 0, 0],
-	// 	7: [0, -radiusMultiplier, 0],
-	// 	8: [0, -radiusMultiplier, 0],
-	// }
-
-	// const planetPosition = [
-	// 	`-${radiusMultiplier}, 0, 0`,
-	// 	`${radiusMultiplier}, 0, 0`,
-	// 	`0, -${radiusMultiplier}, 0`,
-	// 	`0, ${radiusMultiplier}, 0`,
-	// 	`-${radiusMultiplier}, 0, 0`,
-	// 	`${radiusMultiplier}, 0, 0`,
-	// 	`0, -${radiusMultiplier}, 0`,
-	// 	`0, -${radiusMultiplier}, 0`,
-	// ]
-
 	// My Function
 	// dynamic import of the planet texture
 	function getDynamicPlanetTexture() {
@@ -45,7 +23,6 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 			setPlanetTexture(value.Planet)
 		})
 	}
-
 	// Multiplier for the position of the planet
 	function radiusMultiplier() {
 		if (project.id === 1) {
@@ -54,9 +31,7 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 			return 80 * project.id
 		}
 	}
-	// radiusMultiplier()
-
-	// Multiplier for the rotation of the planet from sun
+	// Multiplier for the rotation of the planet from sun (center)
 	function rotationFromSunMultiplier() {
 		if (project.id === 1) {
 			return 0.001
@@ -64,7 +39,23 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 			return (0.001 * project.id) / 5
 		}
 	}
-
+	// Multiplier for the size of the planet
+	function planetSizeMultiplierByWrittenLines() {
+		if (project.nbWrittenLines < 5000) {
+			return 1
+		} else if (project.nbWrittenLines < 10000) {
+			return 1.5
+		} else if (project.nbWrittenLines < 20000) {
+			return 2
+		} else if (project.nbWrittenLines < 30000) {
+			return 2.5
+		} else if (project.nbWrittenLines < 50000) {
+			return 3
+		} else {
+			return 4
+		}
+	}
+	// Position of the planets
 	const planetPosition = [
 		{ x: radiusMultiplierResult, y: 0, z: 0 },
 		{ x: radiusMultiplierResult, y: 0, z: 0 },
@@ -75,22 +66,21 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 		{ x: radiusMultiplierResult, y: 0, z: 0 },
 		{ x: radiusMultiplierResult, y: 0, z: 0 },
 	]
+	// Dynamic position of the planet to export on the mesh
 	const dynamicPosition = new THREE.Vector3(
 		planetPosition[projectId - 1].x,
 		planetPosition[projectId - 1].y,
 		planetPosition[projectId - 1].z
 	)
-	console.log(planetPosition[project.id - 1])
-	// console.log(dynamicPosition)
 	// Make the mesh rotate
 	const planetPlanRef: any = useRef()
 	const planetRef: any = useRef()
 	useFrame(() => {
 		planetRef.current.rotation.y += 0.005
-		planetPlanRef.current.rotation.y += 0.001 + rotationFromSunMultiplier()
+		planetPlanRef.current.rotation.y += rotationFromSunMultiplier()
 	})
-
-	// Get the dynamic texture when the component is mounted
+	// Get the dynamic planet texture and the radius multiplier
+	// when the component is mounted
 	useEffect(() => {
 		setRadiusMultiplierResult(radiusMultiplier())
 		getDynamicPlanetTexture()
@@ -103,6 +93,11 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 			rotation-y={Math.PI * 0.01}
 			position={[0, 0, 0]}>
 			<mesh
+				scale={[
+					planetSizeMultiplierByWrittenLines(),
+					planetSizeMultiplierByWrittenLines(),
+					planetSizeMultiplierByWrittenLines(),
+				]}
 				ref={planetRef}
 				rotation-y={Math.PI * 0.25}
 				position={dynamicPosition}
