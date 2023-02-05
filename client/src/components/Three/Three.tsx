@@ -68,6 +68,7 @@ function Three({
 
 			{/* Sun */}
 			<mesh
+				scale={2.5}
 				ref={sunRef}
 				rotation-y={Math.PI * 0.25}
 				position={[0, 0, 0]}>

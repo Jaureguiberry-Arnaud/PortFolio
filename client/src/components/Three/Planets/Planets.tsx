@@ -26,9 +26,9 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 	// Multiplier for the position of the planet
 	function radiusMultiplier() {
 		if (project.id === 1) {
-			return 80
+			return 100
 		} else {
-			return 80 * project.id
+			return 100 * project.id
 		}
 	}
 	// Multiplier for the rotation of the planet from sun (center)
@@ -79,6 +79,13 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 		planetRef.current.rotation.y += 0.005
 		planetPlanRef.current.rotation.y += rotationFromSunMultiplier()
 	})
+
+	// Get the texture for the selected cube
+	const CubeTextureLoader = new THREE.TextureLoader()
+	const textureCube = CubeTextureLoader.load(
+		'/models/CubeSelectTexture/SelectedCube.png'
+	)
+
 	// Get the dynamic planet texture and the radius multiplier
 	// when the component is mounted
 	useEffect(() => {
@@ -108,12 +115,12 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 				<meshStandardMaterial color={'#ffffff'} />
 				{selected && (
 					<mesh>
-						<sphereGeometry args={[12, 32, 16]} />
+						<boxGeometry args={[20, 20, 20]} />
 						<meshStandardMaterial
-							color={'#00d1ff'}
+							color={0xffffff}
+							map={textureCube}
 							side={THREE.FrontSide}
 							blending={THREE.AdditiveBlending}
-							opacity={0.7}
 							transparent
 						/>
 					</mesh>

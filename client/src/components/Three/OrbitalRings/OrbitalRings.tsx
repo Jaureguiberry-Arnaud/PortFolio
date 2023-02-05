@@ -12,9 +12,9 @@ function OrbitalRings({ project }: InferProps<typeof OrbitalRings.propTypes>) {
 	// Multiplier for the radius of the ring
 	function radiusMultiplier() {
 		if (projectId === 1) {
-			return 80
+			return 100
 		} else {
-			return 80 * projectId
+			return 100 * projectId
 		}
 	}
 
