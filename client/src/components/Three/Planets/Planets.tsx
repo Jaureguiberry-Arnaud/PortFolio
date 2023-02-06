@@ -4,10 +4,14 @@ import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 // import { Planet } from './PlanetsAsset/Planet1'
 import { Vector3 } from 'three'
+import { PerspectiveCamera } from '@react-three/drei'
 
-function Planets({ project }: InferProps<typeof Planets.propTypes>) {
+function Planets({
+	project,
+	selectedById,
+	setSelectedById,
+}: InferProps<typeof Planets.propTypes>) {
 	// My State
-	const [selected, setSelected] = useState(false)
 	const [PlanetTexture, setPlanetTexture] = useState()
 	const [radiusMultiplierResult, setRadiusMultiplierResult] = useState(Number)
 	const [projectId, setProjectId] = useState(project.id)
@@ -72,11 +76,20 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 		planetPosition[projectId - 1].y,
 		planetPosition[projectId - 1].z
 	)
+	// Get Id of the selected planet or change him to null
+	function selectPlanet() {
+		if (selectedById === project.id) {
+			setSelectedById(null)
+		} else {
+			setSelectedById(project.id)
+		}
+	}
+
 	// Make the mesh rotate
 	const planetPlanRef: any = useRef()
 	const planetRef: any = useRef()
 	useFrame(() => {
-		planetRef.current.rotation.y += 0.005
+		planetRef.current.rotation.y += 0.002
 		planetPlanRef.current.rotation.y += rotationFromSunMultiplier()
 	})
 
@@ -86,12 +99,14 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 		'/models/CubeSelectTexture/SelectedCube.png'
 	)
 
-	// Get the dynamic planet texture and the radius multiplier
-	// when the component is mounted
 	useEffect(() => {
+		// Reset the selected planet(to reset the default camera) when the component is mounted
+		setSelectedById(null)
 		setRadiusMultiplierResult(radiusMultiplier())
+		// Get the dynamic planet texture and the radius multiplier
+		// when the component is mounted
 		getDynamicPlanetTexture()
-	}, [])
+	}, [console.log(dynamicPosition)])
 
 	return (
 		<mesh
@@ -110,20 +125,27 @@ function Planets({ project }: InferProps<typeof Planets.propTypes>) {
 				position={dynamicPosition}
 				receiveShadow
 				castShadow
-				onClick={() => setSelected(!selected)}>
+				onClick={() => setSelectedById(selectPlanet)}>
 				{PlanetTexture}
 				<meshStandardMaterial color={'#ffffff'} />
-				{selected && (
-					<mesh>
-						<boxGeometry args={[20, 20, 20]} />
-						<meshStandardMaterial
-							color={0xffffff}
-							map={textureCube}
-							side={THREE.FrontSide}
-							blending={THREE.AdditiveBlending}
-							transparent
+				{selectedById === projectId && (
+					<>
+						<mesh>
+							<boxGeometry args={[20, 20, 20]} />
+							<meshStandardMaterial
+								color={0xffffff}
+								map={textureCube}
+								side={THREE.FrontSide}
+								blending={THREE.AdditiveBlending}
+								transparent
+							/>
+						</mesh>
+						<PerspectiveCamera
+							makeDefault
+							position={[0, 30, 80]}
+							fov={90}
 						/>
-					</mesh>
+					</>
 				)}
 			</mesh>
 		</mesh>
@@ -141,5 +163,7 @@ Planets.propTypes = {
 		created_at: PropTypes.any.isRequired,
 		userId: PropTypes.number.isRequired,
 	}).isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
 }
 export default Planets

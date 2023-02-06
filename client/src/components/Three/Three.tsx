@@ -32,36 +32,28 @@ function Three({
 	// onClick={() => setActive(!active)}
 
 	// State
-	const [active, setActive] = useState({
-		planetAtom: false,
-		planetHighTech: false,
-	})
+	const [selectedById, setSelectedById] = useState(Number)
 
 	// Make the mesh rotate
 	const sunRef: any = useRef()
-	// const planetRef: any = useRef()
-	// const planetHighTechRef: any = useRef()
 
 	useFrame(() => {
-		sunRef.current.rotation.y += 0.005
-		// planetRef.current.rotation.y += 0.001
-		// planetHighTechRef.current.rotation.y += 0.02
+		sunRef.current.rotation.y += 0.002
 	})
-
-	// function onClick(e): ThreeEvent<MouseEvent> {
-	//     console.log()
-	//   }
 	return (
 		<>
 			<Outlet />
 			{/* Camera */}
-			<PerspectiveCamera
-				makeDefault
-				position={[0, 150, 350]}
-			/>
-
-			{/*Control camera */}
-			<OrbitControls enablePan={false} />
+			{selectedById === null && (
+				<>
+					<PerspectiveCamera
+						makeDefault
+						position={[0, 150, 350]}
+					/>
+					{/*Control camera */}
+					<OrbitControls enablePan={false} />
+				</>
+			)}
 
 			{/* Scroll Controll Camera */}
 			{/* <ScrollControls /> */}
@@ -80,6 +72,8 @@ function Three({
 					<Planets
 						key={project.id}
 						project={project}
+						selectedById={selectedById}
+						setSelectedById={setSelectedById}
 					/>
 				)
 			})}

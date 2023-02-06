@@ -20,7 +20,7 @@ function OrbitalRings({ project }: InferProps<typeof OrbitalRings.propTypes>) {
 
 	return (
 		<mesh rotation-x={Math.PI * 0.5}>
-			<torusGeometry args={[radiusMultiplier(), 0.2, 2, 200]} />
+			<torusGeometry args={[radiusMultiplier(), 0.2, 64, 200]} />
 			<meshStandardMaterial
 				color={'yellow'}
 				metalness={0.7}
