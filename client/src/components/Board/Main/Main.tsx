@@ -14,36 +14,22 @@ import Contact from './Contact/Contact'
 import AboutMe from './AboutMe/AboutMe'
 import Stats from './Stats/Stats'
 import News from './News/News'
+import ProjectById from './Projects/ProjectById/ProjectById'
 
 function Main({
-	activePlanetAtom,
-	setActivePlanetAtom,
-	activePlanetHighTech,
-	setActivePlanetHighTech,
-	disabledLoginModal,
-	setDisabledLoginModal,
-	values,
-	setValues,
-	isLogged,
-	setIsLogged,
 	token,
 	setToken,
+	allProjects,
+	getAllProject,
+	projectId,
+	setProjectId,
+	projectById,
+	setProjectById,
+	getProjectById,
 }: InferProps<typeof Main.propTypes>) {
 	// My state
-	const [allProjects, setAllProjects] = useState([])
 	const [disabledNewsModal, setDisabledNewsModal] = useState(true)
 
-	// My function
-	function getAllProject() {
-		axios
-			.get(`${import.meta.env.VITE_API_URL}/projects`)
-			.then(function (response: any) {
-				setAllProjects(response.data)
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
-	}
 	useEffect(() => {
 		getAllProject()
 	}, [allProjects?.length])
@@ -70,6 +56,26 @@ function Main({
 							token={token}
 							setToken={setToken}
 							getAllProject={getAllProject}
+							projectId={projectId}
+							setProjectId={setProjectId}
+							projectById={projectById}
+							setProjectById={setProjectById}
+							getProjectById={getProjectById}
+						/>
+					}
+				/>
+				<Route
+					path='projects/:id'
+					element={
+						<ProjectById
+							token={token}
+							setToken={setToken}
+							projectId={projectId}
+							setProjectId={setProjectId}
+							projectById={projectById}
+							setProjectById={setProjectById}
+							getProjectById={getProjectById}
+							getAllProject={getAllProject}
 						/>
 					}
 				/>
@@ -95,20 +101,29 @@ function Main({
 }
 
 Main.propTypes = {
-	setActivePlanetAtom: PropTypes.func.isRequired,
-	activePlanetAtom: PropTypes.bool.isRequired,
-	setActivePlanetHighTech: PropTypes.func.isRequired,
-	activePlanetHighTech: PropTypes.bool.isRequired,
-	disabledLoginModal: PropTypes.bool.isRequired,
-	setDisabledLoginModal: PropTypes.func.isRequired,
-	values: PropTypes.shape({
-		pseudo: PropTypes.string.isRequired,
-		password: PropTypes.string.isRequired,
-	}).isRequired,
-	setValues: PropTypes.func.isRequired,
-	isLogged: PropTypes.bool.isRequired,
-	setIsLogged: PropTypes.func.isRequired,
 	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
+	allProjects: PropTypes.array.isRequired,
+	getAllProject: PropTypes.func.isRequired,
+	projectId: PropTypes.number,
+	setProjectId: PropTypes.func.isRequired,
+	projectById: PropTypes.shape({
+		id: PropTypes.number,
+		name: PropTypes.string,
+		nbWrittenLines: PropTypes.number,
+		git_url: PropTypes.string,
+		web_url: PropTypes.string,
+		description: PropTypes.string,
+		created_at: PropTypes.string,
+	}),
+	setProjectById: PropTypes.func.isRequired,
+	getProjectById: PropTypes.func.isRequired,
+	valuesProjectById: PropTypes.shape({
+		name: PropTypes.string,
+		nbWrittenLines: PropTypes.number,
+		git_url: PropTypes.string,
+		web_url: PropTypes.string,
+		description: PropTypes.string,
+	}),
 }
 export default Main

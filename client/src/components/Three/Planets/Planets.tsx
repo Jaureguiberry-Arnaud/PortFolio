@@ -2,20 +2,21 @@ import PropTypes, { InferProps } from 'prop-types'
 import * as THREE from 'three'
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-// import { Planet } from './PlanetsAsset/Planet1'
 import { Vector3 } from 'three'
-import { PerspectiveCamera } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
+import { useNavigate } from 'react-router-dom'
 
 function Planets({
 	project,
 	selectedById,
 	setSelectedById,
+	getProjectById,
 }: InferProps<typeof Planets.propTypes>) {
 	// My State
 	const [PlanetTexture, setPlanetTexture] = useState()
 	const [radiusMultiplierResult, setRadiusMultiplierResult] = useState(Number)
 	const [projectId, setProjectId] = useState(project.id)
-
+	const navigate = useNavigate()
 	// My Function
 	// dynamic import of the planet texture
 	function getDynamicPlanetTexture() {
@@ -80,11 +81,17 @@ function Planets({
 	function selectPlanet() {
 		if (selectedById === project.id) {
 			setSelectedById(null)
+			navigate('/')
 		} else {
 			setSelectedById(project.id)
+			getProjectById()
+			console.log(getProjectById())
+			setTimeout(() => {
+				navigate(`/projects/${projectId}`)
+			}, 1000)
 		}
 	}
-
+	const deg2rad = (degrees: number) => degrees * (Math.PI / 180)
 	// Make the mesh rotate
 	const planetPlanRef: any = useRef()
 	const planetRef: any = useRef()
@@ -106,7 +113,7 @@ function Planets({
 		// Get the dynamic planet texture and the radius multiplier
 		// when the component is mounted
 		getDynamicPlanetTexture()
-	}, [console.log(dynamicPosition)])
+	}, [])
 
 	return (
 		<mesh
@@ -142,8 +149,8 @@ function Planets({
 						</mesh>
 						<PerspectiveCamera
 							makeDefault
-							position={[0, 30, 80]}
-							fov={90}
+							rotation={[deg2rad(-30), 0, 0]}
+							position={[0, 100, 150]}
 						/>
 					</>
 				)}
@@ -165,5 +172,6 @@ Planets.propTypes = {
 	}).isRequired,
 	selectedById: PropTypes.number,
 	setSelectedById: PropTypes.func.isRequired,
+	getProjectById: PropTypes.func.isRequired,
 }
 export default Planets

@@ -3,34 +3,21 @@ import {
 	OrbitControls,
 	Environment,
 	Stars,
-	ScrollControls,
-	GradientTexture,
 } from '@react-three/drei'
 import { Material } from 'three'
 import { Outlet } from 'react-router-dom'
 import { useFrame } from '@react-three/fiber'
-import { angleToRadians } from '../../utils/angle'
 import * as THREE from 'three'
-import React, { useRef, useState, Suspense } from 'react'
+import { useRef, useState } from 'react'
 import PropTypes, { InferProps } from 'prop-types'
-// import { ExplodingPlanetType1 } from "./ExplodingPlanetType1"
 import { Sun } from './Star_of_sun'
-import { Planet } from './Planets/PlanetsAsset/Planet1'
-// import { PlanetHighTech } from './Planets/PlanetsAsset/Planet2'
 import OrbitalRings from './OrbitalRings/OrbitalRings'
 import Planets from './Planets/Planets'
 
 function Three({
-	setActivePlanetAtom,
-	activePlanetAtom,
-	setActivePlanetHighTech,
-	activePlanetHighTech,
 	allProjects,
+	getProjectById,
 }: InferProps<typeof Three.propTypes>) {
-	// exemple of pointer event:
-	// onPointerOver={(e) => console.log("over")}
-	// onClick={() => setActive(!active)}
-
 	// State
 	const [selectedById, setSelectedById] = useState(Number)
 
@@ -74,6 +61,7 @@ function Three({
 						project={project}
 						selectedById={selectedById}
 						setSelectedById={setSelectedById}
+						getProjectById={getProjectById}
 					/>
 				)
 			})}
@@ -122,10 +110,7 @@ function Three({
 }
 
 Three.propTypes = {
-	setActivePlanetAtom: PropTypes.func.isRequired,
-	activePlanetAtom: PropTypes.bool.isRequired,
-	setActivePlanetHighTech: PropTypes.func.isRequired,
-	activePlanetHighTech: PropTypes.bool.isRequired,
 	allProjects: PropTypes.array.isRequired,
+	getProjectById: PropTypes.func.isRequired,
 }
 export default Three

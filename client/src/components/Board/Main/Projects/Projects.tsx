@@ -8,13 +8,18 @@ import iconCloseModal from '../../../../assets/closeModal.png'
 import iconReduceModal from '../../../../assets/reduceModal.png'
 
 function Projects({
-	allProjects,
 	token,
 	setToken,
+	allProjects,
 	getAllProject,
+	projectId,
+	setProjectId,
+	projectById,
+	setProjectById,
+	getProjectById,
 }: InferProps<typeof Projects.propTypes>) {
 	// My state
-	const [projectId, setProjectId] = useState(null)
+	// const [projectId, setProjectId] = useState(null)
 	const [toggleAddProject, setToggleAddProject] = useState(false)
 	const navigate = useNavigate()
 	function onClickCloseProjects() {
@@ -73,9 +78,14 @@ function Projects({
 				<ProjectById
 					projectId={projectId}
 					setProjectId={setProjectId}
+					projectById={projectById}
+					setProjectById={setProjectById}
+					getProjectById={getProjectById}
 					token={token}
 					setToken={setToken}
 					getAllProject={getAllProject}
+					// valuesProjectById={valuesProjectById}
+					// setValuesProjectById={setValuesProjectById}
 				/>
 			)}
 		</section>
@@ -87,5 +97,25 @@ Projects.propTypes = {
 	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 	getAllProject: PropTypes.func.isRequired,
+	projectId: PropTypes.number,
+	setProjectId: PropTypes.func.isRequired,
+	projectById: PropTypes.shape({
+		id: PropTypes.number,
+		name: PropTypes.string,
+		nbWrittenLines: PropTypes.number,
+		git_url: PropTypes.string,
+		web_url: PropTypes.string,
+		description: PropTypes.string,
+		created_at: PropTypes.string,
+	}),
+	setProjectById: PropTypes.func.isRequired,
+	getProjectById: PropTypes.func.isRequired,
+	valuesProjectById: PropTypes.shape({
+		name: PropTypes.string,
+		nbWrittenLines: PropTypes.number,
+		git_url: PropTypes.string,
+		web_url: PropTypes.string,
+		description: PropTypes.string,
+	}),
 }
 export default Projects

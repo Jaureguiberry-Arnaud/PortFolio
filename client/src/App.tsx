@@ -7,13 +7,20 @@ import Three from './components/Three/Three'
 import Board from './components/Board/Board'
 function App() {
 	// My state
-	const [activePlanetAtom, setActivePlanetAtom] = useState(false)
-	const [activePlanetHighTech, setActivePlanetHighTech] = useState(false)
 	const [allProjects, setAllProjects] = useState([])
+	const [projectId, setProjectId] = useState(null)
+	const [projectById, setProjectById] = useState()
+	// const [valuesProjectById, setValuesProjectById] = useState({
+	// 	name: projectById?.name,
+	// 	description: projectById?.description,
+	// 	nbWrittenLines: projectById?.nbWrittenLines,
+	// 	git_url: projectById?.git_url,
+	// 	web_url: projectById?.web_url,
+	// })
 
 	// My function
 
-	// do i really have to comment this?
+	// Add log when user enter on portfolio
 	function postLogPortfolio() {
 		axios({
 			method: 'POST',
@@ -32,6 +39,7 @@ function App() {
 				console.log('log not sent')
 			})
 	}
+	// Get all projects
 	function getAllProject() {
 		axios
 			.get(`${import.meta.env.VITE_API_URL}/projects`)
@@ -42,29 +50,41 @@ function App() {
 				console.log(error)
 			})
 	}
+	// Get project by id
+	function getProjectById() {
+		axios
+			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
+			.then(function (response: any) {
+				setProjectById(response.data)
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
+	}
 	useEffect(() => {
 		getAllProject()
-	}, [postLogPortfolio()])
+		postLogPortfolio()
+	}, [projectId])
 	return (
 		<>
 			<Board
-				setActivePlanetAtom={setActivePlanetAtom}
-				activePlanetAtom={activePlanetAtom}
-				setActivePlanetHighTech={setActivePlanetHighTech}
-				activePlanetHighTech={activePlanetHighTech}
 				allProjects={allProjects}
 				getAllProject={getAllProject}
+				projectId={projectId}
+				setProjectId={setProjectId}
+				projectById={projectById}
+				setProjectById={setProjectById}
+				getProjectById={getProjectById}
+				// valuesProjectById={valuesProjectById}
+				// setValuesProjectById={setValuesProjectById}
 			/>
 			<Canvas
 				id='three_canvas_container'
 				shadows>
 				<Suspense fallback={null}>
 					<Three
-						setActivePlanetAtom={setActivePlanetAtom}
-						activePlanetAtom={activePlanetAtom}
-						setActivePlanetHighTech={setActivePlanetHighTech}
-						activePlanetHighTech={activePlanetHighTech}
 						allProjects={allProjects}
+						getProjectById={getProjectById}
 					/>
 				</Suspense>
 			</Canvas>

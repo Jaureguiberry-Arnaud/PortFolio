@@ -8,6 +8,7 @@ import Main from './Main/Main'
 import Footer from './Footer/Footer'
 import NotFound from './Main/NotFound/NotFound'
 import Projects from './Main/Projects/Projects'
+import ProjectById from './Main/Projects/ProjectById/ProjectById'
 import Cv from './Main/Cv/Cv'
 import ModalLogin from './Main/ModalLogin/ModalLogin'
 import Contact from './Main/Contact/Contact'
@@ -16,12 +17,13 @@ import AboutMe from './Main/AboutMe/AboutMe'
 import Stats from './Main/Stats/Stats'
 
 function Board({
-	setActivePlanetAtom,
-	activePlanetAtom,
-	setActivePlanetHighTech,
-	activePlanetHighTech,
 	allProjects,
 	getAllProject,
+	projectId,
+	setProjectId,
+	projectById,
+	setProjectById,
+	getProjectById,
 }: InferProps<typeof Board.propTypes>) {
 	// state
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
@@ -77,26 +79,16 @@ function Board({
 							/>
 						)}
 
-						{/* {disabledNewsModal && (
-							<News
-								disabledNewsModal={disabledNewsModal}
-								setDisabledNewsModal={setDisabledNewsModal}
-							/>
-						)} */}
-
 						<Main
-							activePlanetAtom={activePlanetAtom}
-							setActivePlanetAtom={setActivePlanetAtom}
-							activePlanetHighTech={activePlanetHighTech}
-							setActivePlanetHighTech={setActivePlanetHighTech}
-							disabledLoginModal={disabledLoginModal}
-							setDisabledLoginModal={setDisabledLoginModal}
-							values={values}
-							setValues={setValues}
-							isLogged={isLogged}
-							setIsLogged={setIsLogged}
 							token={token}
 							setToken={setToken}
+							allProjects={allProjects}
+							getAllProject={getAllProject}
+							projectId={projectId}
+							setProjectId={setProjectId}
+							projectById={projectById}
+							setProjectById={setProjectById}
+							getProjectById={getProjectById}
 						/>
 
 						<Footer />
@@ -108,8 +100,28 @@ function Board({
 						<Projects
 							allProjects={allProjects}
 							getAllProject={getAllProject}
+							projectId={projectId}
+							setProjectId={setProjectId}
+							projectById={projectById}
+							setProjectById={setProjectById}
+							getProjectById={getProjectById}
 							token={token}
 							setToken={setToken}
+						/>
+					}
+				/>
+				<Route
+					path='projects/:id'
+					element={
+						<ProjectById
+							token={token}
+							setToken={setToken}
+							projectId={projectId}
+							setProjectId={setProjectId}
+							projectById={projectById}
+							setProjectById={setProjectById}
+							getProjectById={getProjectById}
+							getAllProject={getAllProject}
 						/>
 					}
 				/>
@@ -139,12 +151,21 @@ function Board({
 }
 
 Board.propTypes = {
-	activePlanetAtom: PropTypes.bool.isRequired,
-	setActivePlanetAtom: PropTypes.func.isRequired,
-	activePlanetHighTech: PropTypes.bool.isRequired,
-	setActivePlanetHighTech: PropTypes.func.isRequired,
 	allProjects: PropTypes.array.isRequired,
 	getAllProject: PropTypes.func.isRequired,
+	projectId: PropTypes.number,
+	setProjectId: PropTypes.func.isRequired,
+	projectById: PropTypes.shape({
+		id: PropTypes.number,
+		name: PropTypes.string,
+		nbWrittenLines: PropTypes.number,
+		git_url: PropTypes.string,
+		web_url: PropTypes.string,
+		description: PropTypes.string,
+		created_at: PropTypes.string,
+	}),
+	setProjectById: PropTypes.func.isRequired,
+	getProjectById: PropTypes.func.isRequired,
 }
 
 export default Board

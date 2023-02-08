@@ -16,19 +16,21 @@ import iconWarning from '../../../../../assets/warningOrange.png'
 function ProjectById({
 	projectId,
 	setProjectId,
+	projectById,
+	setProjectById,
+	getProjectById,
 	token,
 	setToken,
 	getAllProject,
 }: InferProps<typeof ProjectById.propTypes>) {
 	// My state
-	const [projectById, setProjectById] = useState<ProjectById>()
 	const [status, setStatus] = useState<null | string>(null)
 	const [errorMessage, setErrorMessage] = useState()
 	const [errorToggle, setErrorToggle] = useState<AxiosResponse | null | void>(
 		null
 	)
 	const [toggleUpdate, setToggleUpdate] = useState(false)
-	const [values, setValues] = useState<any>({
+	const [valuesProjectById, setValuesProjectById] = useState<any>({
 		name: projectById?.name,
 		description: projectById?.description,
 		nbWrittenLines: projectById?.nbWrittenLines,
@@ -37,24 +39,27 @@ function ProjectById({
 	})
 
 	function onChange(e: { target: { name: any; value: any } }) {
-		setValues({ ...values, [e.target.name]: e.target.value })
+		setValuesProjectById({
+			...valuesProjectById,
+			[e.target.name]: e.target.value,
+		})
 	}
-	function getProjectById() {
-		axios
-			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
-			.then(function (response: any) {
-				setProjectById(response.data)
-				setValues({
-					name: response.data.name,
-					description: response.data.description,
-					git_url: response.data.git_url,
-					web_url: response.data.web_url,
-				})
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
-	}
+	// function getProjectById() {
+	// 	axios
+	// 		.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
+	// 		.then(function (response: any) {
+	// 			setProjectById(response.data)
+	// 			setValues({
+	// 				name: response.data.name,
+	// 				description: response.data.description,
+	// 				git_url: response.data.git_url,
+	// 				web_url: response.data.web_url,
+	// 			})
+	// 		})
+	// 		.catch(function (error) {
+	// 			console.log(error)
+	// 		})
+	// }
 	function onClickCloseModalProjectById(event: any) {
 		event.preventDefault()
 		setProjectId(null)
@@ -114,11 +119,11 @@ function ProjectById({
 			method: 'PUT',
 			url: `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
 			data: {
-				name: values.name,
-				description: values.description,
-				nbWrittenLines: values.nbWrittenLines,
-				git_url: values.git_url,
-				web_url: values.web_url,
+				name: valuesProjectById.name,
+				description: valuesProjectById.description,
+				nbWrittenLines: valuesProjectById.nbWrittenLines,
+				git_url: valuesProjectById.git_url,
+				web_url: valuesProjectById.web_url,
 				userId: tokenDecoded?.userId,
 			},
 			headers: {
@@ -177,7 +182,9 @@ function ProjectById({
 	}
 	useEffect(() => {
 		getProjectById()
-	}, [projectId, postLogByProject()])
+		// console.log(getProjectById())
+		postLogByProject()
+	}, [projectId])
 	return (
 		<>
 			{errorToggle ? (
@@ -257,7 +264,7 @@ function ProjectById({
 									className='projectById_form-input'
 									name='name'
 									id='name'
-									value={values.name}
+									value={valuesProjectById.name}
 									onChange={onChange}
 									required
 								/>
@@ -282,7 +289,7 @@ function ProjectById({
 									type='number'
 									name='nbWrittenLines'
 									className='projectById_form-input'
-									value={values.nbWrittenLines}
+									value={valuesProjectById.nbWrittenLines}
 									onChange={onChange}
 									required></input>
 
@@ -296,7 +303,7 @@ function ProjectById({
 									pattern='https://.*'
 									name='git_url'
 									className='projectById_form-input'
-									value={values.git_url}
+									value={valuesProjectById.git_url}
 									onChange={onChange}
 								/>
 
@@ -310,7 +317,7 @@ function ProjectById({
 									pattern='https://.*'
 									name='web_url'
 									className='projectById_form-input'
-									value={values.web_url}
+									value={valuesProjectById.web_url}
 									onChange={onChange}
 								/>
 
@@ -322,7 +329,7 @@ function ProjectById({
 								<textarea
 									name='description'
 									className='projectById_form-input'
-									value={values.description}
+									value={valuesProjectById.description}
 									onChange={onChange}
 								/>
 
@@ -362,14 +369,14 @@ function ProjectById({
 							</p>
 							<h2 className='projectById-title'>Git Url:</h2>
 							<a
-								href={projectById?.git_url}
+								ref={projectById?.git_url}
 								target='_blank'
 								className='projectById-content'>
 								{projectById?.git_url}
 							</a>
 							<h2 className='projectById-title'>Web Url:</h2>
 							<a
-								href={projectById?.web_url}
+								ref={projectById?.web_url}
 								target='_blank'
 								className='projectById-content'>
 								{projectById?.web_url}
@@ -384,8 +391,19 @@ function ProjectById({
 	)
 }
 ProjectById.propTypes = {
-	projectId: PropTypes.number.isRequired,
+	projectId: PropTypes.number,
 	setProjectId: PropTypes.func.isRequired,
+	projectById: PropTypes.shape({
+		id: PropTypes.number,
+		name: PropTypes.string,
+		nbWrittenLines: PropTypes.number,
+		git_url: PropTypes.string,
+		web_url: PropTypes.string,
+		description: PropTypes.string,
+		created_at: PropTypes.string,
+	}),
+	setProjectById: PropTypes.func.isRequired,
+	getProjectById: PropTypes.func.isRequired,
 	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 	getAllProject: PropTypes.func.isRequired,
