@@ -39,7 +39,7 @@ function Planets({
 	// Multiplier for the rotation of the planet from sun (center)
 	function rotationFromSunMultiplier() {
 		if (project.id === 1) {
-			return 0.001
+			return 0.001 / 5
 		} else {
 			return (0.001 * project.id) / 5
 		}
