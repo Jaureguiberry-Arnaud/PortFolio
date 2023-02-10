@@ -13,7 +13,10 @@ import { Sun } from './Star_of_sun'
 import OrbitalRings from './OrbitalRings/OrbitalRings'
 import Planets from './Planets/Planets'
 
-function Three({ allProjects }: InferProps<typeof Three.propTypes>) {
+function Three({
+	allProjects,
+	setProjectId,
+}: InferProps<typeof Three.propTypes>) {
 	// State
 	const [selectedById, setSelectedById] = useState(Number)
 
@@ -57,6 +60,7 @@ function Three({ allProjects }: InferProps<typeof Three.propTypes>) {
 						project={project}
 						selectedById={selectedById}
 						setSelectedById={setSelectedById}
+						setProjectId={setProjectId}
 					/>
 				)
 			})}
@@ -106,5 +110,6 @@ function Three({ allProjects }: InferProps<typeof Three.propTypes>) {
 
 Three.propTypes = {
 	allProjects: PropTypes.array.isRequired,
+	setProjectId: PropTypes.func.isRequired,
 }
 export default Three

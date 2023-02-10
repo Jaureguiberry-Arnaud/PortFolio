@@ -10,11 +10,12 @@ function Planets({
 	project,
 	selectedById,
 	setSelectedById,
+	setProjectId,
 }: InferProps<typeof Planets.propTypes>) {
 	// My State
 	const [PlanetTexture, setPlanetTexture] = useState()
 	const [radiusMultiplierResult, setRadiusMultiplierResult] = useState(Number)
-	const [projectId, setProjectId] = useState(project.id)
+	// const [projectId, setProjectId] = useState(project.id)
 	const navigate = useNavigate()
 	// My Function
 	// dynamic import of the planet texture
@@ -72,20 +73,19 @@ function Planets({
 	]
 	// Dynamic position of the planet to export on the mesh
 	const dynamicPosition = new THREE.Vector3(
-		planetPosition[projectId - 1].x,
-		planetPosition[projectId - 1].y,
-		planetPosition[projectId - 1].z
+		planetPosition[project.id - 1].x,
+		planetPosition[project.id - 1].y,
+		planetPosition[project.id - 1].z
 	)
 	// Get Id of the selected planet or change him to null
 	function selectPlanet() {
 		if (selectedById === project.id) {
 			setSelectedById(null)
-			navigate('/')
+			navigate(-1)
 		} else {
 			setSelectedById(project.id)
-			setTimeout(() => {
-				navigate(`/projects/${projectId}`)
-			}, 1000)
+			setProjectId(project.id)
+			navigate(`/3DPlanet/${project.id}`)
 		}
 	}
 	const deg2rad = (degrees: number) => degrees * (Math.PI / 180)
@@ -132,7 +132,7 @@ function Planets({
 				onClick={() => setSelectedById(selectPlanet)}>
 				{PlanetTexture}
 				<meshStandardMaterial color={'#ffffff'} />
-				{selectedById === projectId && (
+				{selectedById === project.id && (
 					<>
 						<mesh>
 							<boxGeometry args={[20, 20, 20]} />
@@ -169,5 +169,6 @@ Planets.propTypes = {
 	}).isRequired,
 	selectedById: PropTypes.number,
 	setSelectedById: PropTypes.func.isRequired,
+	setProjectId: PropTypes.func.isRequired,
 }
 export default Planets
