@@ -22,7 +22,7 @@
 	}
 	&-text {
 		font-size: 1rem;
-		color: white;
+		color: #e5e5e5;
 		text-shadow: 1px 1px 2px red;
 		margin-bottom: 0.25rem;
 		text-align: center;
@@ -63,7 +63,7 @@
 	}
 	&-text {
 		font-size: 1rem;
-		color: white;
+		color: #e5e5e5;
 		text-shadow: 1px 1px 2px green;
 		margin-bottom: 0.25rem;
 		text-align: center;
@@ -110,7 +110,7 @@
 
 		pointer-events: auto;
 
-		-webkit-animation: scale-in-ver-center 2s
+		-webkit-animation: scale-in-ver-center 1s
 			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 	}
 	&_container {
@@ -127,7 +127,7 @@
 			border-radius: 0.7rem;
 			box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
 			pointer-events: auto;
-			-webkit-animation: scale-in-ver-center 3s
+			-webkit-animation: scale-in-ver-center 1s
 				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
 			&_item {
@@ -156,7 +156,7 @@
 			justify-content: center;
 			align-items: center;
 
-			-webkit-animation: scale-in-ver-center 3s
+			-webkit-animation: scale-in-ver-center 1s
 				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
 			&-title {
@@ -168,7 +168,7 @@
 			}
 			&-text {
 				font-size: 1rem;
-				color: white;
+				color: #e5e5e5;
 				text-shadow: 1px 1px 2px #00d1ff;
 				margin-bottom: 0.25rem;
 				text-align: center;
@@ -193,7 +193,7 @@
 				&-button {
 					width: 100%;
 					font-size: 1rem;
-					color: #fff;
+					color: #e5e5e5;
 					background-color: #00d0ffb0;
 					text-shadow: 1px 1px 2px #00d1ff;
 					border: 0.1rem solid #00d1ff;
@@ -262,7 +262,7 @@
 			flex-direction: row;
 			align-items: center;
 			&_left {
-				width: 30%;
+				width: 25%;
 				height: fit-content;
 				text-align: center;
 				text-overflow: ellipsis;
@@ -270,11 +270,11 @@
 				overflow: scroll;
 			}
 			&_right {
-				width: 60%;
+				width: 50%;
 				padding: 2rem 0;
 
 				&_form {
-					width: 60%;
+					width: 50%;
 				}
 			}
 		}

@@ -32,7 +32,11 @@ function Cv() {
 				</div>
 				<div className='cv_contact_div'>
 					<h3 className='cv_contact_div-title'>Email:</h3>
-					<p className='cv_contact_div-text'>jaureguiberry.arnaud@gmail.com</p>
+					<a
+						href='mailto:jaureguiberry.arnaud@gmail.com'
+						className='cv_contact_div-text'>
+						jaureguiberry.arnaud@gmail.com
+					</a>
 				</div>
 				<div className='cv_contact_div'>
 					<h3 className='cv_contact_div-title'>Age:</h3>
