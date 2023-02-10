@@ -1,5 +1,5 @@
 import PropTypes, { InferProps } from 'prop-types'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Board.scss'
@@ -15,17 +15,16 @@ import Contact from './Main/Contact/Contact'
 import AboutMe from './Main/AboutMe/AboutMe'
 // import News from './Main/News/News'
 import Stats from './Main/Stats/Stats'
+import Router from '../../Router/Router'
 
 function Board({
 	allProjects,
 	getAllProject,
 	projectId,
 	setProjectId,
-	projectById,
-	setProjectById,
-	getProjectById,
 }: InferProps<typeof Board.propTypes>) {
 	// state
+	const [toggleAddProject, setToggleAddProject] = useState(false)
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
 	const [isLogged, setIsLogged] = useState(false)
 	const [token, setToken] = useState('')
@@ -56,97 +55,144 @@ function Board({
 
 	useEffect(() => {}, [konami(toggleDisabledLoginModal), allProjects?.length])
 	return (
-		<Routes>
-			<Route
-				path='/'
-				element={
-					<section className='board'>
-						<Header
-							disabledLoginModal={disabledLoginModal}
-							setDisabledLoginModal={setDisabledLoginModal}
-							isLogged={isLogged}
-						/>
-						{disabledLoginModal && (
-							<ModalLogin
-								disabledLoginModal={disabledLoginModal}
-								setDisabledLoginModal={setDisabledLoginModal}
-								values={values}
-								setValues={setValues}
-								isLogged={isLogged}
-								setIsLogged={setIsLogged}
-								token={token}
-								setToken={setToken}
-							/>
-						)}
-
-						<Main
-							token={token}
-							setToken={setToken}
-							allProjects={allProjects}
-							getAllProject={getAllProject}
-							projectId={projectId}
-							setProjectId={setProjectId}
-							projectById={projectById}
-							setProjectById={setProjectById}
-							getProjectById={getProjectById}
-						/>
-
-						<Footer />
-					</section>
-				}>
-				<Route
-					path='projects'
-					element={
-						<Projects
-							allProjects={allProjects}
-							getAllProject={getAllProject}
-							projectId={projectId}
-							setProjectId={setProjectId}
-							projectById={projectById}
-							setProjectById={setProjectById}
-							getProjectById={getProjectById}
-							token={token}
-							setToken={setToken}
-						/>
-					}
-				/>
-				<Route
-					path='projects/:id'
-					element={
-						<ProjectById
-							token={token}
-							setToken={setToken}
-							projectId={projectId}
-							setProjectId={setProjectId}
-							projectById={projectById}
-							setProjectById={setProjectById}
-							getProjectById={getProjectById}
-							getAllProject={getAllProject}
-						/>
-					}
-				/>
-				<Route
-					path='stats'
-					element={<Stats />}
-				/>
-				<Route
-					path='cv'
-					element={<Cv />}
-				/>
-				<Route
-					path='contact'
-					element={<Contact />}
-				/>
-				<Route
-					path='about-me'
-					element={<AboutMe />}
-				/>
-			</Route>
-			<Route
-				path='*'
-				element={<NotFound />}
+		<section className='board'>
+			<Router
+				token={token}
+				setToken={setToken}
+				isLogged={isLogged}
+				setIsLogged={setIsLogged}
+				toggleAddProject={toggleAddProject}
+				setToggleAddProject={setToggleAddProject}
+				disabledLoginModal={disabledLoginModal}
+				setDisabledLoginModal={setDisabledLoginModal}
+				allProjects={allProjects}
+				getAllProject={getAllProject}
+				projectId={projectId}
+				setProjectId={setProjectId}
 			/>
-		</Routes>
+			{/* <Header
+				disabledLoginModal={disabledLoginModal}
+				setDisabledLoginModal={setDisabledLoginModal}
+				isLogged={isLogged}
+			/>
+			{disabledLoginModal && (
+				<ModalLogin
+					disabledLoginModal={disabledLoginModal}
+					setDisabledLoginModal={setDisabledLoginModal}
+					values={values}
+					setValues={setValues}
+					isLogged={isLogged}
+					setIsLogged={setIsLogged}
+					token={token}
+					setToken={setToken}
+				/>
+			)}
+
+			<Main
+				token={token}
+				setToken={setToken}
+				allProjects={allProjects}
+				getAllProject={getAllProject}
+				projectId={projectId}
+				setProjectId={setProjectId}
+				projectById={projectById}
+				setProjectById={setProjectById}
+				getProjectById={getProjectById}
+			/>
+
+			<Footer /> */}
+		</section>
+		// <Routes>
+		// 	<Route
+		// 		path='/'
+		// 		element={
+		// 			<section className='board'>
+		// 				<Header
+		// 					disabledLoginModal={disabledLoginModal}
+		// 					setDisabledLoginModal={setDisabledLoginModal}
+		// 					isLogged={isLogged}
+		// 				/>
+		// 				{disabledLoginModal && (
+		// 					<ModalLogin
+		// 						disabledLoginModal={disabledLoginModal}
+		// 						setDisabledLoginModal={setDisabledLoginModal}
+		// 						values={values}
+		// 						setValues={setValues}
+		// 						isLogged={isLogged}
+		// 						setIsLogged={setIsLogged}
+		// 						token={token}
+		// 						setToken={setToken}
+		// 					/>
+		// 				)}
+
+		// 				<Main
+		// 					token={token}
+		// 					setToken={setToken}
+		// 					allProjects={allProjects}
+		// 					getAllProject={getAllProject}
+		// 					projectId={projectId}
+		// 					setProjectId={setProjectId}
+		// 					projectById={projectById}
+		// 					setProjectById={setProjectById}
+		// 					getProjectById={getProjectById}
+		// 				/>
+
+		// 				<Footer />
+		// 			</section>
+		// 		}>
+		// 		{/* <Route
+		// 			path='projects'
+		// 			element={
+		// 				<Projects
+		// 					allProjects={allProjects}
+		// 					getAllProject={getAllProject}
+		// 					projectId={projectId}
+		// 					setProjectId={setProjectId}
+		// 					projectById={projectById}
+		// 					setProjectById={setProjectById}
+		// 					getProjectById={getProjectById}
+		// 					token={token}
+		// 					setToken={setToken}
+		// 				/>
+		// 			}
+		// 		/> */}
+		// 		<Route
+		// 			path='projects/:id'
+		// 			element={
+		// 				<ProjectById
+		// 					token={token}
+		// 					setToken={setToken}
+		// 					projectId={projectId}
+		// 					setProjectId={setProjectId}
+		// 					projectById={projectById}
+		// 					setProjectById={setProjectById}
+		// 					getProjectById={getProjectById}
+		// 					getAllProject={getAllProject}
+		// 				/>
+		// 			}
+		// 		/>
+		// 		<Route
+		// 			path='stats'
+		// 			element={<Stats />}
+		// 		/>
+		// 		<Route
+		// 			path='cv'
+		// 			element={<Cv />}
+		// 		/>
+		// 		<Route
+		// 			path='contact'
+		// 			element={<Contact />}
+		// 		/>
+		// 		<Route
+		// 			path='about-me'
+		// 			element={<AboutMe />}
+		// 		/>
+		// 	</Route>
+		// 	<Route
+		// 		path='*'
+		// 		element={<NotFound />}
+		// 	/>
+		// </Routes>
 	)
 }
 
@@ -155,17 +201,6 @@ Board.propTypes = {
 	getAllProject: PropTypes.func.isRequired,
 	projectId: PropTypes.number,
 	setProjectId: PropTypes.func.isRequired,
-	projectById: PropTypes.shape({
-		id: PropTypes.number,
-		name: PropTypes.string,
-		nbWrittenLines: PropTypes.number,
-		git_url: PropTypes.string,
-		web_url: PropTypes.string,
-		description: PropTypes.string,
-		created_at: PropTypes.string,
-	}),
-	setProjectById: PropTypes.func.isRequired,
-	getProjectById: PropTypes.func.isRequired,
 }
 
 export default Board

@@ -10,7 +10,6 @@ function Planets({
 	project,
 	selectedById,
 	setSelectedById,
-	getProjectById,
 }: InferProps<typeof Planets.propTypes>) {
 	// My State
 	const [PlanetTexture, setPlanetTexture] = useState()
@@ -84,8 +83,6 @@ function Planets({
 			navigate('/')
 		} else {
 			setSelectedById(project.id)
-			getProjectById()
-			console.log(getProjectById())
 			setTimeout(() => {
 				navigate(`/projects/${projectId}`)
 			}, 1000)
@@ -172,6 +169,5 @@ Planets.propTypes = {
 	}).isRequired,
 	selectedById: PropTypes.number,
 	setSelectedById: PropTypes.func.isRequired,
-	getProjectById: PropTypes.func.isRequired,
 }
 export default Planets

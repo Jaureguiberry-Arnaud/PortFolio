@@ -1,22 +1,16 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState, useEffect } from 'react'
 import axios from 'axios'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import './App.scss'
 import Three from './components/Three/Three'
 import Board from './components/Board/Board'
+import Router from './Router/Router'
+
 function App() {
 	// My state
 	const [allProjects, setAllProjects] = useState([])
 	const [projectId, setProjectId] = useState(null)
-	const [projectById, setProjectById] = useState()
-	// const [valuesProjectById, setValuesProjectById] = useState({
-	// 	name: projectById?.name,
-	// 	description: projectById?.description,
-	// 	nbWrittenLines: projectById?.nbWrittenLines,
-	// 	git_url: projectById?.git_url,
-	// 	web_url: projectById?.web_url,
-	// })
 
 	// My function
 
@@ -50,21 +44,10 @@ function App() {
 				console.log(error)
 			})
 	}
-	// Get project by id
-	function getProjectById() {
-		axios
-			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
-			.then(function (response: any) {
-				setProjectById(response.data)
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
-	}
 	useEffect(() => {
 		getAllProject()
 		postLogPortfolio()
-	}, [projectId])
+	}, [])
 	return (
 		<>
 			<Board
@@ -72,20 +55,12 @@ function App() {
 				getAllProject={getAllProject}
 				projectId={projectId}
 				setProjectId={setProjectId}
-				projectById={projectById}
-				setProjectById={setProjectById}
-				getProjectById={getProjectById}
-				// valuesProjectById={valuesProjectById}
-				// setValuesProjectById={setValuesProjectById}
 			/>
 			<Canvas
 				id='three_canvas_container'
 				shadows>
 				<Suspense fallback={null}>
-					<Three
-						allProjects={allProjects}
-						getProjectById={getProjectById}
-					/>
+					<Three allProjects={allProjects} />
 				</Suspense>
 			</Canvas>
 		</>

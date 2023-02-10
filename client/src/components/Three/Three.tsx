@@ -4,7 +4,6 @@ import {
 	Environment,
 	Stars,
 } from '@react-three/drei'
-import { Material } from 'three'
 import { Outlet } from 'react-router-dom'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -14,10 +13,7 @@ import { Sun } from './Star_of_sun'
 import OrbitalRings from './OrbitalRings/OrbitalRings'
 import Planets from './Planets/Planets'
 
-function Three({
-	allProjects,
-	getProjectById,
-}: InferProps<typeof Three.propTypes>) {
+function Three({ allProjects }: InferProps<typeof Three.propTypes>) {
 	// State
 	const [selectedById, setSelectedById] = useState(Number)
 
@@ -29,7 +25,7 @@ function Three({
 	})
 	return (
 		<>
-			<Outlet />
+			{/* <Outlet /> */}
 			{/* Camera */}
 			{selectedById === null && (
 				<>
@@ -61,7 +57,6 @@ function Three({
 						project={project}
 						selectedById={selectedById}
 						setSelectedById={setSelectedById}
-						getProjectById={getProjectById}
 					/>
 				)
 			})}
@@ -111,6 +106,5 @@ function Three({
 
 Three.propTypes = {
 	allProjects: PropTypes.array.isRequired,
-	getProjectById: PropTypes.func.isRequired,
 }
 export default Three

@@ -12,24 +12,27 @@ import iconCloseModal from '../../../../../assets/closeModal.png'
 import iconDelete from '../../../../../assets/iconDelete.png'
 import iconUpdate from '../../../../../assets/iconUpdate.png'
 import iconWarning from '../../../../../assets/warningOrange.png'
+import { useNavigate } from 'react-router-dom'
 
 function ProjectById({
 	projectId,
 	setProjectId,
-	projectById,
-	setProjectById,
-	getProjectById,
+	// projectById,
+	// setProjectById,
+	// getProjectById,
 	token,
 	setToken,
 	getAllProject,
 }: InferProps<typeof ProjectById.propTypes>) {
 	// My state
+	const navigate = useNavigate()
 	const [status, setStatus] = useState<null | string>(null)
 	const [errorMessage, setErrorMessage] = useState()
 	const [errorToggle, setErrorToggle] = useState<AxiosResponse | null | void>(
 		null
 	)
 	const [toggleUpdate, setToggleUpdate] = useState(false)
+	const [projectById, setProjectById] = useState<ProjectById>()
 	const [valuesProjectById, setValuesProjectById] = useState<any>({
 		name: projectById?.name,
 		description: projectById?.description,
@@ -44,24 +47,27 @@ function ProjectById({
 			[e.target.name]: e.target.value,
 		})
 	}
-	// function getProjectById() {
-	// 	axios
-	// 		.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
-	// 		.then(function (response: any) {
-	// 			setProjectById(response.data)
-	// 			setValues({
-	// 				name: response.data.name,
-	// 				description: response.data.description,
-	// 				git_url: response.data.git_url,
-	// 				web_url: response.data.web_url,
-	// 			})
-	// 		})
-	// 		.catch(function (error) {
-	// 			console.log(error)
-	// 		})
-	// }
+	function getProjectById() {
+		axios
+			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
+			.then(function (response: any) {
+				console.log(response.data)
+				setProjectById(response.data)
+				setValuesProjectById({
+					name: response.data.name,
+					description: response.data.description,
+					nbWrittenLines: response.data.nbWrittenLines,
+					git_url: response.data.git_url,
+					web_url: response.data.web_url,
+				})
+			})
+			.catch(function (error) {
+				console.log(error)
+			})
+	}
 	function onClickCloseModalProjectById(event: any) {
 		event.preventDefault()
+		navigate('/projects')
 		setProjectId(null)
 	}
 	function onClickCloseModalSuccess(event: any) {
@@ -157,7 +163,7 @@ function ProjectById({
 			headers: {},
 		})
 			.then(function (response) {
-				console.log(response)
+				// console.log(response)
 				console.log('log sent')
 			})
 			.catch(function (error) {
@@ -182,6 +188,8 @@ function ProjectById({
 	}
 	useEffect(() => {
 		getProjectById()
+		console.log(projectById)
+		console.log(projectId)
 		// console.log(getProjectById())
 		postLogByProject()
 	}, [projectId])
@@ -264,7 +272,7 @@ function ProjectById({
 									className='projectById_form-input'
 									name='name'
 									id='name'
-									value={valuesProjectById.name}
+									value={valuesProjectById?.name}
 									onChange={onChange}
 									required
 								/>
@@ -289,7 +297,7 @@ function ProjectById({
 									type='number'
 									name='nbWrittenLines'
 									className='projectById_form-input'
-									value={valuesProjectById.nbWrittenLines}
+									value={valuesProjectById?.nbWrittenLines}
 									onChange={onChange}
 									required></input>
 
@@ -303,7 +311,7 @@ function ProjectById({
 									pattern='https://.*'
 									name='git_url'
 									className='projectById_form-input'
-									value={valuesProjectById.git_url}
+									value={valuesProjectById?.git_url}
 									onChange={onChange}
 								/>
 
@@ -317,7 +325,7 @@ function ProjectById({
 									pattern='https://.*'
 									name='web_url'
 									className='projectById_form-input'
-									value={valuesProjectById.web_url}
+									value={valuesProjectById?.web_url}
 									onChange={onChange}
 								/>
 
@@ -329,7 +337,7 @@ function ProjectById({
 								<textarea
 									name='description'
 									className='projectById_form-input'
-									value={valuesProjectById.description}
+									value={valuesProjectById?.description}
 									onChange={onChange}
 								/>
 
@@ -369,14 +377,12 @@ function ProjectById({
 							</p>
 							<h2 className='projectById-title'>Git Url:</h2>
 							<a
-								ref={projectById?.git_url}
 								target='_blank'
 								className='projectById-content'>
 								{projectById?.git_url}
 							</a>
 							<h2 className='projectById-title'>Web Url:</h2>
 							<a
-								ref={projectById?.web_url}
 								target='_blank'
 								className='projectById-content'>
 								{projectById?.web_url}
@@ -393,17 +399,6 @@ function ProjectById({
 ProjectById.propTypes = {
 	projectId: PropTypes.number,
 	setProjectId: PropTypes.func.isRequired,
-	projectById: PropTypes.shape({
-		id: PropTypes.number,
-		name: PropTypes.string,
-		nbWrittenLines: PropTypes.number,
-		git_url: PropTypes.string,
-		web_url: PropTypes.string,
-		description: PropTypes.string,
-		created_at: PropTypes.string,
-	}),
-	setProjectById: PropTypes.func.isRequired,
-	getProjectById: PropTypes.func.isRequired,
 	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 	getAllProject: PropTypes.func.isRequired,
