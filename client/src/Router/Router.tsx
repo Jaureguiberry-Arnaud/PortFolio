@@ -88,6 +88,18 @@ function Router({
 					path='about-me'
 					element={<AboutMe />}
 				/>
+				<Route
+					path='3DPlanet/:planetId'
+					element={
+						<ProjectById
+							token={token}
+							setToken={setToken}
+							projectId={projectId}
+							setProjectId={setProjectId}
+							getAllProject={getAllProject}
+						/>
+					}
+				/>
 			</Route>
 		</Routes>
 	)

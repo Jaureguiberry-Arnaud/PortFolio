@@ -60,7 +60,10 @@ function App() {
 				id='three_canvas_container'
 				shadows>
 				<Suspense fallback={null}>
-					<Three allProjects={allProjects} />
+					<Three
+						allProjects={allProjects}
+						setProjectId={setProjectId}
+					/>
 				</Suspense>
 			</Canvas>
 		</>

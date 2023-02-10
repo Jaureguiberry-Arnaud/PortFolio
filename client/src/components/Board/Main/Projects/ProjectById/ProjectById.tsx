@@ -65,9 +65,11 @@ function ProjectById({
 				console.log(error)
 			})
 	}
+	getProjectById()
+
 	function onClickCloseModalProjectById(event: any) {
 		event.preventDefault()
-		navigate('/projects')
+		navigate(-1)
 		setProjectId(null)
 	}
 	function onClickCloseModalSuccess(event: any) {
@@ -187,12 +189,11 @@ function ProjectById({
 		userId: number
 	}
 	useEffect(() => {
-		getProjectById()
 		console.log(projectById)
 		console.log(projectId)
 		// console.log(getProjectById())
 		postLogByProject()
-	}, [projectId])
+	}, [])
 	return (
 		<>
 			{errorToggle ? (
