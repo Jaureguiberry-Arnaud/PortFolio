@@ -1,19 +1,20 @@
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useState, useEffect } from 'react'
 import axios from 'axios'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import './App.scss'
 import Three from './components/Three/Three'
 import Board from './components/Board/Board'
+import Router from './Router/Router'
+
 function App() {
 	// My state
-	const [activePlanetAtom, setActivePlanetAtom] = useState(false)
-	const [activePlanetHighTech, setActivePlanetHighTech] = useState(false)
 	const [allProjects, setAllProjects] = useState([])
+	const [projectId, setProjectId] = useState(null)
 
 	// My function
 
-	// do i really have to comment this?
+	// Add log when user enter on portfolio
 	function postLogPortfolio() {
 		axios({
 			method: 'POST',
@@ -32,6 +33,7 @@ function App() {
 				console.log('log not sent')
 			})
 	}
+	// Get all projects
 	function getAllProject() {
 		axios
 			.get(`${import.meta.env.VITE_API_URL}/projects`)
@@ -44,28 +46,21 @@ function App() {
 	}
 	useEffect(() => {
 		getAllProject()
-	}, [postLogPortfolio()])
+		postLogPortfolio()
+	}, [])
 	return (
 		<>
 			<Board
-				setActivePlanetAtom={setActivePlanetAtom}
-				activePlanetAtom={activePlanetAtom}
-				setActivePlanetHighTech={setActivePlanetHighTech}
-				activePlanetHighTech={activePlanetHighTech}
 				allProjects={allProjects}
 				getAllProject={getAllProject}
+				projectId={projectId}
+				setProjectId={setProjectId}
 			/>
 			<Canvas
 				id='three_canvas_container'
 				shadows>
 				<Suspense fallback={null}>
-					<Three
-						setActivePlanetAtom={setActivePlanetAtom}
-						activePlanetAtom={activePlanetAtom}
-						setActivePlanetHighTech={setActivePlanetHighTech}
-						activePlanetHighTech={activePlanetHighTech}
-						allProjects={allProjects}
-					/>
+					<Three allProjects={allProjects} />
 				</Suspense>
 			</Canvas>
 		</>

@@ -1,22 +1,24 @@
 import PropTypes, { InferProps } from 'prop-types'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import './Projects.scss'
-import ProjectById from './ProjectById/ProjectById'
 import AddProject from './AddProject/AddProject'
 import iconCloseModal from '../../../../assets/closeModal.png'
 import iconReduceModal from '../../../../assets/reduceModal.png'
 
 function Projects({
-	allProjects,
 	token,
 	setToken,
+	allProjects,
 	getAllProject,
+	projectId,
+	setProjectId,
+	toggleAddProject,
+	setToggleAddProject,
 }: InferProps<typeof Projects.propTypes>) {
 	// My state
-	const [projectId, setProjectId] = useState(null)
-	const [toggleAddProject, setToggleAddProject] = useState(false)
 	const navigate = useNavigate()
+	// My function
 	function onClickCloseProjects() {
 		navigate('/')
 	}
@@ -53,7 +55,10 @@ function Projects({
 					<article
 						key={project.id}
 						className='projects_project'
-						onClick={() => setProjectId(project.id)}>
+						onClick={() => {
+							setProjectId(project.id)
+							navigate(`/projects/${project.id}`)
+						}}>
 						<h2 className='projects_project-title'>{project.name}</h2>
 					</article>
 				))}
@@ -69,15 +74,7 @@ function Projects({
 				/>
 			)}
 
-			{projectId && (
-				<ProjectById
-					projectId={projectId}
-					setProjectId={setProjectId}
-					token={token}
-					setToken={setToken}
-					getAllProject={getAllProject}
-				/>
-			)}
+			<Outlet />
 		</section>
 	)
 }
@@ -87,5 +84,9 @@ Projects.propTypes = {
 	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 	getAllProject: PropTypes.func.isRequired,
+	projectId: PropTypes.number,
+	setProjectId: PropTypes.func.isRequired,
+	toggleAddProject: PropTypes.bool.isRequired,
+	setToggleAddProject: PropTypes.func.isRequired,
 }
 export default Projects
