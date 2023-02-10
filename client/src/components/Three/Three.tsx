@@ -34,7 +34,7 @@ function Three({
 				<>
 					<PerspectiveCamera
 						makeDefault
-						position={[0, 150, 350]}
+						position={[0, 300, 450]}
 					/>
 					{/*Control camera */}
 					<OrbitControls enablePan={false} />
