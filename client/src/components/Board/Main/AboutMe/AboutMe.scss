@@ -1,7 +1,7 @@
 .aboutMe {
 	height: 100%;
 	width: 100%;
-	padding: 0.5rem;
+	// padding: 0.5rem;
 
 	display: flex;
 	flex-direction: column;
@@ -12,7 +12,7 @@
 	overflow: auto;
 	pointer-events: auto;
 	&-title {
-		width: 90%;
+		width: 95%;
 		font-size: 2rem;
 		color: #00d1ff;
 		text-shadow: 1px 1px 2px #00d1ff;
@@ -55,7 +55,7 @@
 			margin-bottom: 0.25rem;
 		}
 		&_article {
-			width: 90%;
+			width: 95%;
 			padding: 0.5rem 0.5rem 1rem;
 			margin: 0.5rem 0;
 			color: #e5e5e5;
@@ -93,7 +93,7 @@
 		}
 	}
 	&_bio {
-		width: 90%;
+		width: 95%;
 
 		display: flex;
 		flex-direction: column;
@@ -113,6 +113,7 @@
 			font-size: 1.2rem;
 			color: #e5e5e5;
 			text-shadow: 1px 1px 2px #00d1ff;
+			word-break: break-word;
 			margin: 0.5rem 0;
 			padding: 0.5rem;
 			background-color: rgba(255, 255, 255, 0.2);
