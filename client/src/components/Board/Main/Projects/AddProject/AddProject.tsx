@@ -42,7 +42,7 @@ function AddProject({
 		let responseData = null
 		axios({
 			method: 'POST',
-			url: 'http://localhost:3001/projects',
+			url: `${import.meta.env.VITE_API_URL}/projects`,
 			data: {
 				name: values.name,
 				description: values.description,

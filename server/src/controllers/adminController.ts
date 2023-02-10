@@ -1,5 +1,5 @@
 import { AppDataSource } from '../data-source'
-import { ENV } from '../my_env'
+import * as dotenv from 'dotenv'
 import * as jwt from 'jsonwebtoken'
 import { User } from '../entity/User'
 import * as express from 'express'
@@ -28,7 +28,7 @@ const adminController = {
 		//Sing JWT, valid for 1 hour
 		const token = jwt.sign(
 			{ userId: user.id, pseudo: user.pseudo , role: user.role},
-			ENV.jwtSecret,
+			process.env.jwtSecret,
 			{ expiresIn: '1h' }
 		)
 

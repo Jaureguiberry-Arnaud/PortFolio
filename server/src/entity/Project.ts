@@ -17,7 +17,10 @@ export class Project {
     })
     language: string
 
-    @Column()
+    @Column({
+        type: 'int',
+        nullable: true, 
+    })
     nbWrittenLines: number
 
     @Column()
