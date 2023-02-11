@@ -69,7 +69,7 @@ function ProjectById({
 
 	function onClickCloseModalProjectById(event: any) {
 		event.preventDefault()
-		navigate(-1)
+		navigate('/')
 		setProjectId(null)
 	}
 	function onClickCloseModalSuccess(event: any) {
