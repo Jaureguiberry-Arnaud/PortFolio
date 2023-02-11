@@ -7,11 +7,8 @@
 	align-items: center;
 
 	&-title {
-		// margin-top: 0.3rem;
 		font-size: 1.5rem;
 		color: #fff;
-		// text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00d1ff,
-		// 0 0 30px #00d1ff, 0 0 40px #00d1ff, 0 0 55px #00d1ff, 0 0 75px #00d1ff;
 		-webkit-animation: text-flicker-in-glow 5s linear both;
 		animation: text-flicker-in-glow 5s linear both;
 	}

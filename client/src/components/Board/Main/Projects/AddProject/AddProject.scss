@@ -14,9 +14,9 @@
 	overflow: auto;
 	pointer-events: auto;
 
-	-webkit-animation: scale-in-ver-center 1.5s
+	-webkit-animation: scale-in-ver-center 0.5s
 		cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-	animation: scale-in-ver-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	animation: scale-in-ver-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
 	&-closeModal {
 		width: 15px;
@@ -41,7 +41,7 @@
 		margin: 0 1rem;
 		&-label {
 			font-size: 1.2rem;
-			color: #00d1ff;
+			color: #e5e5e5;
 			text-shadow: 1px 1px 2px #00d1ff;
 			margin-bottom: 0.5rem;
 			text-align: start;
@@ -49,7 +49,7 @@
 		&-input {
 			height: 40px;
 			font-size: 1rem;
-			color: #fff;
+			color: #e5e5e5;
 			background-color: rgba(255, 255, 255, 0.2);
 			text-shadow: 1px 1px 2px #00d1ff;
 			margin-bottom: 2rem;
@@ -61,7 +61,7 @@
 		&-btn {
 			height: 40px;
 			font-size: 1rem;
-			color: #fff;
+			color: #e5e5e5;
 			background-color: #00d0ffb0;
 			text-shadow: 1px 1px 2px #00d1ff;
 			border: 0.1rem solid #00d1ff;
@@ -87,17 +87,16 @@
 		pointer-events: auto;
 		overflow: auto;
 
-		-webkit-animation: scale-in-ver-center 1.5s
+		-webkit-animation: scale-in-ver-center 1s
 			cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-		animation: scale-in-ver-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-			both;
+		animation: scale-in-ver-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
 		&-warning {
 			margin-top: 5rem;
 			width: 75px;
 			align-self: center;
-			-webkit-animation: flicker-2 2s linear infinite both;
-			animation: flicker-2 2s linear infinite both;
+			-webkit-animation: flicker-2 1s linear infinite both;
+			animation: flicker-2 1s linear infinite both;
 		}
 		&_title {
 			font-size: 1.2rem;
@@ -130,9 +129,9 @@
 		margin: 0 0.5rem;
 		position: fixed;
 		left: 36%;
-		-webkit-animation: scale-up-hor-left 1.5s
-			cubic-bezier(0.39, 0.575, 0.565, 1) both;
-		animation: scale-up-hor-left 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+		-webkit-animation: scale-up-hor-left 1s cubic-bezier(0.39, 0.575, 0.565, 1)
+			both;
+		animation: scale-up-hor-left 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
 		&_unauthorized {
 			width: 26%;
@@ -140,9 +139,9 @@
 			margin: 0 0.5rem;
 			position: fixed;
 			left: 36%;
-			-webkit-animation: scale-up-hor-left 1.5s
+			-webkit-animation: scale-up-hor-left 1s
 				cubic-bezier(0.39, 0.575, 0.565, 1) both;
-			animation: scale-up-hor-left 1.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+			animation: scale-up-hor-left 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
 			&-warning {
 				margin-top: 1rem;
