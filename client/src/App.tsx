@@ -6,6 +6,7 @@ import './App.scss'
 import Three from './components/Three/Three'
 import Board from './components/Board/Board'
 import Router from './Router/Router'
+import dayjs from 'dayjs'
 
 function App() {
 	// My state
@@ -44,6 +45,38 @@ function App() {
 				console.log(error)
 			})
 	}
+	// Add fake project
+	// function pushFalseProject() {
+	// 	interface ProjectById {
+	// 		id: number
+	// 		name: string
+	// 		description: string
+	// 		git_url: string
+	// 		web_url: string
+	// 		nbWrittenLines: number
+	// 		created_at: any
+	// 		userId: number
+	// 	}
+
+	// 	if (allProjects.length > 8) {
+	// 		const falseProject = {
+	// 			id: allProjects.length + 1,
+	// 			name: 'fakeProject',
+	// 			nbWrittenLines: Math.round(Math.random() * (50000 - 1000) + 1000),
+	// 			description: 'fakeProject',
+	// 			git_url: 'https://fakeProject.com',
+	// 			web_url: 'https://fakeProject.com',
+	// 			created_at: dayjs(),
+	// 			userId: 1,
+	// 		}
+	// 		const newAllProjects: any[] = []
+	// 		newAllProjects.push(...allProjects)
+	// 		newAllProjects.push(falseProject)
+	// 		setAllProjects(newAllProjects)
+	// 	} else {
+	// 		return null
+	// 	}
+	// }
 	useEffect(() => {
 		getAllProject()
 		postLogPortfolio()
