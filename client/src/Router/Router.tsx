@@ -27,6 +27,8 @@ function Router({
 	getAllProject,
 	projectId,
 	setProjectId,
+	selectedById,
+	setSelectedById,
 }: InferProps<typeof Router.propTypes>) {
 	return (
 		<Routes>
@@ -68,6 +70,8 @@ function Router({
 								projectId={projectId}
 								setProjectId={setProjectId}
 								getAllProject={getAllProject}
+								selectedById={selectedById}
+								setSelectedById={setSelectedById}
 							/>
 						}
 					/>
@@ -97,6 +101,8 @@ function Router({
 							projectId={projectId}
 							setProjectId={setProjectId}
 							getAllProject={getAllProject}
+							selectedById={selectedById}
+							setSelectedById={setSelectedById}
 						/>
 					}
 				/>
@@ -118,5 +124,7 @@ Router.propTypes = {
 	getAllProject: PropTypes.func.isRequired,
 	projectId: PropTypes.number,
 	setProjectId: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
 }
 export default Router

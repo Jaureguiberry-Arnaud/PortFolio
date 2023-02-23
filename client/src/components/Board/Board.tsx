@@ -9,6 +9,8 @@ function Board({
 	getAllProject,
 	projectId,
 	setProjectId,
+	selectedById,
+	setSelectedById,
 }: InferProps<typeof Board.propTypes>) {
 	// state
 	const [toggleAddProject, setToggleAddProject] = useState(false)
@@ -40,7 +42,11 @@ function Board({
 		setDisabledLoginModal(!disabledLoginModal)
 	}
 
-	useEffect(() => {}, [konami(toggleDisabledLoginModal), allProjects?.length])
+	useEffect(() => {}, [
+		konami(toggleDisabledLoginModal),
+		allProjects?.length,
+		console.log(values.pseudo),
+	])
 	return (
 		<section className='board'>
 			<Router
@@ -56,6 +62,8 @@ function Board({
 				getAllProject={getAllProject}
 				projectId={projectId}
 				setProjectId={setProjectId}
+				selectedById={selectedById}
+				setSelectedById={setSelectedById}
 			/>
 
 			{disabledLoginModal && (
@@ -79,6 +87,8 @@ Board.propTypes = {
 	getAllProject: PropTypes.func.isRequired,
 	projectId: PropTypes.number,
 	setProjectId: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
 }
 
 export default Board
