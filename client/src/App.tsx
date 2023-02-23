@@ -12,6 +12,7 @@ function App() {
 	// My state
 	const [allProjects, setAllProjects] = useState([])
 	const [projectId, setProjectId] = useState(null)
+	const [selectedById, setSelectedById] = useState(Number)
 
 	// My function
 
@@ -88,6 +89,8 @@ function App() {
 				getAllProject={getAllProject}
 				projectId={projectId}
 				setProjectId={setProjectId}
+				selectedById={selectedById}
+				setSelectedById={setSelectedById}
 			/>
 			<Canvas
 				id='three_canvas_container'
@@ -96,6 +99,8 @@ function App() {
 					<Three
 						allProjects={allProjects}
 						setProjectId={setProjectId}
+						selectedById={selectedById}
+						setSelectedById={setSelectedById}
 					/>
 				</Suspense>
 			</Canvas>

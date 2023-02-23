@@ -23,6 +23,8 @@ function ProjectById({
 	token,
 	setToken,
 	getAllProject,
+	selectedById,
+	setSelectedById,
 }: InferProps<typeof ProjectById.propTypes>) {
 	// My state
 	const navigate = useNavigate()
@@ -65,12 +67,13 @@ function ProjectById({
 				console.log(error)
 			})
 	}
-	getProjectById()
+	// getProjectById()
 
 	function onClickCloseModalProjectById(event: any) {
 		event.preventDefault()
-		navigate(-1)
 		setProjectId(null)
+		setSelectedById(null)
+		navigate('/')
 	}
 	function onClickCloseModalSuccess(event: any) {
 		event.preventDefault()
@@ -191,9 +194,10 @@ function ProjectById({
 	useEffect(() => {
 		console.log(projectById)
 		console.log(projectId)
-		// console.log(getProjectById())
+		getProjectById()
+		console.log(projectById)
 		postLogByProject()
-	}, [])
+	}, [projectId])
 	return (
 		<>
 			{errorToggle ? (
@@ -403,5 +407,7 @@ ProjectById.propTypes = {
 	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 	getAllProject: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
 }
 export default ProjectById

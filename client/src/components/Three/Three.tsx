@@ -16,9 +16,11 @@ import Planets from './Planets/Planets'
 function Three({
 	allProjects,
 	setProjectId,
+	selectedById,
+	setSelectedById,
 }: InferProps<typeof Three.propTypes>) {
 	// State
-	const [selectedById, setSelectedById] = useState(Number)
+	// const [selectedById, setSelectedById] = useState(Number)
 
 	// Make the mesh rotate
 	const sunRef: any = useRef()
@@ -30,7 +32,7 @@ function Three({
 		<>
 			{/* <Outlet /> */}
 			{/* Camera */}
-			{selectedById === null && (
+			{selectedById == null && (
 				<>
 					<PerspectiveCamera
 						makeDefault
@@ -111,5 +113,7 @@ function Three({
 Three.propTypes = {
 	allProjects: PropTypes.array.isRequired,
 	setProjectId: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
 }
 export default Three
