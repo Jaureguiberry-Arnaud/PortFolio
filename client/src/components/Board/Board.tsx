@@ -11,6 +11,8 @@ function Board({
 	setProjectId,
 	selectedById,
 	setSelectedById,
+	pushFalseProject,
+	resetFakeProject,
 }: InferProps<typeof Board.propTypes>) {
 	// state
 	const [toggleAddProject, setToggleAddProject] = useState(false)
@@ -64,6 +66,8 @@ function Board({
 				setProjectId={setProjectId}
 				selectedById={selectedById}
 				setSelectedById={setSelectedById}
+				pushFalseProject={pushFalseProject}
+				resetFakeProject={resetFakeProject}
 			/>
 
 			{disabledLoginModal && (
@@ -89,6 +93,8 @@ Board.propTypes = {
 	setProjectId: PropTypes.func.isRequired,
 	selectedById: PropTypes.number,
 	setSelectedById: PropTypes.func.isRequired,
+	pushFalseProject: PropTypes.func.isRequired,
+	resetFakeProject: PropTypes.func.isRequired,
 }
 
 export default Board
