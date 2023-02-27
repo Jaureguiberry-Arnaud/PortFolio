@@ -26,9 +26,11 @@
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem;
+			padding-top: 0.5rem;
 			padding-right: 1rem;
 			&-addFalseProject {
-				padding: 0.5rem;
+				font-size: 0.8rem;
+				padding: 0.3rem;
 				background-color: #00d0ffaf;
 				color: #e5e5e5;
 				border: 0.1rem solid #00d1ff;
@@ -40,7 +42,8 @@
 				}
 			}
 			&-resetProject {
-				padding: 0.5rem;
+				font-size: 0.8rem;
+				padding: 0.3rem;
 				background-color: #ff6700af;
 				color: #e5e5e5;
 				border: 0.1rem solid #ff6700;
@@ -144,6 +147,19 @@
 
 // Responsive Tablet
 @media screen and (min-width: 768px) {
+	.header {
+		&_menu {
+			&_rightSection {
+				padding-top: 0;
+				&-addFalseProject {
+					font-size: 1rem;
+				}
+				&-resetProject {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
 }
 
 // Responsive Window

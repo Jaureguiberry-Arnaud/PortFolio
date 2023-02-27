@@ -7,6 +7,7 @@ import Three from './components/Three/Three'
 import Board from './components/Board/Board'
 import Router from './Router/Router'
 import dayjs from 'dayjs'
+import toast, { Toaster } from 'react-hot-toast'
 
 function App() {
 	// My state
@@ -14,6 +15,7 @@ function App() {
 	const [projectId, setProjectId] = useState(null)
 	const [selectedById, setSelectedById] = useState(Number)
 
+	// My interface
 	interface ProjectById {
 		id: number
 		name: string
@@ -71,12 +73,14 @@ function App() {
 				userId: 1,
 			}
 			console.log('not enough project')
-			console.log(allProjects)
+			// console.log(allProjects)
 			setAllProjects([...allProjects, falseProject])
-			console.log(allProjects)
+			// console.log(allProjects)
+			toast.success('Fake project added successfully !')
 		} else {
 			console.log('enough project')
-			console.log(allProjects)
+			// console.log(allProjects)
+			toast.error("You can't have more than 8 projects !")
 			return null
 		}
 	}
@@ -86,6 +90,7 @@ function App() {
 			(project) => project.name !== 'fakeProject'
 		)
 		setAllProjects(newAllProjects)
+		toast.success('Fake project deleted successfully !')
 	}
 
 	useEffect(() => {
@@ -94,6 +99,30 @@ function App() {
 	}, [])
 	return (
 		<>
+			<Toaster
+				toastOptions={{
+					success: {
+						style: {
+							marginTop: '3rem',
+							background: '#00d0ffaf',
+							color: '#e5e5e5',
+							border: '0.1rem solid #00d1ff',
+							borderRadius: '0.7rem',
+							boxShadow: '0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff',
+						},
+					},
+					error: {
+						style: {
+							marginTop: '3rem',
+							background: '#ff0000af',
+							color: '#e5e5e5',
+							border: '0.1rem solid #ff0000',
+							borderRadius: '0.7rem',
+							boxShadow: '0 0 10px 1px #ff0000, inset 0 0 10px 1px #ff0000',
+						},
+					},
+				}}
+			/>
 			<Board
 				allProjects={allProjects}
 				getAllProject={getAllProject}
