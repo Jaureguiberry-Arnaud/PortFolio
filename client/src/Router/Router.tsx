@@ -80,10 +80,10 @@ function Router({
 						}
 					/>
 				</Route>
-				<Route
+				{/* <Route
 					path='stats'
 					element={<Stats />}
-				/>
+				/> */}
 				<Route
 					path='cv'
 					element={<Cv />}
