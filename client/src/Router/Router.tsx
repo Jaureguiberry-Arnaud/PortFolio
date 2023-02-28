@@ -76,14 +76,15 @@ function Router({
 								getAllProject={getAllProject}
 								selectedById={selectedById}
 								setSelectedById={setSelectedById}
+								allProjects={allProjects}
 							/>
 						}
 					/>
 				</Route>
-				<Route
+				{/* <Route
 					path='stats'
 					element={<Stats />}
-				/>
+				/> */}
 				<Route
 					path='cv'
 					element={<Cv />}
@@ -107,6 +108,7 @@ function Router({
 							getAllProject={getAllProject}
 							selectedById={selectedById}
 							setSelectedById={setSelectedById}
+							allProjects={allProjects}
 						/>
 					}
 				/>
