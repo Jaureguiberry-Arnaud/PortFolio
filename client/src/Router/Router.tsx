@@ -27,6 +27,10 @@ function Router({
 	getAllProject,
 	projectId,
 	setProjectId,
+	selectedById,
+	setSelectedById,
+	pushFalseProject,
+	resetFakeProject,
 }: InferProps<typeof Router.propTypes>) {
 	return (
 		<Routes>
@@ -38,6 +42,8 @@ function Router({
 							isLogged={isLogged}
 							disabledLoginModal={disabledLoginModal}
 							setDisabledLoginModal={setDisabledLoginModal}
+							pushFalseProject={pushFalseProject}
+							resetFakeProject={resetFakeProject}
 						/>
 						<Main />
 						<Footer />
@@ -68,14 +74,17 @@ function Router({
 								projectId={projectId}
 								setProjectId={setProjectId}
 								getAllProject={getAllProject}
+								selectedById={selectedById}
+								setSelectedById={setSelectedById}
+								allProjects={allProjects}
 							/>
 						}
 					/>
 				</Route>
-				<Route
+				{/* <Route
 					path='stats'
 					element={<Stats />}
-				/>
+				/> */}
 				<Route
 					path='cv'
 					element={<Cv />}
@@ -97,6 +106,9 @@ function Router({
 							projectId={projectId}
 							setProjectId={setProjectId}
 							getAllProject={getAllProject}
+							selectedById={selectedById}
+							setSelectedById={setSelectedById}
+							allProjects={allProjects}
 						/>
 					}
 				/>
@@ -118,5 +130,9 @@ Router.propTypes = {
 	getAllProject: PropTypes.func.isRequired,
 	projectId: PropTypes.number,
 	setProjectId: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
+	pushFalseProject: PropTypes.func.isRequired,
+	resetFakeProject: PropTypes.func.isRequired,
 }
 export default Router

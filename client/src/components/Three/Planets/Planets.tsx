@@ -39,7 +39,7 @@ function Planets({
 	// Multiplier for the rotation of the planet from sun (center)
 	function rotationFromSunMultiplier() {
 		if (project.id === 1) {
-			return 0.001
+			return 0.001 / 5
 		} else {
 			return (0.001 * project.id) / 5
 		}
@@ -81,10 +81,10 @@ function Planets({
 	function selectPlanet() {
 		if (selectedById === project.id) {
 			setSelectedById(null)
-			navigate(-1)
+			navigate('/')
 		} else {
-			setSelectedById(project.id)
 			setProjectId(project.id)
+			setSelectedById(project.id)
 			navigate(`/3DPlanet/${project.id}`)
 		}
 	}
@@ -129,7 +129,7 @@ function Planets({
 				position={dynamicPosition}
 				receiveShadow
 				castShadow
-				onClick={() => setSelectedById(selectPlanet)}>
+				onClick={() => selectPlanet()}>
 				{PlanetTexture}
 				<meshStandardMaterial color={'#ffffff'} />
 				{selectedById === project.id && (

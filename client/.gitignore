@@ -7,12 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+Dockerfile
+docker-compose.yml
 node_modules
 .env
 dist
 dist-ssr
 *.local
-
+Dockerfile
+docker-compose.yml
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
