@@ -39,7 +39,6 @@ function App() {
 			headers: {},
 		})
 			.then(function (response) {
-				// console.log(response)
 				console.log('log sent')
 			})
 			.catch(function (error) {
@@ -73,13 +72,10 @@ function App() {
 				userId: 1,
 			}
 			console.log('not enough project')
-			// console.log(allProjects)
 			setAllProjects([...allProjects, falseProject])
-			// console.log(allProjects)
 			toast.success('Fake project added successfully !')
 		} else {
 			console.log('enough project')
-			// console.log(allProjects)
 			toast.error("You can't have more than 8 projects !")
 			return null
 		}

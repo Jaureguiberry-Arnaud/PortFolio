@@ -76,6 +76,7 @@ function Router({
 								getAllProject={getAllProject}
 								selectedById={selectedById}
 								setSelectedById={setSelectedById}
+								allProjects={allProjects}
 							/>
 						}
 					/>
@@ -107,6 +108,7 @@ function Router({
 							getAllProject={getAllProject}
 							selectedById={selectedById}
 							setSelectedById={setSelectedById}
+							allProjects={allProjects}
 						/>
 					}
 				/>
