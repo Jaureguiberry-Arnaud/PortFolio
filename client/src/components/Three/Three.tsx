@@ -19,8 +19,7 @@ function Three({
 	selectedById,
 	setSelectedById,
 }: InferProps<typeof Three.propTypes>) {
-	// State
-	// const [selectedById, setSelectedById] = useState(Number)
+	// My State
 
 	// Make the mesh rotate
 	const sunRef: any = useRef()
@@ -39,7 +38,11 @@ function Three({
 						position={[0, 300, 450]}
 					/>
 					{/*Control camera */}
-					<OrbitControls enablePan={false} />
+					<OrbitControls
+						enablePan={false}
+						minDistance={200}
+						maxDistance={1000}
+					/>
 				</>
 			)}
 
