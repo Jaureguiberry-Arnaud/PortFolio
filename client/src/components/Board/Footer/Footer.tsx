@@ -11,9 +11,9 @@ function Footer() {
 				<Link to='projects'>
 					<p className='footer_nav-btn'>Projects</p>
 				</Link>
-				<Link to='stats'>
+				{/* <Link to='stats'>
 					<p className='footer_nav-btn'>Stats</p>
-				</Link>
+				</Link> */}
 				<Link to='cv'>
 					<p className='footer_nav-btn'>CV</p>
 				</Link>

@@ -1,22 +1,20 @@
-.main{
-  height: 75vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
-  // overflow: auto;
+.main {
+	height: 75vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 // Responsive Tablet
-@media screen and (min-width: 768px){
-  .main {
-    flex-direction: row;
-    justify-content: normal;
-  }
+@media screen and (min-width: 768px) {
+	.main {
+		flex-direction: row;
+		justify-content: normal;
+	}
 }
 
 // Responsive Window
-@media screen and (min-width: 1024px){
-
+@media screen and (min-width: 1024px) {
 }

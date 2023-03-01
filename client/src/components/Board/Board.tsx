@@ -2,6 +2,7 @@ import PropTypes, { InferProps } from 'prop-types'
 import { useState, useEffect } from 'react'
 import './Board.scss'
 import ModalLogin from './Main/ModalLogin/ModalLogin'
+import Introduction from '../Introduction/Introduction'
 import Router from '../../Router/Router'
 
 function Board({
@@ -9,8 +10,13 @@ function Board({
 	getAllProject,
 	projectId,
 	setProjectId,
+	selectedById,
+	setSelectedById,
+	pushFalseProject,
+	resetFakeProject,
 }: InferProps<typeof Board.propTypes>) {
 	// state
+	const [toggleIntroduction, setToggleIntroduction] = useState(true)
 	const [toggleAddProject, setToggleAddProject] = useState(false)
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
 	const [isLogged, setIsLogged] = useState(false)
@@ -40,7 +46,7 @@ function Board({
 		setDisabledLoginModal(!disabledLoginModal)
 	}
 
-	useEffect(() => {}, [konami(toggleDisabledLoginModal), allProjects?.length])
+	useEffect(() => {}, [konami(toggleDisabledLoginModal)])
 	return (
 		<section className='board'>
 			<Router
@@ -56,7 +62,17 @@ function Board({
 				getAllProject={getAllProject}
 				projectId={projectId}
 				setProjectId={setProjectId}
+				selectedById={selectedById}
+				setSelectedById={setSelectedById}
+				pushFalseProject={pushFalseProject}
+				resetFakeProject={resetFakeProject}
+				toggleIntroduction={toggleIntroduction}
+				setToggleIntroduction={setToggleIntroduction}
 			/>
+
+			{toggleIntroduction && (
+				<Introduction setToggleIntroduction={setToggleIntroduction} />
+			)}
 
 			{disabledLoginModal && (
 				<ModalLogin
@@ -79,6 +95,10 @@ Board.propTypes = {
 	getAllProject: PropTypes.func.isRequired,
 	projectId: PropTypes.number,
 	setProjectId: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
+	pushFalseProject: PropTypes.func.isRequired,
+	resetFakeProject: PropTypes.func.isRequired,
 }
 
 export default Board

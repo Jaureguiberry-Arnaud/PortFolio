@@ -21,7 +21,7 @@ function Planets({
 	// dynamic import of the planet texture
 	function getDynamicPlanetTexture() {
 		const PlanetTexturePromise = Promise.resolve(
-			import(`./PlanetsAsset/Planet${project.id}`)
+			import(`./PlanetsAsset/Planet${project.id}.tsx`)
 		)
 		// Transform the promise into a promise that returns the texture
 		PlanetTexturePromise.then((value) => {
@@ -81,10 +81,10 @@ function Planets({
 	function selectPlanet() {
 		if (selectedById === project.id) {
 			setSelectedById(null)
-			navigate(-1)
+			navigate('/')
 		} else {
-			setSelectedById(project.id)
 			setProjectId(project.id)
+			setSelectedById(project.id)
 			navigate(`/3DPlanet/${project.id}`)
 		}
 	}
@@ -129,7 +129,7 @@ function Planets({
 				position={dynamicPosition}
 				receiveShadow
 				castShadow
-				onClick={() => setSelectedById(selectPlanet)}>
+				onClick={() => selectPlanet()}>
 				{PlanetTexture}
 				<meshStandardMaterial color={'#ffffff'} />
 				{selectedById === project.id && (

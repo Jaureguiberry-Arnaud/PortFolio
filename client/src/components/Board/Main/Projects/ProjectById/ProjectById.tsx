@@ -17,12 +17,12 @@ import { useNavigate } from 'react-router-dom'
 function ProjectById({
 	projectId,
 	setProjectId,
-	// projectById,
-	// setProjectById,
-	// getProjectById,
 	token,
 	setToken,
 	getAllProject,
+	selectedById,
+	setSelectedById,
+	allProjects,
 }: InferProps<typeof ProjectById.propTypes>) {
 	// My state
 	const navigate = useNavigate()
@@ -32,7 +32,7 @@ function ProjectById({
 		null
 	)
 	const [toggleUpdate, setToggleUpdate] = useState(false)
-	const [projectById, setProjectById] = useState<ProjectById>()
+	const [projectById, setProjectById] = useState<any>()
 	const [valuesProjectById, setValuesProjectById] = useState<any>({
 		name: projectById?.name,
 		description: projectById?.description,
@@ -47,30 +47,42 @@ function ProjectById({
 			[e.target.name]: e.target.value,
 		})
 	}
+
 	function getProjectById() {
-		axios
-			.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
-			.then(function (response: any) {
-				console.log(response.data)
-				setProjectById(response.data)
-				setValuesProjectById({
-					name: response.data.name,
-					description: response.data.description,
-					nbWrittenLines: response.data.nbWrittenLines,
-					git_url: response.data.git_url,
-					web_url: response.data.web_url,
+		const project = allProjects.find((project) => project.id === projectId)
+		if (project.id === projectId && project.name === 'fakeProject') {
+			setProjectById(project)
+			setValuesProjectById({
+				name: project.name,
+				description: project.description,
+				nbWrittenLines: project.nbWrittenLines,
+				git_url: project.git_url,
+				web_url: project.web_url,
+			})
+		} else {
+			axios
+				.get(`${import.meta.env.VITE_API_URL}/projects/${projectId}`)
+				.then(function (response: any) {
+					setProjectById(response.data)
+					setValuesProjectById({
+						name: response.data.name,
+						description: response.data.description,
+						nbWrittenLines: response.data.nbWrittenLines,
+						git_url: response.data.git_url,
+						web_url: response.data.web_url,
+					})
 				})
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
+				.catch(function (error) {
+					console.log(error)
+				})
+		}
 	}
-	getProjectById()
 
 	function onClickCloseModalProjectById(event: any) {
 		event.preventDefault()
-		navigate('/')
 		setProjectId(null)
+		setSelectedById(null)
+		navigate('/')
 	}
 	function onClickCloseModalSuccess(event: any) {
 		event.preventDefault()
@@ -156,29 +168,34 @@ function ProjectById({
 			})
 	}
 	function postLogByProject() {
-		axios({
-			method: 'POST',
-			url: `${import.meta.env.VITE_API_URL}/logs`,
-			data: {
-				projectId: projectId,
-			},
-			headers: {},
-		})
-			.then(function (response) {
-				// console.log(response)
-				console.log('log sent')
+		const project = allProjects.find((project) => project.id === projectId)
+		if (project.id === projectId && project.name === 'fakeProject') {
+			return
+		} else {
+			axios({
+				method: 'POST',
+				url: `${import.meta.env.VITE_API_URL}/logs`,
+				data: {
+					projectId: projectId,
+				},
+				headers: {},
 			})
-			.catch(function (error) {
-				console.log(error)
-				console.log('log not sent')
-			})
+				.then(function (response) {
+					console.log('log sent')
+				})
+				.catch(function (error) {
+					console.log(error)
+					console.log('log not sent')
+				})
+		}
 	}
+
 	interface TokenDecoded {
 		userId: number
 		pseudo: string
 		role: string
 	}
-	interface ProjectById {
+	interface ProjectByIdInterface {
 		id: number
 		name: string
 		description: string
@@ -189,11 +206,9 @@ function ProjectById({
 		userId: number
 	}
 	useEffect(() => {
-		console.log(projectById)
-		console.log(projectId)
-		// console.log(getProjectById())
+		getProjectById()
 		postLogByProject()
-	}, [])
+	}, [projectId])
 	return (
 		<>
 			{errorToggle ? (
@@ -362,7 +377,10 @@ function ProjectById({
 								src={iconUpdate}
 								alt='icon Update'
 								onClick={onClickUpdateById}></img>
-							<h1 className='projectById-name'>{projectById?.name}</h1>
+							<h1 className='projectById-name'>
+								{projectById?.name}
+								{/* {fakeProject && 'fakeProject'} */}
+							</h1>
 							<h2 className='projectById-title'>Owner:</h2>
 							<p className='projectById-content'>Jrgb</p>
 							<h2 className='projectById-title'>Created at:</h2>
@@ -403,5 +421,8 @@ ProjectById.propTypes = {
 	token: PropTypes.string.isRequired,
 	setToken: PropTypes.func.isRequired,
 	getAllProject: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
+	allProjects: PropTypes.array.isRequired,
 }
 export default ProjectById

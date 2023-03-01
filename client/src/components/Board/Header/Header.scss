@@ -8,11 +8,83 @@
 
 	&-title {
 		font-size: 1.5rem;
-		color: #fff;
+		color: #e5e5e5;
 		-webkit-animation: text-flicker-in-glow 5s linear both;
 		animation: text-flicker-in-glow 5s linear both;
+		pointer-events: all;
+		&:hover {
+			cursor: pointer;
+		}
 	}
 
+	&_IntroductionToggle {
+		// width: 30px;
+		// padding: 0 -5px;
+		background-color: #00d0ff7a;
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		pointer-events: auto;
+		cursor: pointer;
+
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+
+		&-gif {
+			width: 30px;
+		}
+	}
+
+	&_menu {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&_leftSection {
+		}
+		&_rightSection {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			padding-top: 0.5rem;
+			padding-right: 1rem;
+			&-addFalseProject {
+				font-size: 0.8rem;
+				padding: 0.3rem;
+				background-color: #00d0ffaf;
+				color: #e5e5e5;
+				border: 0.1rem solid #00d1ff;
+				border-radius: 0.7rem;
+				box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+				pointer-events: auto;
+				&:active {
+					background-color: #00d0ff79;
+				}
+			}
+			&-resetProject {
+				font-size: 0.8rem;
+				padding: 0.3rem;
+				background-color: #ff6700af;
+				color: #e5e5e5;
+				border: 0.1rem solid #ff6700;
+				border-radius: 0.7rem;
+				box-shadow: 0 0 10px 1px #ff6700, inset 0 0 10px 1px #ff6700;
+				pointer-events: auto;
+				&:active {
+					background-color: #ff670079;
+				}
+			}
+		}
+	}
+
+	&_addFalseProject {
+		pointer-events: auto;
+		// cursor: pointer;
+	}
 	&_toggleKonamiCode {
 		width: 100%;
 		align-self: left;
@@ -99,6 +171,19 @@
 
 // Responsive Tablet
 @media screen and (min-width: 768px) {
+	.header {
+		&_menu {
+			&_rightSection {
+				padding-top: 0;
+				&-addFalseProject {
+					font-size: 1rem;
+				}
+				&-resetProject {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
 }
 
 // Responsive Window
