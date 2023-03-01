@@ -1,0 +1,100 @@
+.introduction {
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	pointer-events: auto;
+
+	z-index: 5;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	&_article {
+		max-height: 70%;
+		width: 90%;
+		margin-top: 3rem;
+		padding: 0.5rem;
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+		overflow: auto;
+		&-title {
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: #00d1ff;
+			text-align: center;
+			margin: 1rem 0;
+			text-shadow: 0 0 10px #00d1ff;
+		}
+		&-text {
+			font-size: 1rem;
+			color: #e5e5e5;
+			text-align: center;
+			padding: 0.5rem;
+			text-shadow: 0 0 10px #00d1ff;
+		}
+		&_btnContainer {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			margin: 1rem 0;
+			&-btn {
+				width: 40%;
+				color: #e5e5e5;
+				text-shadow: 1px 1px 2px #00d1ff;
+				background-color: #00d0ffaf;
+				font-size: 1rem;
+				border: 0.1rem solid #00d1ff;
+				border-radius: 0.7rem;
+				box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+			}
+		}
+	}
+}
+
+// Responsive Tablet
+@media screen and (min-width: 768px) {
+	.introduction {
+		&_article {
+			width: 60%;
+			&-title {
+				font-size: 2rem;
+			}
+			&-text {
+				font-size: 1.2rem;
+			}
+			&_btnContainer {
+				&-btn {
+					width: 40%;
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+}
+
+// Responsive Window
+@media screen and (min-width: 1024px) {
+	.introduction {
+		&_article {
+			width: 50%;
+			&-title {
+				font-size: 2.5rem;
+			}
+			&-text {
+				font-size: 1.5rem;
+			}
+			&_btnContainer {
+				&-btn {
+					width: 30%;
+					font-size: 1.5rem;
+				}
+			}
+		}
+	}
+}
