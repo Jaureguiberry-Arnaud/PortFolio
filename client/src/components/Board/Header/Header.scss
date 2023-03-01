@@ -11,6 +11,10 @@
 		color: #fff;
 		-webkit-animation: text-flicker-in-glow 5s linear both;
 		animation: text-flicker-in-glow 5s linear both;
+		pointer-events: all;
+		&:hover {
+			cursor: pointer;
+		}
 	}
 
 	&_menu {
