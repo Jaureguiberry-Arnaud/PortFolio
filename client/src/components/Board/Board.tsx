@@ -2,6 +2,7 @@ import PropTypes, { InferProps } from 'prop-types'
 import { useState, useEffect } from 'react'
 import './Board.scss'
 import ModalLogin from './Main/ModalLogin/ModalLogin'
+import Introduction from '../Introduction/Introduction'
 import Router from '../../Router/Router'
 
 function Board({
@@ -15,6 +16,7 @@ function Board({
 	resetFakeProject,
 }: InferProps<typeof Board.propTypes>) {
 	// state
+	const [toggleIntroduction, setToggleIntroduction] = useState(true)
 	const [toggleAddProject, setToggleAddProject] = useState(false)
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
 	const [isLogged, setIsLogged] = useState(false)
@@ -64,7 +66,13 @@ function Board({
 				setSelectedById={setSelectedById}
 				pushFalseProject={pushFalseProject}
 				resetFakeProject={resetFakeProject}
+				toggleIntroduction={toggleIntroduction}
+				setToggleIntroduction={setToggleIntroduction}
 			/>
+
+			{toggleIntroduction && (
+				<Introduction setToggleIntroduction={setToggleIntroduction} />
+			)}
 
 			{disabledLoginModal && (
 				<ModalLogin

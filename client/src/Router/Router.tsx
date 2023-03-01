@@ -31,6 +31,8 @@ function Router({
 	setSelectedById,
 	pushFalseProject,
 	resetFakeProject,
+	toggleIntroduction,
+	setToggleIntroduction,
 }: InferProps<typeof Router.propTypes>) {
 	return (
 		<Routes>
@@ -44,6 +46,8 @@ function Router({
 							setDisabledLoginModal={setDisabledLoginModal}
 							pushFalseProject={pushFalseProject}
 							resetFakeProject={resetFakeProject}
+							toggleIntroduction={toggleIntroduction}
+							setToggleIntroduction={setToggleIntroduction}
 						/>
 						<Main />
 						<Footer />
@@ -134,5 +138,7 @@ Router.propTypes = {
 	setSelectedById: PropTypes.func.isRequired,
 	pushFalseProject: PropTypes.func.isRequired,
 	resetFakeProject: PropTypes.func.isRequired,
+	toggleIntroduction: PropTypes.bool.isRequired,
+	setToggleIntroduction: PropTypes.func.isRequired,
 }
 export default Router

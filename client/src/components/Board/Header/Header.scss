@@ -8,12 +8,32 @@
 
 	&-title {
 		font-size: 1.5rem;
-		color: #fff;
+		color: #e5e5e5;
 		-webkit-animation: text-flicker-in-glow 5s linear both;
 		animation: text-flicker-in-glow 5s linear both;
 		pointer-events: all;
 		&:hover {
 			cursor: pointer;
+		}
+	}
+
+	&_IntroductionToggle {
+		// width: 30px;
+		// padding: 0 -5px;
+		background-color: #00d0ff7a;
+		border: 0.1rem solid #00d1ff;
+		border-radius: 0.7rem;
+		box-shadow: 0 0 10px 1px #00d1ff, inset 0 0 10px 1px #00d1ff;
+
+		pointer-events: auto;
+		cursor: pointer;
+
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+
+		&-gif {
+			width: 30px;
 		}
 	}
 
