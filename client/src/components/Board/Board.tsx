@@ -66,6 +66,8 @@ function Board({
 				setSelectedById={setSelectedById}
 				pushFalseProject={pushFalseProject}
 				resetFakeProject={resetFakeProject}
+				toggleIntroduction={toggleIntroduction}
+				setToggleIntroduction={setToggleIntroduction}
 			/>
 
 			{toggleIntroduction && (
