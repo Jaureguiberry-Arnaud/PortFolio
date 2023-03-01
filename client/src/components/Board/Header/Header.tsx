@@ -1,5 +1,6 @@
 import './Header.scss'
 import PropTypes, { InferProps } from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 
 function Header({
 	disabledLoginModal,
@@ -8,12 +9,17 @@ function Header({
 	pushFalseProject,
 	resetFakeProject,
 }: InferProps<typeof Header.propTypes>) {
+	const navigate = useNavigate()
 	function onClickLogin() {
 		setDisabledLoginModal(!disabledLoginModal)
 	}
 	return (
 		<header className='header'>
-			<h1 className='header-title'>JRGB's Development</h1>
+			<h1
+				className='header-title'
+				onClick={() => navigate('/')}>
+				JRGB's Development
+			</h1>
 
 			<section className='header_menu'>
 				<section className='header_menu_leftSection'>

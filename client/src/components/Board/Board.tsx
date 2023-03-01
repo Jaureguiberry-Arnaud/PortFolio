@@ -44,7 +44,7 @@ function Board({
 		setDisabledLoginModal(!disabledLoginModal)
 	}
 
-	useEffect(() => {}, [konami(toggleDisabledLoginModal), allProjects?.length])
+	useEffect(() => {}, [konami(toggleDisabledLoginModal)])
 	return (
 		<section className='board'>
 			<Router

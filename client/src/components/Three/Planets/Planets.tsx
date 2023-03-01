@@ -21,7 +21,7 @@ function Planets({
 	// dynamic import of the planet texture
 	function getDynamicPlanetTexture() {
 		const PlanetTexturePromise = Promise.resolve(
-			import(`./PlanetsAsset/Planet${project.id}`)
+			import(`./PlanetsAsset/Planet${project.id}.tsx`)
 		)
 		// Transform the promise into a promise that returns the texture
 		PlanetTexturePromise.then((value) => {
