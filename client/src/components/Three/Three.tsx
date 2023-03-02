@@ -46,9 +46,6 @@ function Three({
 				</>
 			)}
 
-			{/* Scroll Controll Camera */}
-			{/* <ScrollControls /> */}
-
 			{/* Sun */}
 			<mesh
 				scale={2.5}

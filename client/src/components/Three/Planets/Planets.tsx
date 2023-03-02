@@ -145,7 +145,7 @@ function Planets({
 							/>
 						</mesh>
 						<PerspectiveCamera
-							makeDefault={selectedById === project.id ? true : false}
+							makeDefault
 							rotation={[deg2rad(-30), 0, 0]}
 							position={[0, 100, 150]}
 						/>
