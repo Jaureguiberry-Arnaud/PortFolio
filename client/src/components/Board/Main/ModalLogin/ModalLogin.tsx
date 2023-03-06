@@ -2,6 +2,7 @@ import PropTypes, { InferProps } from 'prop-types'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
+import toast from 'react-hot-toast'
 
 import './ModalLogin.scss'
 import iconCloseModal from '../../../../assets/closeModal.png'
@@ -33,8 +34,10 @@ function ModalLogin({
 			.then(function (response: any) {
 				setToken(response.data)
 				setIsLogged(true)
+				toast.success('You are logged')
 			})
 			.catch(function (error) {
+				toast.error('Wrong pseudo or password')
 				console.log(error)
 			})
 	}
