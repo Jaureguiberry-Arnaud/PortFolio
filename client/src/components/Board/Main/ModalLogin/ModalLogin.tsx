@@ -82,14 +82,16 @@ function ModalLogin({
 								placeholder='Pseudo'
 								name='pseudo'
 								value={values.pseudo}
-								onChange={onChange}></input>
+								onChange={onChange}
+								required></input>
 							<input
 								type='password'
 								className='login_form-input'
 								placeholder='Password'
 								name='password'
 								value={values.password}
-								onChange={onChange}></input>
+								onChange={onChange}
+								required></input>
 							<button
 								type='submit'
 								className='login_form-btn'>
