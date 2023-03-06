@@ -32,9 +32,9 @@ function Introduction({
 					see.
 				</p>
 				<p className='introduction_article-text'>
-					You can also create a fake project, just click on the "Add false
-					project" button, it will be added to the list and generate a new
-					planet.
+					You can also add a randomly generate fake project, just click on the
+					"Add false project" button, it will be added to the list and generate
+					a new planet.
 				</p>
 				<p className='introduction_article-text'>
 					You can find here all my projects, my skills and my contact

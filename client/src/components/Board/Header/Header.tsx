@@ -95,7 +95,7 @@ function Header({
 					<button
 						className='header_menu_rightSection-resetProject'
 						onClick={resetFakeProject}>
-						Reset project
+						Reset projects
 					</button>
 				</section>
 			</section>
