@@ -11,16 +11,16 @@ function Footer() {
 				<Link to='projects'>
 					<p className='footer_nav-btn'>Projects</p>
 				</Link>
-				<Link to='/stats'>
+				{/* <Link to='stats'>
 					<p className='footer_nav-btn'>Stats</p>
-				</Link>
-				<Link to='/cv'>
+				</Link> */}
+				<Link to='cv'>
 					<p className='footer_nav-btn'>CV</p>
 				</Link>
-				<Link to='/contact'>
+				<Link to='contact'>
 					<p className='footer_nav-btn'>Contact</p>
 				</Link>
-				<Link to='/about-me'>
+				<Link to='about-me'>
 					<p className='footer_nav-btn'>About me</p>
 				</Link>
 			</nav>

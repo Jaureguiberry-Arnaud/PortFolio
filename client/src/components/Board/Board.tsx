@@ -1,36 +1,30 @@
 import PropTypes, { InferProps } from 'prop-types'
-import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import './Board.scss'
-import Header from './Header/Header'
-import Main from './Main/Main'
-import Footer from './Footer/Footer'
-import NotFound from './Main/NotFound/NotFound'
-import Projects from './Main/Projects/Projects'
-import Cv from './Main/Cv/Cv'
 import ModalLogin from './Main/ModalLogin/ModalLogin'
-import Contact from './Main/Contact/Contact'
-import AboutMe from './Main/AboutMe/AboutMe'
-// import News from './Main/News/News'
-import Stats from './Main/Stats/Stats'
+import Introduction from '../Introduction/Introduction'
+import Router from '../../Router/Router'
 
 function Board({
-	setActivePlanetAtom,
-	activePlanetAtom,
-	setActivePlanetHighTech,
-	activePlanetHighTech,
+	allProjects,
+	getAllProject,
+	projectId,
+	setProjectId,
+	selectedById,
+	setSelectedById,
+	pushFalseProject,
+	resetFakeProject,
 }: InferProps<typeof Board.propTypes>) {
 	// state
+	const [toggleIntroduction, setToggleIntroduction] = useState(true)
+	const [toggleAddProject, setToggleAddProject] = useState(false)
 	const [disabledLoginModal, setDisabledLoginModal] = useState(false)
-	// const [disabledNewsModal, setDisabledNewsModal] = useState(true)
 	const [isLogged, setIsLogged] = useState(false)
 	const [token, setToken] = useState('')
 	const [values, setValues] = useState({
 		pseudo: '',
 		password: '',
 	})
-	const [allProjects, setAllProjects] = useState([])
 
 	// function
 	function konami(callback: () => void): void {
@@ -51,110 +45,60 @@ function Board({
 	function toggleDisabledLoginModal() {
 		setDisabledLoginModal(!disabledLoginModal)
 	}
-	function getAllProject() {
-		axios
-			.get(`${import.meta.env.VITE_API_URL}/projects`)
-			.then(function (response: any) {
-				setAllProjects(response.data)
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
-	}
 
-	useEffect(() => {
-		getAllProject()
-	}, [konami(toggleDisabledLoginModal), allProjects?.length])
+	useEffect(() => {}, [konami(toggleDisabledLoginModal)])
 	return (
-		<Routes>
-			<Route
-				path='/'
-				element={
-					<section className='board'>
-						<Header
-							disabledLoginModal={disabledLoginModal}
-							setDisabledLoginModal={setDisabledLoginModal}
-							isLogged={isLogged}
-						/>
-						{disabledLoginModal && (
-							<ModalLogin
-								disabledLoginModal={disabledLoginModal}
-								setDisabledLoginModal={setDisabledLoginModal}
-								values={values}
-								setValues={setValues}
-								isLogged={isLogged}
-								setIsLogged={setIsLogged}
-								token={token}
-								setToken={setToken}
-							/>
-						)}
-
-						{/* {disabledNewsModal && (
-							<News
-								disabledNewsModal={disabledNewsModal}
-								setDisabledNewsModal={setDisabledNewsModal}
-							/>
-						)} */}
-
-						<Main
-							activePlanetAtom={activePlanetAtom}
-							setActivePlanetAtom={setActivePlanetAtom}
-							activePlanetHighTech={activePlanetHighTech}
-							setActivePlanetHighTech={setActivePlanetHighTech}
-							disabledLoginModal={disabledLoginModal}
-							setDisabledLoginModal={setDisabledLoginModal}
-							values={values}
-							setValues={setValues}
-							isLogged={isLogged}
-							setIsLogged={setIsLogged}
-							token={token}
-							setToken={setToken}
-						/>
-
-						<Footer />
-					</section>
-				}>
-				<Route
-					path='projects'
-					element={
-						<Projects
-							allProjects={allProjects}
-							getAllProject={getAllProject}
-							token={token}
-							setToken={setToken}
-						/>
-					}
-				/>
-				<Route
-					path='stats'
-					element={<Stats />}
-				/>
-				<Route
-					path='cv'
-					element={<Cv />}
-				/>
-				<Route
-					path='contact'
-					element={<Contact />}
-				/>
-				<Route
-					path='about-me'
-					element={<AboutMe />}
-				/>
-			</Route>
-			<Route
-				path='*'
-				element={<NotFound />}
+		<section className='board'>
+			<Router
+				token={token}
+				setToken={setToken}
+				isLogged={isLogged}
+				setIsLogged={setIsLogged}
+				toggleAddProject={toggleAddProject}
+				setToggleAddProject={setToggleAddProject}
+				disabledLoginModal={disabledLoginModal}
+				setDisabledLoginModal={setDisabledLoginModal}
+				allProjects={allProjects}
+				getAllProject={getAllProject}
+				projectId={projectId}
+				setProjectId={setProjectId}
+				selectedById={selectedById}
+				setSelectedById={setSelectedById}
+				pushFalseProject={pushFalseProject}
+				resetFakeProject={resetFakeProject}
+				toggleIntroduction={toggleIntroduction}
+				setToggleIntroduction={setToggleIntroduction}
 			/>
-		</Routes>
+
+			{toggleIntroduction && (
+				<Introduction setToggleIntroduction={setToggleIntroduction} />
+			)}
+
+			{disabledLoginModal && (
+				<ModalLogin
+					disabledLoginModal={disabledLoginModal}
+					setDisabledLoginModal={setDisabledLoginModal}
+					values={values}
+					setValues={setValues}
+					isLogged={isLogged}
+					setIsLogged={setIsLogged}
+					token={token}
+					setToken={setToken}
+				/>
+			)}
+		</section>
 	)
 }
 
 Board.propTypes = {
-	activePlanetAtom: PropTypes.bool.isRequired,
-	setActivePlanetAtom: PropTypes.func.isRequired,
-	activePlanetHighTech: PropTypes.bool.isRequired,
-	setActivePlanetHighTech: PropTypes.func.isRequired,
+	allProjects: PropTypes.array.isRequired,
+	getAllProject: PropTypes.func.isRequired,
+	projectId: PropTypes.number,
+	setProjectId: PropTypes.func.isRequired,
+	selectedById: PropTypes.number,
+	setSelectedById: PropTypes.func.isRequired,
+	pushFalseProject: PropTypes.func.isRequired,
+	resetFakeProject: PropTypes.func.isRequired,
 }
 
 export default Board

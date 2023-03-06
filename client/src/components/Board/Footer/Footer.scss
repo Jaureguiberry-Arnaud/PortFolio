@@ -1,52 +1,41 @@
 .footer {
-  // background-color: #f0f;
-  width: 100%;
-  padding: 0.1rem 0.5rem;
-  
-  // position: absolute;
-  // bottom: 0.5rem;
+	width: 100%;
+	padding: 0.1rem 0.5rem;
 
-  &_nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    overflow: scroll;
-    pointer-events: auto;
+	&_nav {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
 
+		&-btn {
+			font-size: 1.2rem;
+			color: #00d1ff;
 
-    &-btn{
-      // background-color: rgba(255, 255, 255, 0.2);
-      color: #00d1ff;
-      // border: 1px solid #00d1ff;
-      // border-radius: 0.7rem;
-      // padding: 0.3rem;
+			-webkit-animation: text-shadow-drop-bottom 0.6s both;
+			animation: text-shadow-drop-bottom 0.6s both;
 
-      -webkit-animation: text-shadow-drop-bottom 0.6s both;
-	        animation: text-shadow-drop-bottom 0.6s both;
+			pointer-events: auto;
 
-      pointer-events: auto;
-
-      &:hover {
-        // box-shadow: 0 0 10px 1px #00D1FF, inset 0 0 10px 1px #00D1FF;
-        color: #fff;
-      }
-    }
-  }
+			&:hover {
+				// box-shadow: 0 0 10px 1px #00D1FF, inset 0 0 10px 1px #00D1FF;
+				color: #e5e5e5;
+			}
+		}
+	}
 }
 
 // Responsive Tablet
-@media screen and (min-width: 768px){
-.footer_nav {
-  justify-content: space-around;
-}
+@media screen and (min-width: 768px) {
+	.footer_nav {
+		justify-content: space-around;
+	}
 }
 
 // Responsive Window
-@media screen and (min-width: 1024px){
-.footer_nav{
-  overflow: hidden;
-  
-}
+@media screen and (min-width: 1024px) {
+	.footer_nav {
+		overflow: hidden;
+	}
 }
 
 /* ----------------------------------------------
@@ -62,18 +51,18 @@
  * ----------------------------------------
  */
 @-webkit-keyframes text-shadow-drop-bottom {
-  0% {
-    text-shadow: 0 0 0 #00D1FF
-  }
-  100% {
-    text-shadow: 0 1px 5px #00D1FF;
-  }
+	0% {
+		text-shadow: 0 0 0 #00d1ff;
+	}
+	100% {
+		text-shadow: 0 1px 5px #00d1ff;
+	}
 }
 @keyframes text-shadow-drop-bottom {
-  0% {
-    text-shadow: 0 0 0 #00D1FF;
-  }
-  100% {
-    text-shadow: 0 1px 5px #00D1FF;
-  }
+	0% {
+		text-shadow: 0 0 0 #00d1ff;
+	}
+	100% {
+		text-shadow: 0 1px 5px #00d1ff;
+	}
 }

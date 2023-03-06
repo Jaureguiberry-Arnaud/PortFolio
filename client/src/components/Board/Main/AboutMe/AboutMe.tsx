@@ -30,6 +30,18 @@ function AboutMe() {
 					</div>
 				</article>
 				<article className='aboutMe_skills_article'>
+					<h3 className='aboutMe_skills_article-title'>Server Management:</h3>
+					<div className='aboutMe_skills_article_list'>
+						<p className='aboutMe_skills_article_list-item'>Raspberry</p>
+						<p className='aboutMe_skills_article_list-item'>Linux</p>
+						<p className='aboutMe_skills_article_list-item'>Raspbian</p>
+						<p className='aboutMe_skills_article_list-item'>Docker</p>
+						<p className='aboutMe_skills_article_list-item'>Docker-Compose</p>
+						<p className='aboutMe_skills_article_list-item'>Traefik</p>
+						<p className='aboutMe_skills_article_list-item'>Portainer</p>
+					</div>
+				</article>
+				<article className='aboutMe_skills_article'>
 					<h3 className='aboutMe_skills_article-title'>Front-end:</h3>
 					<div className='aboutMe_skills_article_list'>
 						<p className='aboutMe_skills_article_list-item'>HTML5</p>
@@ -74,25 +86,41 @@ function AboutMe() {
 					January to 2 July 2022.
 				</p>
 				<p className='aboutMe_bio-text'>
-					The formation was composed by 3 months of learning JavaScripts basics,
-					1 month of specialization in React and 4 weeks to create a project
-					from scratch.
+					My training program consisted of 3 months of learning the basics of JavaScript,
+					1 month of specialisation in React, and 4 weeks of teamwork on a project from scratch.
 					<br />
-					The project was made by a team of 4, during this time I was the front
-					lead developer.
+					There were four of us involved in this project, and I was the front lead developer.
 				</p>
 				<p className='aboutMe_bio-text'>
 					I obtained my Professional Title "Web and Mobile Web Developer" level
 					V (Bac+2) on August 17, 2022.
 				</p>
 				<p className='aboutMe_bio-text'>
-					Since September I’m working on my portfolio and decided to learn
-					TypeScript, TypeORM and ThreeJs. I also continue to work with React,
-					Node and PostgresSQL.
+					Since September 2022, I have been working on my portfolio, and to do so, 
+					I started learning TypeScript, TypeORM and ThreeJs. I also continue to work with React, Node and PostgresSQL.
+				</p>
+				<p className='aboutMe_bio-text'>
+					To host my portfolio and my futur project I decided to use a
+					RaspberryPi 4 lying around.
+					<br />
+					I installed a Raspbian distribution, params Traefik, Docker and
+					Docker-compose.
+					<br />
+					Now I can host my portfolio and my futur project on my RaspberryPi.
+				</p>
+				<p className='aboutMe_bio-text'>
+					Here is my LinkedIn:{' '}
+					<a
+						href='https://www.linkedin.com/in/arnaud-jaureguiberry/'
+						target='_blank'>
+						https://www.linkedin.com/in/arnaud-jaureguiberry/
+					</a>
 				</p>
 				<p className='aboutMe_bio-text'>
 					Here is my Github:{' '}
-					<a href='https://github.com/Jaureguiberry-Arnaud'>
+					<a
+						href='https://github.com/Jaureguiberry-Arnaud'
+						target='_blank'>
 						https://github.com/Jaureguiberry-Arnaud
 					</a>
 				</p>

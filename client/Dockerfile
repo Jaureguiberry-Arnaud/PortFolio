@@ -3,5 +3,5 @@ WORKDIR /portfolio_front
 COPY ./package.json .
 RUN npm install
 COPY . .
-EXPOSE 3000
+EXPOSE 4173
 CMD ["npm", "run", "build"]

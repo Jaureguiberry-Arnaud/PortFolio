@@ -1,6 +1,6 @@
 .projectById {
 	width: 90%;
-	height: 63%;
+	height: 100%;
 	background-color: rgba(255, 255, 255, 0.2);
 	padding: 0.5rem;
 	border: 0.1rem solid #00d1ff;
@@ -13,9 +13,9 @@
 	overflow: auto;
 	pointer-events: auto;
 
-	-webkit-animation: scale-in-ver-center 1.5s
-		cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-	animation: scale-in-ver-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	-webkit-animation: scale-in-ver-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+		both;
+	animation: scale-in-ver-center 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
 	&_unauthorized {
 		width: 90%;
@@ -38,8 +38,8 @@
 			margin-top: 5rem;
 			width: 75px;
 			align-self: center;
-			-webkit-animation: flicker-2 2s linear infinite both;
-			animation: flicker-2 2s linear infinite both;
+			-webkit-animation: flicker-2 1s linear infinite both;
+			animation: flicker-2 1s linear infinite both;
 		}
 		&-title {
 			font-size: 1.2rem;
@@ -48,13 +48,13 @@
 			margin-bottom: 0.5rem;
 		}
 		&-content {
-			color: #fff;
+			color: #e5e5e5;
 			text-shadow: 1px 1px 2px #ff6700;
 		}
 		&-btn {
 			height: 40px;
 			font-size: 1rem;
-			color: #fff;
+			color: #e5e5e5;
 			background-color: #ff6700b0;
 			text-shadow: 1px 1px 2px #ff6700;
 			border: 0.1rem solid #ff6700;
@@ -91,7 +91,7 @@
 			font-size: 1rem;
 			margin-top: 1rem;
 			margin-bottom: 1rem;
-			color: #fff;
+			color: #e5e5e5;
 			background-color: green;
 			text-shadow: 1px 1px 2px green;
 			border: 0.1rem solid green;
@@ -145,7 +145,7 @@
 	}
 	&-content {
 		font-size: 1rem;
-		color: #fff;
+		color: #e5e5e5;
 		text-shadow: 1px 1px 2px #00d1ff;
 		margin-left: 1rem;
 		margin-bottom: 2rem;
@@ -183,7 +183,7 @@
 		&-input {
 			width: 92%;
 			background-color: rgba(255, 255, 255, 0.2);
-			color: #00d1ff;
+			color: #e5e5e5;
 			padding: 0.5rem;
 			margin-bottom: 2rem;
 			border: 0.1rem solid #00d1ff;
@@ -194,7 +194,7 @@
 		&-btn {
 			width: 92%;
 			height: 40px;
-			color: #fff;
+			color: #e5e5e5;
 			background-color: rgba(0, 128, 0, 0.6);
 			padding: 0.5rem;
 			margin-bottom: 1rem;
